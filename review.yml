@@ -1,0 +1,139 @@
+aid: deutsche-boerse
+name: Deutsche Börse
+review:
+  question: Does Deutsche Börse expose a public, documented API surface for its market data?
+  answer: true
+  date: '2026-07-21'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Deutsche Börse Group runs a genuine, self-serve developer portal
+    (developer.deutsche-boerse.com, which 307-redirects to
+    console.developer.deutsche-boerse.com) with platform documentation at
+    docs.developer.deutsche-boerse.com. Registration is self-serve and free;
+    the primary auth model is an API key passed in an X-DBP-APIKEY header,
+    with some APIs adding publisher-defined auth or OAuth2. The API
+    Catalogue itself sits behind (free) registration - the console is a JS
+    app shell to anonymous crawlers - so the full product list is not
+    anonymously enumerable. The group's flagship public data API surface is
+    the A7 Analytics Platform: a cloud REST API
+    (https://a7.deutsche-boerse.com/api/v1, Bearer-token auth) over
+    nanosecond order-by-order historical market data from Eurex, Xetra, EEX
+    and CME (EOBI/MDP raw feeds, constructed order books, reference data,
+    custom algos, option analytics, auction simulations). A7 publishes a
+    downloadable API documentation bundle containing 12 real OpenAPI 3.0
+    specs, harvested verbatim into openapi/ here. Eurex also documents a
+    free GraphQL T7 reference data API on the group gateway
+    (api.developer.deutsche-boerse.com/eurex-prod-graphql) with a published
+    shared rate-limited API key. Real-time cloud streaming is delivered
+    over WebSocket (md.deutsche-boerse.com) with protobuf/JSON encoding per
+    the official Cloud.Stream.Client sample. Commercial posture is mixed:
+    portal signup and the Eurex reference data tier are free/self-serve,
+    while the market data products themselves (A7 subscriptions, real-time
+    feeds, Datashop historical data) are commercially licensed and
+    entitlement-managed by the Market Data + Services arm - there is no
+    public per-API pricing page. Ownership - Deutsche Börse AG is itself the
+    publicly listed parent (FWB DB1) of Eurex, Clearstream, EEX, 360T, and
+    ISS STOXX.
+  transports:
+  - protocol: REST
+    scheme: https
+    baseURL: https://a7.deutsche-boerse.com/api/v1
+    documented: true
+    note: A7 Analytics Platform; Bearer-token auth; unauthenticated probe of the bare
+      API root returns 404, the documented endpoints require a subscription token.
+  - protocol: GraphQL
+    scheme: https
+    baseURL: https://api.developer.deutsche-boerse.com/eurex-prod-graphql
+    documented: true
+    note: Eurex T7 reference data; documented on eurex.com with a shared public X-DBP-APIKEY;
+      a POST introspection probe with that key returned HTTP 404 on the review date,
+      so the live path may have moved behind the console.
+  - protocol: WebSocket
+    scheme: wss
+    baseURL: wss://md.deutsche-boerse.com
+    documented: true
+    note: Cloud Stream real-time market data; protobuf or JSON messages; API key generated
+      in the GUI; documented via the official Deutsche-Boerse/Cloud.Stream.Client
+      repo.
+  - protocol: FlatFiles
+    scheme: https
+    baseURL: https://datashop.deutsche-boerse.com/
+    documented: true
+    note: Datashop web shop for commercial historical data purchases (HTTP 200); licensed
+      low-latency feeds (e.g. T7 EOBI/ETI, CEF) are sold and entitlement-managed by
+      Market Data + Services outside the developer portal.
+  probes:
+  - url: https://developer.deutsche-boerse.com/
+    status: 200
+    note: 307 redirect to console.developer.deutsche-boerse.com.
+  - url: https://console.developer.deutsche-boerse.com/
+    status: 200
+    note: JS app shell to anonymous clients; API Catalogue requires free registration.
+  - url: https://docs.developer.deutsche-boerse.com/
+    status: 200
+  - url: https://docs.developer.deutsche-boerse.com/blog/
+    status: 200
+  - url: https://a7.deutsche-boerse.com/
+    status: 200
+  - url: https://a7.deutsche-boerse.com/doc/api/prod/PROD_API.Documentation.zip
+    status: 200
+    note: Contains the 12 OpenAPI 3.0 specs harvested into openapi/.
+  - url: https://a7.deutsche-boerse.com/api/v1/
+    status: 404
+    note: Bare API root without auth token.
+  - url: https://api.developer.deutsche-boerse.com/eurex-prod-graphql
+    status: 404
+    note: POST with published shared API key; endpoint as documented on eurex.com.
+  - url: https://md.deutsche-boerse.com/
+    status: 200
+  - url: https://datashop.deutsche-boerse.com/
+    status: 200
+  - url: https://www.mds.deutsche-boerse.com/
+    status: 200
+  - url: https://github.com/Deutsche-Boerse
+    status: 200
+  - url: https://www.deutsche-boerse.com/dbg-en/meta/privacy-notice
+    status: 200
+  - url: https://www.deutsche-boerse.com/dbg-en/meta/disclaimer
+    status: 200
+  - url: https://www.linkedin.com/company/deutsche-boerse
+    status: 404
+    note: LinkedIn bot-blocks curl; canonical company page verified via web search
+      as linkedin.com/company/deutscheboerse.
+  openapi:
+    harvested: true
+    provenance: |
+      All 12 files in openapi/ were extracted verbatim from the official A7
+      production API documentation bundle
+      https://a7.deutsche-boerse.com/doc/api/prod/PROD_API.Documentation.zip
+      (fetched 2026-07-21, HTTP 200; files dated 2026-01-23 inside the
+      archive). Titles: Order book API, Algo management API, Customer's
+      Dataset API, Dataset API v2, Market data API (EOBI), Market data
+      insights API, CME Market data API (MDP), Option Analytics API,
+      Precalc API, Reference data API (RDI) v2, CME Reference data API
+      (SD), Auction simulation API. No spec was fabricated or modified.
+sources:
+- url: https://www.deutsche-boerse.com/dbg-en/markets-services/ps-technology/ps-api-platform
+  type: Documentation
+  note: Group API Platform marketing page; self-serve registration, platform API for
+    automation, support contact api.platform.support@deutsche-boerse.com.
+- url: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/consume/
+  type: Documentation
+  note: Documents X-DBP-APIKEY header auth, automatic key generation per application,
+    publisher-defined auth and OAuth2 variations.
+- url: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/discover/
+  type: Documentation
+  note: API Catalogue browsing flow behind portal login.
+- url: https://github.com/Deutsche-Boerse/a7
+  type: Documentation
+  note: Official A7 repo with use-case notebooks; confirms REST base https://a7.deutsche-boerse.com/api/v1
+    and Bearer auth; links the API documentation zip.
+- url: https://www.eurex.com/ex-en/data/free-reference-data-api
+  type: Documentation
+  note: Documents the free GraphQL T7 reference data API, its gateway endpoint, and
+    the shared public API key.
+- url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+  type: Documentation
+  note: Official WebSocket streaming sample against md.deutsche-boerse.com with protobuf/JSON
+    and API-key auth.

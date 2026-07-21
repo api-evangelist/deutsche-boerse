@@ -1,0 +1,269 @@
+aid: deutsche-boerse
+url: https://raw.githubusercontent.com/api-evangelist/deutsche-boerse/refs/heads/main/apis.yml
+name: Deutsche Börse
+kind: company
+description: Deutsche Börse AG is the Frankfurt-based, publicly listed (FWB DB1) exchange
+  organization behind the Frankfurt Stock Exchange and Xetra cash market, the Eurex
+  derivatives exchange, EEX, 360T, Clearstream post-trade services, and the ISS STOXX
+  index and analytics business. Its Market Data + Services arm sells real-time, historical,
+  and reference market data, delivered through a self-serve Group API platform (developer.deutsche-boerse.com,
+  API-key gated REST and GraphQL), the A7 Analytics Platform cloud REST API for nanosecond
+  order-by-order Eurex/Xetra/EEX/CME history, a Cloud Stream WebSocket feed, licensed
+  low-latency feeds, and the Datashop for commercial data purchases.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial
+- Market Data
+- Stocks
+- Derivatives
+- Trading
+- Real-Time
+- Order Book
+- Reference Data
+- Exchange
+- Analytics
+created: '2026-07-21'
+modified: '2026-07-21'
+specificationVersion: '0.19'
+apis:
+- aid: deutsche-boerse:a7-order-book-api
+  name: A7 Analytics Platform - Order Book API
+  tags:
+  - Order Book
+  - Historical Data
+  - Eurex
+  - Xetra
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-orderbook-openapi.yml
+    type: OpenAPI
+  description: Constructed historical order books for the T7 trading venues of Deutsche
+    Börse Group (Eurex, Xetra) with nanosecond granularity, accessed over REST with
+    bearer-token authentication.
+- aid: deutsche-boerse:a7-market-data-eobi-api
+  name: A7 Analytics Platform - Market Data API (EOBI)
+  tags:
+  - Market Data
+  - EOBI
+  - Order by Order
+  - Eurex
+  - Xetra
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-eobi-openapi.yml
+    type: OpenAPI
+  description: Un-normalized, genuine historical order-by-order market data from the
+    T7 Enhanced Order Book Interface (EOBI) feed for Eurex and Xetra.
+- aid: deutsche-boerse:a7-cme-market-data-mdp-api
+  name: A7 Analytics Platform - CME Market Data API (MDP)
+  tags:
+  - Market Data
+  - CME
+  - MDP
+  - Futures
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-mdp-openapi.yml
+    type: OpenAPI
+  description: Historical CME Group market data from the MDP feed served through the
+    A7 Analytics Platform REST API.
+- aid: deutsche-boerse:a7-reference-data-rdi-api
+  name: A7 Analytics Platform - Reference Data API (RDI) v2
+  tags:
+  - Reference Data
+  - RDI
+  - Instruments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: https://deutsche-boerse.github.io/a7/usecases/02_simple_rdi.html
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-rdi-v2-openapi.yml
+    type: OpenAPI
+  description: Reference data for T7 venues (markets, market segments, securities)
+    from the Reference Data Interface, version 2 of the A7 reference data API.
+- aid: deutsche-boerse:a7-cme-reference-data-sd-api
+  name: A7 Analytics Platform - CME Reference Data API (SD)
+  tags:
+  - Reference Data
+  - CME
+  - Security Definitions
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-sd-v2-openapi.yml
+    type: OpenAPI
+  description: CME Group security-definition reference data served through the A7
+    Analytics Platform REST API.
+- aid: deutsche-boerse:a7-algo-management-api
+  name: A7 Analytics Platform - Algo Management API
+  tags:
+  - Algorithms
+  - Analytics
+  - Backtesting
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: https://deutsche-boerse.github.io/a7/usecases/01_simple_example.html
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-algo-openapi.yml
+    type: OpenAPI
+  description: Create, update, delete, and run custom algos over historical order
+    book data and retrieve their results - a high-performance framework for custom
+    analytics on A7.
+- aid: deutsche-boerse:a7-dataset-api
+  name: A7 Analytics Platform - Dataset API
+  tags:
+  - Datasets
+  - Data Upload
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-dataset-openapi.yml
+    type: OpenAPI
+  - url: openapi/deutsche-boerse-a7-dataset-v2-openapi.yml
+    type: OpenAPI
+  description: Manage customer datasets on the A7 Analytics Platform (versions 1 and
+    2 of the Dataset API).
+- aid: deutsche-boerse:a7-market-data-insights-api
+  name: A7 Analytics Platform - Market Data Insights API
+  tags:
+  - Insights
+  - Analytics
+  - Market Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-insights-openapi.yml
+    type: OpenAPI
+  description: Off-the-shelf market data insights and analytics derived from A7 granular
+    historical order book data.
+- aid: deutsche-boerse:a7-option-analytics-api
+  name: A7 Analytics Platform - Option Analytics API
+  tags:
+  - Options
+  - Analytics
+  - Greeks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-option-analytics-openapi.yml
+    type: OpenAPI
+  description: Option analytics computed on the A7 Analytics Platform for Eurex-traded
+    options.
+- aid: deutsche-boerse:a7-precalc-api
+  name: A7 Analytics Platform - Precalc API
+  tags:
+  - Precalculated
+  - Analytics
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-precalc-openapi.yml
+    type: OpenAPI
+  description: Management of precalculated analytics runs on the A7 Analytics Platform.
+- aid: deutsche-boerse:a7-auction-simulation-api
+  name: A7 Analytics Platform - Auction Simulation API
+  tags:
+  - Auctions
+  - Simulation
+  - Xetra
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://a7.deutsche-boerse.com/
+  baseURL: https://a7.deutsche-boerse.com/api/v1
+  properties:
+  - url: https://github.com/Deutsche-Boerse/a7
+    type: Documentation
+  - url: openapi/deutsche-boerse-a7-auction-simulations-openapi.yml
+    type: OpenAPI
+  description: Simulate Xetra auctions against historical order book data on the A7
+    Analytics Platform.
+- aid: deutsche-boerse:eurex-t7-reference-data-api
+  name: Eurex T7 Reference Data API
+  tags:
+  - Reference Data
+  - GraphQL
+  - Eurex
+  - Derivatives
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.eurex.com/ex-en/data/free-reference-data-api
+  baseURL: https://api.developer.deutsche-boerse.com/eurex-prod-graphql
+  properties:
+  - url: https://www.eurex.com/ex-en/data/free-reference-data-api
+    type: Documentation
+  - url: https://console.developer.deutsche-boerse.com/apis
+    type: Portal
+  description: Free GraphQL API for Eurex T7 reference data (products, contracts,
+    instrument attributes) in machine- and human-readable JSON, offered with a shared
+    rate-limited public API key or a dedicated key from the Deutsche Börse Group developer
+    portal (X-DBP-APIKEY header).
+- aid: deutsche-boerse:cloud-stream-market-data-api
+  name: Deutsche Börse Cloud Stream Market Data API
+  tags:
+  - Streaming
+  - WebSocket
+  - Real-Time
+  - Market Data
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+  baseURL: wss://md.deutsche-boerse.com
+  properties:
+  - url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+    type: Documentation
+  description: Cloud-delivered real-time market data streaming over WebSocket (host
+    md.deutsche-boerse.com) with Protocol Buffers or JSON message encoding and API-key
+    authentication - the published sample client subscribes to subjects such as md-tradegate
+    (Tradegate quotes in CEF format).
+common:
+- type: Website
+  url: https://www.deutsche-boerse.com/dbg-en/
+- type: Portal
+  url: https://console.developer.deutsche-boerse.com/
+- type: Documentation
+  url: https://docs.developer.deutsche-boerse.com/
+- type: GitHubOrganization
+  url: https://github.com/Deutsche-Boerse
+- type: LinkedIn
+  url: https://www.linkedin.com/company/deutscheboerse
+- type: Blog
+  url: https://docs.developer.deutsche-boerse.com/blog/
+- type: PrivacyPolicy
+  url: https://www.deutsche-boerse.com/dbg-en/meta/privacy-notice
+- type: TermsOfService
+  url: https://www.deutsche-boerse.com/dbg-en/meta/disclaimer
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
