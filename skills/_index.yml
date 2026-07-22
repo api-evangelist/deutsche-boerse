@@ -1,0 +1,15 @@
+generated: '2026-07-22'
+method: generated
+skills:
+- file: deutsche-boerse-a7-orderbook-lookup.md
+  name: Look up a historical T7 order book on A7
+  api: openapi/deutsche-boerse-reference-data-api-api-openapi.yml
+  operations: [getMarkets, getDates, getMarketSegments, getSecurities, getOrderbookT7]
+- file: deutsche-boerse-a7-run-algo.md
+  name: Upload and run a custom algo on A7
+  api: openapi/deutsche-boerse-algo-management-api-api-openapi.yml
+  operations: [getOwners, getAlgos, addAlgo, runAlgo, getAlgoMetadata, getAlgoCode, deleteAlgo]
+- file: deutsche-boerse-eurex-reference-data-graphql.md
+  name: Query free Eurex T7 reference data over GraphQL
+  api: graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+  operations: [ProductInfos, Contracts, TradingHours, SettlementPrices, Holidays, TickRules, Changelog]

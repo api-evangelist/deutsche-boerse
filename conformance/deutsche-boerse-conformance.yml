@@ -1,0 +1,55 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/ + graphql/ + docs.developer.deutsche-boerse.com + live probes 2026-07-22
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securitySchemes in any harvested spec; the platform docs page
+    "Getting started with OAuth 2.0/Open ID Connect" (docs.developer.deutsche-boerse.com/docs/consumer/getting-started/oauth2)
+    says "Coming soon". A7 uses http bearer tokens, the group gateway uses X-DBP-APIKEY.
+- id: oidc
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any probed host; OAuth2/OIDC
+    onboarding marked "Coming soon" in platform docs.
+- id: http-bearer-auth
+  conforms: true
+  evidence: All 18 A7 OpenAPI specs declare components.securitySchemes.bearerAuth
+    (type http, scheme bearer).
+- id: mutual-tls
+  conforms: true
+  evidence: Platform docs (docs.developer.deutsche-boerse.com/docs/consumer/mTLS-consumer)
+    document optional X.509 client-certificate authentication for APIs that require it,
+    with acceptable CA issuers listed per API.
+- id: graphql-introspection
+  conforms: true
+  evidence: POST introspection against https://api.developer.deutsche-boerse.com/eurex-prod-graphql/
+    with the published shared X-DBP-APIKEY returned the full schema (70 types) on 2026-07-22;
+    anonymous requests get HTTP 401.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: A7 error responses are text/plain or ad-hoc application/json, no
+    application/problem+json in any spec (see errors/deutsche-boerse-problem-types.yml).
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: https://www.deutsche-boerse.com/.well-known/security.txt returns a real
+    RFC 9116 file (Contact, Preferred-Languages, Expires, VDP policy link), saved at
+    well-known/deutsche-boerse-security.txt. Note its Expires field (2025-04-22) is stale.
+- id: rate-limit-429
+  conforms: true
+  evidence: Platform docs (docs/consumer/rate-limiting) document HTTP 429 Too Many
+    Requests with per-API rate limit + burst size published on each API Detail Page.
+- id: pagination
+  conforms: false
+  evidence: No cursor/offset pagination parameters in the A7 specs; resources are
+    navigated hierarchically by path (market/date/segment/security).
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or documented idempotency contract in specs or docs.
+- id: protobuf-streaming
+  conforms: true
+  evidence: Cloud Stream WebSocket feed serializes messages with published Protocol
+    Buffers schemas (grpc/deutsche-boerse-md-cef.proto et al) or JSON.
+- id: websocket
+  conforms: true
+  evidence: Cloud Stream market data delivered over WebSocket at md.deutsche-boerse.com
+    per the official Deutsche-Boerse/Cloud.Stream.Client repo.

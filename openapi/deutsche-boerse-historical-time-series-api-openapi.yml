@@ -1,0 +1,476 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Historical Time Series API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Historical Time Series
+paths:
+  /aidataset/IV/{symbol}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets implied volatility
+      description: implied vol
+      operationId: getIV
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ivs'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/IV/{symbol}/{maturity}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets implied volatility for a given maturity
+      description: implied vol
+      operationId: getIVmat
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      - $ref: '#/components/parameters/maturity'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/ivs'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/RV/{symbol}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets realized volatility
+      description: realized vol (intraday, maturity expressed as EWM, span in business days)
+      operationId: getRV
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/rvs'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/DIV/{symbol}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets implied dividend flow
+      description: implied dividend flow
+      operationId: getDIV
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/divs'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/DIV/{symbol}/{maturity}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets implied dividend flow for a given maturity
+      description: implied dividend flow
+      operationId: getDIVmat
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      - $ref: '#/components/parameters/maturity'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/divs'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/SMI/{symbol}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets smile (vol spread between ATM strike and 90% strike)
+      description: smile (vol spread between ATM strike and 90% strike, normalized to 1Y with factor 1/√T)
+      operationId: getSMI
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/smis'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/SMI/{symbol}/{maturity}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets smile (vol spread between ATM strike and 90% strike) for a given maturity
+      description: smile (vol spread between ATM strike and 90% strike, normalized to 1Y with factor 1/√T)
+      operationId: getSMImat
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      - $ref: '#/components/parameters/maturity'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/smis'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/FWD/{symbol}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets forward
+      description: forward
+      operationId: getFWD
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/fwds'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/FWD/{symbol}/{maturity}:
+    get:
+      tags:
+      - Historical Time Series
+      summary: gets forward for a given maturity
+      description: forward
+      operationId: getFWDmat
+      parameters:
+      - $ref: '#/components/parameters/symbol'
+      - $ref: '#/components/parameters/maturity'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/fwds'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  schemas:
+    rvs:
+      description: array of realized volatilities
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date
+          '10':
+            type: number
+          '25':
+            type: number
+          '60':
+            type: number
+      example: ',10,25,60
+
+        2024-06-21,19.8727,21.0621,21.5551
+
+        2024-06-14,20.4442,21.2433,21.6247
+
+        2024-06-07,21.4038,21.8765,21.9251
+
+        2024-06-06,21.1964,21.8397,21.9118
+
+        2024-06-03,20.4559,21.8048,21.9094
+
+        '
+    maturity:
+      description: option maturity
+      type: string
+      pattern: ^[01][0-9]{3}$
+      example: '0625'
+    divs:
+      description: array of implied dividends
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+        additionalProperties:
+          type: number
+      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
+
+        2024-06-21 14:05:00,0.126876,0.0828143,-0.00337871,-0.113921,-0.28507,2.54447,2.39383
+
+        2024-06-21 14:00:00,0.126416,0.0819395,-0.00687975,-0.119291,-0.296716,2.52869,2.42101
+
+        2024-06-21 13:55:00,0.125381,0.0744777,-0.0120105,-0.132849,-0.307139,2.50696,2.43907
+
+        2024-06-21 13:50:00,0.115369,0.0489143,-0.0396658,-0.157312,-0.33352,2.48712,2.45314
+
+        2024-06-21 13:45:00,0.118927,0.0450836,-0.0465704,-0.163638,-0.338031,2.48831,2.47865
+
+        '
+    ivs:
+      description: array of implied volatilities
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+        additionalProperties:
+          type: number
+      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
+
+        2024-06-21 13:30:00,16.4902,19.0869,18.2782,18.5418,18.7175,19.3271,
+
+        2024-06-21 13:25:00,16.888,18.9568,18.1998,18.4974,18.7292,19.2773,19.2292
+
+        2024-06-21 13:20:00,16.7171,19.0249,18.287,18.5927,18.7221,19.3357,19.242
+
+        2024-06-21 13:15:00,16.7059,18.9855,18.2049,18.5107,18.6803,19.3077,19.2428
+
+        2024-06-21 13:10:00,16.7544,19.0055,18.2214,18.4872,18.6563,19.2944,19.25
+
+        '
+    symbol:
+      description: trading symbol
+      type: string
+      enum:
+      - OESX
+      - ODAX
+      - OSMI
+      - OESB
+      - OVS2
+      - ITK
+      - ABBN
+      - ASM
+      - ADS
+      - AIR
+      - EAD
+      - ALV
+      - AXA
+      - BAS
+      - BBVD
+      - BMW
+      - BNP
+      - BAY
+      - DBK
+      - DB1
+      - DPW
+      - DTE
+      - EOA
+      - ENL5
+      - INN
+      - IBE
+      - IFX
+      - IES5
+      - PPX
+      - LOR
+      - MOH
+      - LIN
+      - DAI
+      - MUV2
+      - NESN
+      - NOVN
+      - PHI1
+      - REP
+      - ROG
+      - SAP
+      - SNW
+      - BSD2
+      - SND
+      - SIE
+      - SGE
+      - SREN
+      - TNE5
+      - TOTB
+      - UBSN
+      - CRI5
+      - SQU
+      - VO3
+      - ANN
+      - ZURN
+      example: DB1
+    smis:
+      description: array of smiles
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+        additionalProperties:
+          type: number
+      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
+
+        2024-06-21 14:05:00,1.12502,1.31043,1.57654,1.50071,1.4671,1.50114,1.56583
+
+        2024-06-21 14:00:00,1.13521,1.31724,1.56878,1.52616,1.49694,1.5026,1.55258
+
+        2024-06-21 13:55:00,1.04704,1.31004,1.56261,1.55248,1.48505,1.50779,1.524
+
+        2024-06-21 13:50:00,1.05783,1.32273,1.58294,1.54378,1.56925,1.53229,1.51953
+
+        2024-06-21 13:45:00,0.988669,1.26946,1.56359,1.50677,1.51089,1.44933,1.5086
+
+        '
+    fwds:
+      description: array of forwards
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+        additionalProperties:
+          type: number
+      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
+
+        2024-06-21 14:10:00,192.262,192.895,193.694,195.593,197.328,195.927,199.114
+
+        2024-06-21 14:05:00,192.198,192.826,193.625,195.524,197.258,195.866,199.073
+
+        2024-06-21 14:00:00,191.972,192.594,193.4,195.292,197.041,195.643,198.799
+
+        2024-06-21 13:55:00,191.714,192.332,193.13,195.041,196.778,195.409,198.513
+
+        2024-06-21 13:50:00,191.713,192.355,193.154,195.059,196.803,195.426,198.484
+
+        '
+  parameters:
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    maturity:
+      name: maturity
+      in: path
+      description: option maturity
+      required: true
+      schema:
+        $ref: '#/components/schemas/maturity'
+  responses:
+    '404':
+      description: not found
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

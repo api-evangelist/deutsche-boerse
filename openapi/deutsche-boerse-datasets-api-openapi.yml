@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Datasets API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Datasets
+paths:
+  /aidataset:
+    get:
+      tags:
+      - Datasets
+      summary: gets available datasets with description
+      description: datasets with description
+      operationId: getDatasetDescs
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasetdescs'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/datasetdescs'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aidataset/:
+    get:
+      tags:
+      - Datasets
+      summary: gets available datasets
+      description: datasets
+      operationId: getDatasets
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/datasets'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/datasets'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  schemas:
+    dataset:
+      description: dataset name
+      type: string
+      enum:
+      - OPT
+      - IV
+      - RV
+      - DIV
+      - SMI
+      - FWD
+      example: OPT
+    datasets:
+      description: array of dataset names
+      type: array
+      items:
+        $ref: '#/components/schemas/dataset'
+      example:
+      - OPT
+      - IV
+      - RV
+    datasetdescs:
+      description: dictionary of datasets
+      type: object
+      additionalProperties:
+        description: dataset description
+        type: string
+      example:
+        OPT: Live options prices,
+        IV: Implied volatility,
+        RV: Realized volatility (intraday, maturity expressed as EWM, span in business days)
+  responses:
+    '404':
+      description: not found
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,410 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Exchanges, symbols, securities API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Exchanges, symbols, securities
+paths:
+  /auction/:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves list of exchanges
+      description: The request delivers all available markets as a list of MICs."
+      operationId: getExchanges
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: array of exchange mics
+                type: array
+                items:
+                  $ref: '#/components/schemas/exchange'
+                example:
+                - XETR
+                - XEUR
+                - XEEE
+            application/gzip:
+              schema:
+                type: array
+                format: binary
+                items:
+                  $ref: '#/components/schemas/exchange'
+                example:
+                - XETR
+                - XEUR
+                - XEEE
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /auction/{exchange}/:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves list of trading days
+      description: The request delivers all available trading days for the selected market as a list of dates (YYYYMMDD).
+      operationId: getDates
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: array of dates
+                type: array
+                items:
+                  $ref: '#/components/schemas/date'
+                example:
+                - 20230111
+                - 20230112
+                - 20230113
+            application/gzip:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/date'
+                example:
+                - 20230111
+                - 20230112
+                - 20230113
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /auction/{exchange}/{date}/:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves list of market segments, or alternatively symbols
+      description: The request delivers all available market segments, or alternatively symbols, for the selected market and trading day as a list of market segment IDs, or symbols.
+      operationId: getMarketSegmentIDsOrSymbols
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/mode'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: array of market segment IDs, or symbols
+                type: array
+                items:
+                  $ref: '#/components/schemas/marketSegmentIDorSymbol'
+                example:
+                - '52915'
+                - '52378'
+                - '54105'
+            application/gzip:
+              schema:
+                type: array
+                format: binary
+                items:
+                  $ref: '#/components/schemas/marketSegmentIDorSymbol'
+              example:
+              - '52915'
+              - '52378'
+              - '54105'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /auction/{exchange}/{date}/{marketSegmentID}/:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves list of securities
+      description: The request delivers all available securities for the selected market, trading day and market segment as a list security IDs.
+      operationId: getSecurityIDs
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/marketSegmentID'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                description: array of security IDs
+                type: array
+                items:
+                  $ref: '#/components/schemas/securityID'
+                example:
+                - 2506257
+            application/gzip:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/securityID'
+                example:
+                - 2506257
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /auction/{exchange}/{date}/{marketSegmentID}/{securityID}:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves security's reference data
+      description: The request delivers reference data for the selected security that is identified by market, trading day, market segment ID and security ID.
+      operationId: getSecurity
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/marketSegmentID'
+      - $ref: '#/components/parameters/securityID'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/security'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/security'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /auction/{exchange}/{date}/{symbol}:
+    get:
+      tags:
+      - Exchanges, symbols, securities
+      summary: retrieves security's reference data
+      description: The request delivers reference data for the selected security that is identified by market, trading day and trading symbol.
+      operationId: getSecurityBySymbol
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/security'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/security'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  parameters:
+    marketSegmentID:
+      name: marketSegmentID
+      in: path
+      description: unique market segment identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/marketSegmentID'
+    securityID:
+      name: securityID
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
+    mode:
+      name: mode
+      in: query
+      description: "Defines the output values for the response.<br/> mode options:\n  * `ids` (default) - returns a list of market segment IDs\n  * `symbols` - returns a list of trading symbols\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - ids
+        - symbols
+        default: ids
+  schemas:
+    symbol:
+      description: trading symbol
+      type: string
+      example: DB1
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XETR
+    security:
+      description: security's reference data
+      type: object
+      properties:
+        Exchange:
+          $ref: '#/components/schemas/exchange'
+        Date:
+          $ref: '#/components/schemas/date'
+        Symbol:
+          $ref: '#/components/schemas/symbol'
+        MarketSegmentID:
+          $ref: '#/components/schemas/marketSegmentID'
+        SecurityID:
+          $ref: '#/components/schemas/securityID'
+        Index:
+          description: index that security constitute
+          type: string
+          example: DAX
+        ISIN:
+          description: ISIN of security
+          type: string
+          example: DE0005810055
+        Ticks:
+          description: tick ladder
+          type: array
+          items:
+            type: object
+            properties:
+              From:
+                description: starting price range for specified tick increment (inclusive)
+                type: number
+                format: double
+                example: 0.5
+              To:
+                description: ending price range for the specified tick increment (noninclusive)
+                type: number
+                format: double
+                example: 1.0
+              Tick:
+                description: tick increment for stated price range that specifies the valid price increments at which orders or quotes for an instrument of the product can be entered
+                type: number
+                format: double
+                example: 0.0002
+            required:
+            - From
+            - To
+            - Tick
+      required:
+      - Exchange
+      - Date
+      - Symbol
+      - MarketSegmentID
+      - SecurityID
+      - Index
+      - ISIN
+      - Ticks
+    securityID:
+      description: security ID
+      type: integer
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 2504978
+    marketSegmentIDorSymbol:
+      description: MarketSegmentID or symbol
+      type: string
+      example: '52915'
+    marketSegmentID:
+      description: market segment ID
+      type: integer
+      format: int32
+      example: 52885
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      example: 20230111
+  responses:
+    '404':
+      description: not found
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

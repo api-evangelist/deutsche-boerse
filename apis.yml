@@ -10,7 +10,7 @@ description: Deutsche Börse AG is the Frankfurt-based, publicly listed (FWB DB1
   API-key gated REST and GraphQL), the A7 Analytics Platform cloud REST API for nanosecond
   order-by-order Eurex/Xetra/EEX/CME history, a Cloud Stream WebSocket feed, licensed
   low-latency feeds, and the Datashop for commercial data purchases.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/deutsche-boerse.png
 tags:
 - Financial
 - Market Data
@@ -23,7 +23,7 @@ tags:
 - Exchange
 - Analytics
 created: '2026-07-21'
-modified: '2026-07-21'
+modified: '2026-07-22'
 specificationVersion: '0.19'
 apis:
 - aid: deutsche-boerse:a7-order-book-api
@@ -39,8 +39,10 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-orderbook-openapi.yml
+  - url: openapi/deutsche-boerse-order-book-api-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-order-book-api-api-overlay.yaml
+    type: Overlay
   description: Constructed historical order books for the T7 trading venues of Deutsche
     Börse Group (Eurex, Xetra) with nanosecond granularity, accessed over REST with
     bearer-token authentication.
@@ -58,8 +60,10 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-eobi-openapi.yml
+  - url: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-market-data-api-eobi-api-overlay.yaml
+    type: Overlay
   description: Un-normalized, genuine historical order-by-order market data from the
     T7 Enhanced Order Book Interface (EOBI) feed for Eurex and Xetra.
 - aid: deutsche-boerse:a7-cme-market-data-mdp-api
@@ -75,8 +79,14 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-mdp-openapi.yml
+  - url: openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml
     type: OpenAPI
+  - url: openapi/deutsche-boerse-sending-times-packets-messages-api-openapi.yml
+    type: OpenAPI
+  - url: overlays/deutsche-boerse-exchanges-assets-securities-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-sending-times-packets-messages-api-overlay.yaml
+    type: Overlay
   description: Historical CME Group market data from the MDP feed served through the
     A7 Analytics Platform REST API.
 - aid: deutsche-boerse:a7-reference-data-rdi-api
@@ -93,8 +103,10 @@ apis:
     type: Documentation
   - url: https://deutsche-boerse.github.io/a7/usecases/02_simple_rdi.html
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-rdi-v2-openapi.yml
+  - url: openapi/deutsche-boerse-reference-data-api-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-reference-data-api-api-overlay.yaml
+    type: Overlay
   description: Reference data for T7 venues (markets, market segments, securities)
     from the Reference Data Interface, version 2 of the A7 reference data API.
 - aid: deutsche-boerse:a7-cme-reference-data-sd-api
@@ -109,8 +121,10 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-sd-v2-openapi.yml
+  - url: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-cme-reference-data-api-api-overlay.yaml
+    type: Overlay
   description: CME Group security-definition reference data served through the A7
     Analytics Platform REST API.
 - aid: deutsche-boerse:a7-algo-management-api
@@ -127,8 +141,10 @@ apis:
     type: Documentation
   - url: https://deutsche-boerse.github.io/a7/usecases/01_simple_example.html
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-algo-openapi.yml
+  - url: openapi/deutsche-boerse-algo-management-api-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-algo-management-api-api-overlay.yaml
+    type: Overlay
   description: Create, update, delete, and run custom algos over historical order
     book data and retrieve their results - a high-performance framework for custom
     analytics on A7.
@@ -143,10 +159,10 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-dataset-openapi.yml
+  - url: openapi/deutsche-boerse-dataset-api-api-openapi.yml
     type: OpenAPI
-  - url: openapi/deutsche-boerse-a7-dataset-v2-openapi.yml
-    type: OpenAPI
+  - url: overlays/deutsche-boerse-dataset-api-api-overlay.yaml
+    type: Overlay
   description: Manage customer datasets on the A7 Analytics Platform (versions 1 and
     2 of the Dataset API).
 - aid: deutsche-boerse:a7-market-data-insights-api
@@ -161,8 +177,14 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-insights-openapi.yml
+  - url: openapi/deutsche-boerse-latency-historgram-api-openapi.yml
     type: OpenAPI
+  - url: openapi/deutsche-boerse-pace-of-the-roll-api-openapi.yml
+    type: OpenAPI
+  - url: overlays/deutsche-boerse-latency-historgram-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-pace-of-the-roll-api-overlay.yaml
+    type: Overlay
   description: Off-the-shelf market data insights and analytics derived from A7 granular
     historical order book data.
 - aid: deutsche-boerse:a7-option-analytics-api
@@ -177,8 +199,26 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-option-analytics-openapi.yml
+  - url: openapi/deutsche-boerse-option-prices-and-greeks-api-openapi.yml
     type: OpenAPI
+  - url: openapi/deutsche-boerse-historical-time-series-api-openapi.yml
+    type: OpenAPI
+  - url: openapi/deutsche-boerse-indicators-api-openapi.yml
+    type: OpenAPI
+  - url: openapi/deutsche-boerse-symbols-api-openapi.yml
+    type: OpenAPI
+  - url: openapi/deutsche-boerse-datasets-api-openapi.yml
+    type: OpenAPI
+  - url: overlays/deutsche-boerse-option-prices-and-greeks-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-historical-time-series-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-indicators-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-symbols-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-datasets-api-overlay.yaml
+    type: Overlay
   description: Option analytics computed on the A7 Analytics Platform for Eurex-traded
     options.
 - aid: deutsche-boerse:a7-precalc-api
@@ -192,8 +232,10 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-precalc-openapi.yml
+  - url: openapi/deutsche-boerse-precalc-api-api-openapi.yml
     type: OpenAPI
+  - url: overlays/deutsche-boerse-precalc-api-api-overlay.yaml
+    type: Overlay
   description: Management of precalculated analytics runs on the A7 Analytics Platform.
 - aid: deutsche-boerse:a7-auction-simulation-api
   name: A7 Analytics Platform - Auction Simulation API
@@ -207,8 +249,14 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/a7
     type: Documentation
-  - url: openapi/deutsche-boerse-a7-auction-simulations-openapi.yml
+  - url: openapi/deutsche-boerse-auctions-api-openapi.yml
     type: OpenAPI
+  - url: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml
+    type: OpenAPI
+  - url: overlays/deutsche-boerse-auctions-api-overlay.yaml
+    type: Overlay
+  - url: overlays/deutsche-boerse-exchanges-symbols-securities-api-overlay.yaml
+    type: Overlay
   description: Simulate Xetra auctions against historical order book data on the A7
     Analytics Platform.
 - aid: deutsche-boerse:eurex-t7-reference-data-api
@@ -226,6 +274,8 @@ apis:
     type: Documentation
   - url: https://console.developer.deutsche-boerse.com/apis
     type: Portal
+  - url: graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+    type: GraphQL
   description: Free GraphQL API for Eurex T7 reference data (products, contracts,
     instrument attributes) in machine- and human-readable JSON, offered with a shared
     rate-limited public API key or a dedicated key from the Deutsche Börse Group developer
@@ -243,11 +293,75 @@ apis:
   properties:
   - url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client
     type: Documentation
+  - url: asyncapi/deutsche-boerse-cloud-stream-asyncapi.yml
+    type: AsyncAPI
+  - url: grpc/deutsche-boerse-client.proto
+    type: Protobuf
+  - url: grpc/deutsche-boerse-md-cef.proto
+    type: Protobuf
+  - url: grpc/deutsche-boerse-md-crypto.proto
+    type: Protobuf
+  - url: grpc/deutsche-boerse-md-energy.proto
+    type: Protobuf
   description: Cloud-delivered real-time market data streaming over WebSocket (host
     md.deutsche-boerse.com) with Protocol Buffers or JSON message encoding and API-key
     authentication - the published sample client subscribes to subjects such as md-tradegate
     (Tradegate quotes in CEF format).
 common:
+- type: Packages
+  url: packages/deutsche-boerse-packages.yml
+- type: SDKs
+  url: packages/deutsche-boerse-packages.yml
+- type: WellKnown
+  url: well-known/deutsche-boerse-well-known.yml
+- type: SecurityTxt
+  url: well-known/deutsche-boerse-security.txt
+- type: MCPServer
+  url: mcp/deutsche-boerse-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/deutsche-boerse-tool-crosswalk.yml
+- type: LLMsTxt
+  url: llms/deutsche-boerse-llms.txt
+- type: Conformance
+  url: conformance/deutsche-boerse-conformance.yml
+- type: ErrorCatalog
+  url: errors/deutsche-boerse-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/deutsche-boerse-lifecycle.yml
+- type: StatusPage
+  url: https://www.deutsche-boerse.com/dbg-en/markets-services/ps-technology/service-status
+- type: Security
+  url: https://www.deutsche-boerse.com/dbg-en/our-company/contact/report-vulnerabilities
+- type: Conventions
+  url: conventions/deutsche-boerse-conventions.yml
+- type: ChangeLog
+  url: changelog/deutsche-boerse-changelog.yml
+- type: DataModel
+  url: data-model/deutsche-boerse-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AsyncAPI
+  url: asyncapi/deutsche-boerse-cloud-stream-asyncapi.yml
+- type: GraphQL
+  url: graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+- type: RateLimits
+  url: https://docs.developer.deutsche-boerse.com/docs/consumer/rate-limiting
+- type: DeveloperPortal
+  url: https://console.developer.deutsche-boerse.com/
+- type: APIReference
+  url: https://a7.deutsche-boerse.com/doc/api/prod/PROD_API.Documentation.zip
+- type: GettingStarted
+  url: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/introduction
+- type: Support
+  url: https://www.deutsche-boerse.com/dbg-en/markets-services/ps-technology/ps-api-platform
+- type: Login
+  url: https://console.developer.deutsche-boerse.com/
+- type: VulnerabilityDisclosure
+  url: security/deutsche-boerse-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/deutsche-boerse-domain-security.yml
+- type: Authentication
+  url: authentication/deutsche-boerse-authentication.yml
 - type: Website
   url: https://www.deutsche-boerse.com/dbg-en/
 - type: Portal

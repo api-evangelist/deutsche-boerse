@@ -1,0 +1,35 @@
+generated: '2026-07-22'
+method: searched
+source: https://pypi.org/project/a7/ + https://github.com/Deutsche-Boerse
+notes: Registries probed 2026-07-22 - npm (no deutsche-boerse / @deutsche-boerse
+  packages), PyPI (a7 is first-party), Maven Central / NuGet / RubyGems / Packagist /
+  crates.io / pkg.go.dev (nothing first-party found). The GitHub org also ships
+  source-only sample clients for the Cloud Stream WebSocket feed.
+packages:
+- language: python
+  registry: pypi
+  name: a7
+  url: https://pypi.org/project/a7/
+  install: pip install a7
+  version: 0.2.3
+  official: true
+  description: A simple, synchronous Python SDK for the A7 Analytics Platform by
+    Deutsche Börse (author support@deutsche-boerse.com); resource-oriented client
+    for RDI, EOBI, MDP, SD, order book, algo, dataset, insights and precalc APIs.
+  source: https://github.com/Deutsche-Boerse/a7/tree/master/sdk
+- language: python
+  registry: source-only
+  name: Cloud.Stream.Client (python)
+  url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client/tree/main/python
+  install: git clone https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+  official: true
+  description: Official Python sample client for the Cloud Stream WebSocket market
+    data feed (md.deutsche-boerse.com) with protobuf/JSON decoding.
+- language: cpp
+  registry: source-only
+  name: Cloud.Stream.Client (cpp)
+  url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client/tree/main/cpp
+  install: git clone https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+  official: true
+  description: Official C++ sample client (mdstream-client-cpp) for the Cloud
+    Stream WebSocket feed, protobuf 3.21+ / IXWebSocket based.

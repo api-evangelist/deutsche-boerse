@@ -1,0 +1,281 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Sending times, packets, messages API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Sending times, packets, messages
+paths:
+  /mdp/{exchange}/{date}/{asset}/{securityId}:
+    get:
+      tags:
+      - Sending times, packets, messages
+      summary: retrieves list of packets' sending times, or complete packets
+      description: The request delivers a list of the available sending times, or alternatively complete packets for the selected exchange, trading day, asses and security.
+      operationId: getTransactTimes
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/asset'
+      - $ref: '#/components/parameters/securityID'
+      - $ref: '#/components/parameters/mode'
+      - $ref: '#/components/parameters/limit'
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/msgSeqNum'
+      - $ref: '#/components/parameters/templateID'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/sendingTimes'
+                - $ref: '#/components/schemas/packetDetails'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/sendingTimes'
+                - $ref: '#/components/schemas/packetDetails'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /mdp/{exchange}/{date}/{asset}/{securityId}/{sendingTime}:
+    get:
+      tags:
+      - Sending times, packets, messages
+      summary: retrieves packet details
+      description: 'The request delivers the details of the packet identified by the selected exchange, trading day, asset, security and packet''s sending time.</br>  For a detailed description of the different message types please refer to the CME MDP documentation.
+
+        '
+      operationId: getPacketDetails
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/asset'
+      - $ref: '#/components/parameters/securityID'
+      - $ref: '#/components/parameters/sendingTime'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/packetDetail'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/packetDetail'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  parameters:
+    securityID:
+      name: securityId
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    templateID:
+      name: templateId
+      in: query
+      description: array of templateIDs used as a filter to select packets (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 46
+      style: form
+      explode: false
+    sendingTime:
+      name: sendingTime
+      in: path
+      description: packet's sending time
+      required: true
+      schema:
+        $ref: '#/components/schemas/timestamp'
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
+    asset:
+      name: asset
+      in: path
+      description: unique asset identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/asset'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    msgSeqNum:
+      name: msgSeqNum
+      in: query
+      description: array of packet's sequence numbers used as a filter to select packets (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 1
+          example: 22902064
+      style: form
+      explode: false
+    limit:
+      name: limit
+      in: query
+      description: max number of elements in the response
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 10000
+        default: 1000
+        example: 10
+    to:
+      name: to
+      in: query
+      description: packet's sending time as a global end time for (multiple) time interval selection
+      required: false
+      schema:
+        $ref: '#/components/schemas/timestamp'
+      example: null
+    from:
+      name: from
+      in: query
+      description: array of packet's sending times as start times for (multiple) time interval selection (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/timestamp'
+      style: form
+      explode: false
+    mode:
+      name: mode
+      in: query
+      description: "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of packets with messages including their details\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - reference
+        - detailed
+        default: reference
+  schemas:
+    sendingTimes:
+      type: object
+      properties:
+        SendingTimes:
+          description: array of packets' sending times
+          type: array
+          items:
+            $ref: '#/components/schemas/timestamp'
+          example:
+          - '1673390700086106154'
+          - '1673390700088531122'
+          - '1673390700088549040'
+    securityID:
+      description: Security ID
+      type: integer
+      format: int32
+      example: 206299
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: false
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
+    asset:
+      description: asset code also known as product code
+      type: string
+      maxLength: 6
+      example: ES
+    packetDetail:
+      description: packet's details
+      type: object
+      properties:
+        Messages:
+          description: packet header, size header, messages
+          type: object
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      minLength: 8
+      maxLength: 8
+      example: 20230111
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XCME
+    timestamp:
+      description: timestamp as number of nanoseconds since Unix epoch
+      type: string
+      example: '1673390700086106154'
+    packetDetails:
+      type: object
+      properties:
+        Packets:
+          description: array of packets' details
+          type: array
+          items:
+            description: array of packet's details
+            type: array
+            items:
+              description: packet header, size header, messages
+              type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

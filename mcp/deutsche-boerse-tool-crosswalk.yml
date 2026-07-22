@@ -1,0 +1,90 @@
+generated: '2026-07-22'
+method: derived
+source: graphql/deutsche-boerse-eurex-t7-reference-data.graphql (live introspection
+  2026-07-22) + openapi/ (A7 production bundle) + mcp/deutsche-boerse-mcp.yml
+notes: Deutsche Börse publishes no MCP server, so the MCP surface here is the
+  derived candidate in mcp/deutsche-boerse-mcp.yml (1:1 with REST operationIds).
+  The real cross-surface divergence is REST vs GraphQL - the Eurex T7 reference
+  data GraphQL API (product/contract level, live schema introspected with the
+  published shared key) overlaps but does not coincide with the A7 REST reference
+  data APIs (T7 message-level RDI / CME SD). Bindings below map GraphQL query
+  fields to their nearest REST operations; confidence reflects that the two
+  surfaces model different levels of the same T7 data core.
+surfaces:
+  openapi:
+    path: openapi/
+    gated: false
+    note: 18 refined per-tag OpenAPI specs; live calls require an A7 subscription
+      Bearer token.
+  graphql:
+    endpoint: https://api.developer.deutsche-boerse.com/eurex-prod-graphql/
+    gated: false
+    note: Introspection open with the published shared X-DBP-APIKEY (rate limited);
+      anonymous requests get 401. Full SDL harvested to graphql/.
+  mcp:
+    url: null
+    gated: null
+    note: No hosted MCP server; candidate tool list derived from OpenAPI.
+crosswalk:
+- tool: ProductInfos
+  category: reference-data
+  rest: [getMarketSegments, getMarketSegmentDetails]
+  binding: graphql
+  confidence: medium
+  note: Eurex products correspond to T7 market segments served by the A7 RDI API,
+    but GraphQL returns product master data while RDI returns dated per-venue
+    segment reference data.
+- tool: Contracts
+  category: reference-data
+  rest: [getSecurities, getSecurityDetails]
+  binding: graphql
+  confidence: medium
+  note: Eurex contracts correspond to T7 securities/instruments in the A7 RDI API;
+    field sets differ (contract attributes vs RDI message-level detail).
+- tool: Expirations
+  category: reference-data
+  rest: [getSecurities]
+  binding: graphql
+  confidence: low
+  note: Expiration lists are derivable from RDI security reference data but have
+    no dedicated REST operation.
+graphql_only:
+- tool: Holidays
+  reason: Trading calendar data; no A7 REST operation.
+- tool: TradingHours
+  reason: Trading hours per product; no A7 REST operation.
+- tool: SettlementPrices
+  reason: Daily settlement prices; A7 serves order-by-order market data, not
+    settlement price reference.
+- tool: VendorCodes
+  reason: Vendor code mappings; no REST equivalent.
+- tool: TickRules
+  reason: Tick size rules; no dedicated REST equivalent.
+- tool: Changelog
+  reason: Reference-data change feed unique to the GraphQL API.
+- tool: DeliverableBonds
+  reason: Deliverable bond baskets for fixed-income futures; no REST equivalent.
+- tool: TESProfiles
+  reason: T7 Entry Service profiles; no REST equivalent.
+- tool: EnlightResponders
+  reason: Eurex EnLight responder data; no REST equivalent.
+- tool: Enlight
+  reason: Eurex EnLight reference data; no REST equivalent.
+- tool: FlexibleContracts
+  reason: Flexible contract series; no REST equivalent.
+rest_only:
+- capability: Historical order books, EOBI/MDP order-by-order messages, auction
+    simulations, algo/precalc/dataset management, market insights, option analytics
+  operations: [getOrderbookT7, getOrderbookCME, getMessageDetails, getTransactTimes,
+    getAuctions, addAlgo, runAlgo, addPrecalcData, queryDatasetResults, queryInsights,
+    getOPT, getIV, getRolls]
+  note: The A7 Analytics Platform surface (96 operations) has no GraphQL or MCP
+    counterpart.
+coverage:
+  graphql_query_fields: 14
+  graphql_bound_to_rest: 3
+  graphql_only: 11
+  rest_operations_total: 96
+  rest_operations_with_graphql_counterpart: 5
+  mcp_tools_published: 0
+  mcp_tools_candidate: 96

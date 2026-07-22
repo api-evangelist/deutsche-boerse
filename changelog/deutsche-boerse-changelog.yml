@@ -1,0 +1,61 @@
+generated: '2026-07-22'
+method: searched
+source: https://docs.developer.deutsche-boerse.com/blog/
+scheme: Dated release-note posts on the API Platform blog; component interfaces
+  carry their own version/date headers (e.g. Cloud Stream protobuf schemas, A7
+  interface v1/v2 revisions). The Eurex T7 reference data GraphQL API exposes a
+  Changelog query field for data-level changes.
+current: API Platform V2 (portal); A7 REST /api/v1; Cloud Stream md_cef schema 001.000.011
+entries:
+- version: API Platform V2
+  date: '2021-06-01'
+  breaking: true
+  highlights:
+  - Removed dependencies between portal and gateways - APIs can be published on the
+    portal without using the offered gateways
+  - New two-phase publication process for APIs
+  - Consumer and key management improvements
+- version: Self-Hosted Gateways
+  date: '2020'
+  breaking: false
+  highlights:
+  - Introduced self-hosted gateway support
+- version: New documentation site
+  date: '2020'
+  breaking: false
+  highlights:
+  - Launched docs.developer.deutsche-boerse.com
+- version: Introduction of limits
+  date: '2019'
+  breaking: false
+  highlights:
+  - Introduced rate limiting (rate limit + burst size) on platform APIs
+- version: Dedicated Gateways and UI improvements
+  date: '2019'
+  breaking: false
+  highlights:
+  - Dedicated gateway support and developer portal UI improvements
+component_versions:
+- component: Cloud Stream md_cef.proto
+  version: 001.000.011
+  date: '2026-04-21'
+  source: grpc/deutsche-boerse-md-cef.proto
+- component: Cloud Stream client.proto
+  version: 001.000.007
+  date: '2025-10-15'
+  source: grpc/deutsche-boerse-client.proto
+- component: Cloud Stream md_energy.proto
+  version: 001.000.008
+  date: '2024-11-14'
+  source: grpc/deutsche-boerse-md-energy.proto
+- component: Cloud Stream md_crypto.proto
+  version: 001.000.006
+  date: '2023-10-07'
+  source: grpc/deutsche-boerse-md-crypto.proto
+- component: A7 production API bundle
+  version: '1.0.x specs'
+  date: '2026-01-23'
+  source: https://a7.deutsche-boerse.com/doc/api/prod/PROD_API.Documentation.zip
+notes: The platform blog's most recent dated post is from 2021; interface-level
+  change tracking since then happens in the component artifacts above and in the
+  A7 documentation bundle.

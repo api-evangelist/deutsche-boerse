@@ -1,0 +1,59 @@
+generated: '2026-07-22'
+method: searched
+docs: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/consume/
+source: openapi/deutsche-boerse-algo-management-api-api-openapi.yml, openapi/deutsche-boerse-auctions-api-openapi.yml,
+  openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml, openapi/deutsche-boerse-dataset-api-api-openapi.yml,
+  openapi/deutsche-boerse-datasets-api-openapi.yml, openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml,
+  openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml, openapi/deutsche-boerse-historical-time-series-api-openapi.yml,
+  openapi/deutsche-boerse-indicators-api-openapi.yml, openapi/deutsche-boerse-latency-historgram-api-openapi.yml,
+  openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml, openapi/deutsche-boerse-option-prices-and-greeks-api-openapi.yml
+  ...
+summary:
+  types:
+  - http
+  - apiKey
+  api_key_in:
+  - header
+  notes: A7 Analytics Platform APIs use HTTP Bearer tokens issued in the A7 GUI
+    (derived from all 18 OpenAPI specs). Group API Platform APIs use an API key in
+    the X-DBP-APIKEY header, generated per application in the developer console;
+    some publishers additionally require mutual TLS (X.509 client certificates) or
+    publisher-issued keys. OAuth2/OIDC is documented as "Coming soon". The free
+    Eurex T7 reference data GraphQL API accepts a published shared rate-limited
+    X-DBP-APIKEY (see https://www.eurex.com/ex-en/data/free-reference-data-api).
+schemes:
+- name: X-DBP-APIKEY
+  type: apiKey
+  in: header
+  parameter: X-DBP-APIKEY
+  docs: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/consume/
+  sources:
+  - https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/consume/
+  - https://www.eurex.com/ex-en/data/free-reference-data-api
+- name: mutualTLS (per-API option)
+  type: mutualTLS
+  docs: https://docs.developer.deutsche-boerse.com/docs/consumer/mTLS-consumer
+  sources:
+  - https://docs.developer.deutsche-boerse.com/docs/consumer/mTLS-consumer
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/deutsche-boerse-algo-management-api-api-openapi.yml
+  - openapi/deutsche-boerse-auctions-api-openapi.yml
+  - openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml
+  - openapi/deutsche-boerse-dataset-api-api-openapi.yml
+  - openapi/deutsche-boerse-datasets-api-openapi.yml
+  - openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml
+  - openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml
+  - openapi/deutsche-boerse-historical-time-series-api-openapi.yml
+  - openapi/deutsche-boerse-indicators-api-openapi.yml
+  - openapi/deutsche-boerse-latency-historgram-api-openapi.yml
+  - openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml
+  - openapi/deutsche-boerse-option-prices-and-greeks-api-openapi.yml
+  - openapi/deutsche-boerse-order-book-api-api-openapi.yml
+  - openapi/deutsche-boerse-pace-of-the-roll-api-openapi.yml
+  - openapi/deutsche-boerse-precalc-api-api-openapi.yml
+  - openapi/deutsche-boerse-reference-data-api-api-openapi.yml
+  - openapi/deutsche-boerse-sending-times-packets-messages-api-openapi.yml
+  - openapi/deutsche-boerse-symbols-api-openapi.yml

@@ -1,0 +1,174 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Latency Historgram API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Latency Historgram
+paths:
+  /insights/latencies/{date}/{trigger}/{target}/{regime}/{target_action}:
+    get:
+      tags:
+      - Latency Historgram
+      summary: Retrieve result of given latencies query
+      description: The request queries the latencies and returns the matching results.
+      operationId: queryInsights
+      parameters:
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/trigger'
+      - $ref: '#/components/parameters/target'
+      - $ref: '#/components/parameters/regime'
+      - $ref: '#/components/parameters/target_action'
+      - $ref: '#/components/parameters/format'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LatenciesInsightsResultsJson'
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/LatenciesInsightsResultsCsv'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/LatenciesInsightsResultsJson'
+                format: binary
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  parameters:
+    target_action:
+      name: target_action
+      in: path
+      description: Target action
+      required: true
+      schema:
+        type: string
+        enum:
+        - TRADE
+        - BOOK
+        - ALL
+        default: ALL
+    target:
+      name: target
+      in: path
+      description: Target product
+      example: FDAX
+      required: true
+      schema:
+        type: string
+    trigger:
+      name: trigger
+      in: path
+      description: Trigger product
+      example: FDAX
+      required: true
+      schema:
+        type: string
+    format:
+      name: format
+      in: query
+      description: Defines the format of the response.
+      schema:
+        type: string
+        enum:
+        - csv
+        - json
+        default: json
+    regime:
+      name: regime
+      in: path
+      description: Latency regime
+      required: true
+      schema:
+        type: string
+        enum:
+        - FPGA
+        - SOFTWARE
+        default: FPGA
+    date:
+      name: date
+      in: path
+      description: Date (fact date) of the data to be retrieved (as YYYYMMDD)
+      example: 20220121
+      required: true
+      schema:
+        type: string
+        pattern: ^20\d{2}[01]\d[0-3]\d$
+  schemas:
+    LatenciesInsightsResultsCsv:
+      type: string
+      example: 'Date,TriggerProduct,TargetProduct,LatencyRegime,TargetAction,Latency,Count
+
+        20220201,FDAX,FDAX,FPGA,TRADE,2712.0,0
+
+        20220201,FDAX,FDAX,FPGA,TRADE,2713.0,2
+
+        20220201,FDAX,FDAX,FPGA,TRADE,2714.0,1
+
+        20220201,FDAX,FDAX,FPGA,TRADE,2715.0,6
+
+        '
+    LatenciesInsightsResultsJson:
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+      example:
+      - Date: '20220201'
+        TriggerProduct: FDAX
+        TargetProduct: FDAX
+        LatencyRegime: FPGA
+        TargetAction: TRADE
+        Latency: '2712.0'
+        Count: '0'
+      - Date: '20220201'
+        TriggerProduct: FDAX
+        TargetProduct: FDAX
+        LatencyRegime: FPGA
+        TargetAction: TRADE
+        Latency: '2713.0'
+        Count: '2'
+      - Date: '20220201'
+        TriggerProduct: FDAX
+        TargetProduct: FDAX
+        LatencyRegime: FPGA
+        TargetAction: TRADE
+        Latency: '2714.0'
+        Count: '1'
+      - Date: '20220201'
+        TriggerProduct: FDAX
+        TargetProduct: FDAX
+        LatencyRegime: FPGA
+        TargetAction: TRADE
+        Latency: '2715.0'
+        Count: '6'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

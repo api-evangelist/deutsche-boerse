@@ -1,0 +1,5 @@
+Contact: mailto:vulnerabilitydisclosure@deutsche-boerse.com
+Preferred-Languages: en, de
+Hiring: https://careers.deutsche-boerse.com/
+Expires: 2025-04-22T11:50:00.000Z
+Link to VDP Policy & Hall Of Fame: https://www.deutsche-boerse.com/dbg-en/our-company/contact/report-vulnerabilities

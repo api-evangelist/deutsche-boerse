@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Exchanges, assets, securities API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Exchanges, assets, securities
+paths:
+  /mdp:
+    get:
+      tags:
+      - Exchanges, assets, securities
+      summary: retrieves list of exchanges
+      description: The request delivers all available exchanges.
+      operationId: getExchanges
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/exchanges'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/exchanges'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /mdp/{exchange}:
+    get:
+      tags:
+      - Exchanges, assets, securities
+      summary: retrieves list of trading days
+      description: The request delivers all available trading days (YYYYMMDD) for the selected exchange.
+      operationId: getAvailableDates
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/dates'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/dates'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /mdp/{exchange}/{date}:
+    get:
+      tags:
+      - Exchanges, assets, securities
+      summary: retrieves list of assets
+      description: The request delivers a list of all available assets for the selected exchange and trading day.
+      operationId: getAssets
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/assets'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/assets'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /mdp/{exchange}/{date}/{asset}:
+    get:
+      tags:
+      - Exchanges, assets, securities
+      summary: retrieves list of securities
+      description: The request delivers a list of all available securities for the selected exchange, trading day and asset.
+      operationId: getSecurityIds
+      parameters:
+      - $ref: '#/components/parameters/exchange'
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/asset'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/securityIDs'
+                - $ref: '#/components/schemas/InternalError'
+            application/gzip:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/securityIDs'
+                - $ref: '#/components/schemas/InternalError'
+                format: binary
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  parameters:
+    asset:
+      name: asset
+      in: path
+      description: unique asset identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/asset'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
+  schemas:
+    assets:
+      type: object
+      properties:
+        Assets:
+          description: array of assets
+          type: array
+          items:
+            $ref: '#/components/schemas/asset'
+          example:
+          - ES
+          - GE
+          - ZN
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XCME
+    dates:
+      type: object
+      properties:
+        Dates:
+          description: array of dates
+          type: array
+          items:
+            $ref: '#/components/schemas/date'
+          example:
+          - 20230111
+          - 20230112
+          - 20230113
+    exchanges:
+      type: object
+      properties:
+        Exchanges:
+          description: array of exchange mics
+          type: array
+          items:
+            $ref: '#/components/schemas/exchange'
+          example:
+          - XCBT
+          - XCEC
+          - XCME
+          - XFXS
+          - XNYM
+    securityIDs:
+      type: object
+      properties:
+        SecurityIDs:
+          description: array of security IDs
+          type: array
+          items:
+            $ref: '#/components/schemas/securityID'
+          example:
+          - 206299
+          - 95414
+          - 3445
+    securityID:
+      description: Security ID
+      type: integer
+      format: int32
+      example: 206299
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: false
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
+    asset:
+      description: asset code also known as product code
+      type: string
+      maxLength: 6
+      example: ES
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      minLength: 8
+      maxLength: 8
+      example: 20230111
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,66 @@
+generated: '2026-07-22'
+method: searched
+notes: Probed /.well-known/security.txt, /openid-configuration, /oauth-authorization-server,
+  /api-catalog, /ai-plugin.json and /llms.txt on every apis.yml + docs host. The only
+  real document is RFC 9116 security.txt on the corporate site (saved verbatim).
+  datashop.deutsche-boerse.com returns its SPA HTML shell (HTTP 200, text/html) for
+  every path, which is a catch-all, not a discovery document.
+  docs.developer.deutsche-boerse.com returns HTTP 500 for unknown paths.
+hosts:
+- host: https://www.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: deutsche-boerse-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://a7.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.developer.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://console.developer.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://docs.developer.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 500
+    note: docs server 500s all unknown paths
+- host: https://md.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://www.eurex.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://datashop.deutsche-boerse.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: SPA HTML shell catch-all, not a real security.txt (text/html)

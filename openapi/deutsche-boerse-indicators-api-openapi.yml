@@ -1,0 +1,313 @@
+openapi: 3.0.0
+info:
+  title: A7 Analytics Platform - Algo management Algo management API Indicators API
+  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
+
+    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
+
+    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
+
+    '
+  contact:
+    name: Deutsche Börse Data & Analytics
+    url: https://www.mds.deutsche-boerse.com
+    email: analytics@deutsche-boerse.com
+  version: 1.0.2
+servers:
+- url: /api/v1
+  description: A7 production environment
+security:
+- bearerAuth: []
+tags:
+- name: Indicators
+paths:
+  /aiindicator/:
+    get:
+      tags:
+      - Indicators
+      summary: gets available indicators
+      description: indicators
+      operationId: getIndicators
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/indicators'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/indicators'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aiindicator/{indicator}/:
+    get:
+      tags:
+      - Indicators
+      summary: gets symbols for a live indicator
+      description: gets unique trading symbol identifiers for a live indicator
+      operationId: getINDsym
+      parameters:
+      - $ref: '#/components/parameters/indicator'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/symbols'
+            application/gzip:
+              schema:
+                $ref: '#/components/schemas/symbols'
+                format: binary
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aiindicator/{indicator}/{symbol}:
+    get:
+      tags:
+      - Indicators
+      summary: gets a live indicator
+      description: live indicator
+      operationId: getIND
+      parameters:
+      - $ref: '#/components/parameters/indicator'
+      - $ref: '#/components/parameters/symbol'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/liveindicators'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+  /aiindicator/{indicator}/{symbol}/{longmaturity}:
+    get:
+      tags:
+      - Indicators
+      summary: gets a live indicator for a given maturity
+      description: live indicator for a given maturity
+      operationId: getINDmat
+      parameters:
+      - $ref: '#/components/parameters/indicator'
+      - $ref: '#/components/parameters/symbol'
+      - $ref: '#/components/parameters/longmaturity'
+      responses:
+        200:
+          description: successful operation
+          content:
+            text/csv:
+              schema:
+                $ref: '#/components/schemas/liveindicators'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+components:
+  parameters:
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    indicator:
+      name: indicator
+      in: path
+      description: indicator name
+      required: true
+      schema:
+        $ref: '#/components/schemas/indicator'
+    longmaturity:
+      name: longmaturity
+      in: path
+      description: option maturity (long pattern)
+      required: true
+      schema:
+        $ref: '#/components/schemas/longmaturity'
+  schemas:
+    symbol:
+      description: trading symbol
+      type: string
+      enum:
+      - OESX
+      - ODAX
+      - OSMI
+      - OESB
+      - OVS2
+      - ITK
+      - ABBN
+      - ASM
+      - ADS
+      - AIR
+      - EAD
+      - ALV
+      - AXA
+      - BAS
+      - BBVD
+      - BMW
+      - BNP
+      - BAY
+      - DBK
+      - DB1
+      - DPW
+      - DTE
+      - EOA
+      - ENL5
+      - INN
+      - IBE
+      - IFX
+      - IES5
+      - PPX
+      - LOR
+      - MOH
+      - LIN
+      - DAI
+      - MUV2
+      - NESN
+      - NOVN
+      - PHI1
+      - REP
+      - ROG
+      - SAP
+      - SNW
+      - BSD2
+      - SND
+      - SIE
+      - SGE
+      - SREN
+      - TNE5
+      - TOTB
+      - UBSN
+      - CRI5
+      - SQU
+      - VO3
+      - ANN
+      - ZURN
+      example: DB1
+    longmaturity:
+      description: option maturity (long pattern)
+      type: string
+      pattern: ^[0-9]{4}-[01][0-9]-[0-3][0-9]$
+      example: '2025-06-20'
+    liveindicators:
+      description: array of live indicators
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date
+          Eurex code:
+            type: string
+          Underlying_full_name:
+            type: string
+          Maturity:
+            type: string
+            format: date
+          Indicator type:
+            type: string
+          Indicator (Standard deviation):
+            type: number
+          Indicator (Vol Points):
+            type: number
+      example: 'Snapshot_time_(GMT),Eurex code,Underlying_full_name,Maturity,Indicator type,Indicator (Standard deviation),Indicator (Vol Points)
+
+        2024-07-01,DB1,Deutsche Boerse,2024-08-16,SMI,-0.25,-0.13
+
+        2024-07-01,DB1,Deutsche Boerse,2024-09-20,SMI,-0.34,-0.19
+
+        2024-07-01,DB1,Deutsche Boerse,2024-12-20,SMI,-0.21,-0.11
+
+        2024-07-01,DB1,Deutsche Boerse,2025-03-21,SMI,-0.19,-0.1
+
+        2024-07-01,DB1,Deutsche Boerse,2025-06-20,SMI,-0.37,-0.2
+
+        '
+    indicator:
+      description: indicator name
+      type: string
+      enum:
+      - MDE
+      - MDE_index
+      - MDI
+      - TDI
+      - CSA
+      - CSA_sector
+      - SMI
+      - SMI_sector
+      - DSP
+      - DSPSMI
+      - DIV
+      example: SMI
+    indicators:
+      description: array of indicator names
+      type: array
+      items:
+        $ref: '#/components/schemas/indicator'
+      example:
+      - MDI
+      - TDI
+      - CSA
+    symbols:
+      description: array of trading symbols
+      type: array
+      items:
+        $ref: '#/components/schemas/symbol'
+      example:
+      - DB1
+      - DPW
+      - DTE
+  responses:
+    '404':
+      description: not found
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer

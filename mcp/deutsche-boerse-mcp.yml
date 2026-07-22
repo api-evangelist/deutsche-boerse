@@ -1,0 +1,303 @@
+generated: '2026-07-22'
+method: derived
+status: candidate
+source: openapi/ (A7 Analytics Platform production specs)
+notes: No official Deutsche Börse MCP server was found (docs, GitHub org, npm, MCP
+  registries checked 2026-07-22). This is a candidate tool list derived one tool per
+  operationId from the harvested A7 OpenAPI specs; the Eurex T7 reference data GraphQL
+  API (graphql/) is a further candidate surface.
+server:
+  name: deutsche-boerse-a7
+  transport: http
+tools:
+- name: getOwners
+  description: Retrieve list of algo owners
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#getOwners
+- name: getAlgos
+  description: Retrieve list of available algos
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#getAlgos
+- name: getAlgoMetadata
+  description: Retrieve algo configuration
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#getAlgoMetadata
+- name: addAlgo
+  description: Create/update algo
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#addAlgo
+- name: deleteAlgo
+  description: Delete algo
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#deleteAlgo
+- name: getAlgoCode
+  description: Retrieve algo source code
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#getAlgoCode
+- name: runAlgo
+  description: Run algo
+  source_operation: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#runAlgo
+- name: getAuctions
+  description: retrieves list of auction types
+  source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuctions
+- name: getAuctionsBySymbol
+  description: retrieves list of auction types
+  source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuctionsBySymbol
+- name: getAuction
+  description: retrieves auction's historical data and optionally simulated outcome
+    of an auction
+  source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuction
+- name: getAuctionBySymbol
+  description: retrieves auction's historical data and optionally simulated outcome
+    of an auction
+  source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuctionBySymbol
+- name: getExchanges
+  description: Retrieve list of exchanges
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getExchanges
+- name: getAvailableDates
+  description: Retrieve list of trading days
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getAvailableDates
+- name: getAssets
+  description: Retrieve list of assets
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getAssets
+- name: getSecurities
+  description: Retrieve list of securities
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getSecurities
+- name: getAllSecurities
+  description: Retrieve details for all securities
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getAllSecurities
+- name: getSecurityDetails
+  description: Retrieve security details
+  source_operation: openapi/deutsche-boerse-cme-reference-data-api-api-openapi.yml#getSecurityDetails
+- name: getOwners
+  description: Retrieve list of dataset owners
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getOwners
+- name: getAvailableDatasets
+  description: Retrieve list of available datasets
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getAvailableDatasets
+- name: getDatasetSpecs
+  description: Retrieve specification (schema) of given dataset
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getDatasetSpecs
+- name: deleteDataset
+  description: Delete dataset
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#deleteDataset
+- name: getDatasetResults
+  description: Query result of given dataset
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getDatasetResults
+- name: getAvailableDatasets
+  description: Retrieve list of available datasets of a single provider
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getAvailableDatasets
+- name: getDatasetSpecs
+  description: Retrieve specification (schema) of given dataset
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getDatasetSpecs
+- name: getDatasetResultsForDate
+  description: Retrieve results of given dataset for the selected date
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getDatasetResultsForDate
+- name: getDatasetResults
+  description: Retrieve result of given dataset
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getDatasetResults
+- name: queryDatasetResults
+  description: Retrieve result of given dataset query
+  source_operation: openapi/deutsche-boerse-dataset-api-api-openapi.yml#queryDatasetResults
+- name: getDatasetDescs
+  description: gets available datasets with description
+  source_operation: openapi/deutsche-boerse-datasets-api-openapi.yml#getDatasetDescs
+- name: getDatasets
+  description: gets available datasets
+  source_operation: openapi/deutsche-boerse-datasets-api-openapi.yml#getDatasets
+- name: getExchanges
+  description: retrieves list of exchanges
+  source_operation: openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml#getExchanges
+- name: getAvailableDates
+  description: retrieves list of trading days
+  source_operation: openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml#getAvailableDates
+- name: getAssets
+  description: retrieves list of assets
+  source_operation: openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml#getAssets
+- name: getSecurityIds
+  description: retrieves list of securities
+  source_operation: openapi/deutsche-boerse-exchanges-assets-securities-api-openapi.yml#getSecurityIds
+- name: getExchanges
+  description: retrieves list of exchanges
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getExchanges
+- name: getDates
+  description: retrieves list of trading days
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getDates
+- name: getMarketSegmentIDsOrSymbols
+  description: retrieves list of market segments, or alternatively symbols
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getMarketSegmentIDsOrSymbols
+- name: getSecurityIDs
+  description: retrieves list of securities
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getSecurityIDs
+- name: getSecurity
+  description: retrieves security's reference data
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getSecurity
+- name: getSecurityBySymbol
+  description: retrieves security's reference data
+  source_operation: openapi/deutsche-boerse-exchanges-symbols-securities-api-openapi.yml#getSecurityBySymbol
+- name: getIV
+  description: gets implied volatility
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getIV
+- name: getIVmat
+  description: gets implied volatility for a given maturity
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getIVmat
+- name: getRV
+  description: gets realized volatility
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getRV
+- name: getDIV
+  description: gets implied dividend flow
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getDIV
+- name: getDIVmat
+  description: gets implied dividend flow for a given maturity
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getDIVmat
+- name: getSMI
+  description: gets smile (vol spread between ATM strike and 90% strike)
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getSMI
+- name: getSMImat
+  description: gets smile (vol spread between ATM strike and 90% strike) for a given
+    maturity
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getSMImat
+- name: getFWD
+  description: gets forward
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getFWD
+- name: getFWDmat
+  description: gets forward for a given maturity
+  source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getFWDmat
+- name: getIndicators
+  description: gets available indicators
+  source_operation: openapi/deutsche-boerse-indicators-api-openapi.yml#getIndicators
+- name: getINDsym
+  description: gets symbols for a live indicator
+  source_operation: openapi/deutsche-boerse-indicators-api-openapi.yml#getINDsym
+- name: getIND
+  description: gets a live indicator
+  source_operation: openapi/deutsche-boerse-indicators-api-openapi.yml#getIND
+- name: getINDmat
+  description: gets a live indicator for a given maturity
+  source_operation: openapi/deutsche-boerse-indicators-api-openapi.yml#getINDmat
+- name: queryInsights
+  description: Retrieve result of given latencies query
+  source_operation: openapi/deutsche-boerse-latency-historgram-api-openapi.yml#queryInsights
+- name: getMarketIds
+  description: Retrieve list of markets
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getMarketIds
+- name: getAvailableDates
+  description: Retrieve list of trading days
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getAvailableDates
+- name: getMarketSegmentIds
+  description: Retrieve list of products
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getMarketSegmentIds
+- name: getSecurityIds
+  description: Retrieve list of instruments
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getSecurityIds
+- name: getTransactTimes
+  description: Retrieve list of transaction times
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getTransactTimes
+- name: getApplSeqNums
+  description: Retrieve list of application sequence numbers or list of packets
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getApplSeqNums
+- name: getMsgSeqNums
+  description: Retrieve list of message sequence numbers or a list of messages
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getMsgSeqNums
+- name: getMessageDetails
+  description: Retrieve message details
+  source_operation: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getMessageDetails
+- name: getOPT
+  description: gets live options prices
+  source_operation: openapi/deutsche-boerse-option-prices-and-greeks-api-openapi.yml#getOPT
+- name: getOPTmat
+  description: gets live options prices for a given maturity
+  source_operation: openapi/deutsche-boerse-option-prices-and-greeks-api-openapi.yml#getOPTmat
+- name: getOrderbookT7
+  description: Retrieve order books for T7
+  source_operation: openapi/deutsche-boerse-order-book-api-api-openapi.yml#getOrderbookT7
+- name: getOrderbookCME
+  description: Retrieve order books for CME
+  source_operation: openapi/deutsche-boerse-order-book-api-api-openapi.yml#getOrderbookCME
+- name: getMarketSegments
+  description: Retrieve list of market segments
+  source_operation: openapi/deutsche-boerse-pace-of-the-roll-api-openapi.yml#getMarketSegments
+- name: getRolls
+  description: Retrieve list of rolls
+  source_operation: openapi/deutsche-boerse-pace-of-the-roll-api-openapi.yml#getRolls
+- name: getRollDetails
+  description: Retrieve roll details
+  source_operation: openapi/deutsche-boerse-pace-of-the-roll-api-openapi.yml#getRollDetails
+- name: getOwners
+  description: Retrieve list of precalc owners
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getOwners
+- name: getPrecalcJobs
+  description: Retrieve list of precalc jobs
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getPrecalcJobs
+- name: getPrecalcDef
+  description: Retrieve precalc job definition
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getPrecalcDef
+- name: addPrecalcData
+  description: Create precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#addPrecalcData
+- name: delPrecalcData
+  description: Delete precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#delPrecalcData
+- name: activatePrecalc
+  description: Activate precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#activatePrecalc
+- name: deactivatePrecalc
+  description: Deactivate precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#deactivatePrecalc
+- name: getPrecalcData
+  description: Retrieve dates for precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getPrecalcData
+- name: getTasks
+  description: Retrieve tasks for precalc job
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getTasks
+- name: getResultSets
+  description: Retrieve result-sets for task
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getResultSets
+- name: getData
+  description: Retrieve data for result table
+  source_operation: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getData
+- name: getMarkets
+  description: Retrieve list of markets
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarkets
+- name: getDates
+  description: Retrieve list of trading days
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getDates
+- name: getMarketSegments
+  description: Retrieve list of market segments
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarketSegments
+- name: getMarketSegmentOverview
+  description: Retrieve details for all market segments
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarketSegmentOverview
+- name: getSecurities
+  description: Retrieve list of securities
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getSecurities
+- name: getMarketSegmentDetails
+  description: Retrieve market segment details
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarketSegmentDetails
+- name: getMessages
+  description: Retrieve list of messages
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMessages
+- name: getSecurityDetails
+  description: Retrieve security details
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getSecurityDetails
+- name: getMessageDetails
+  description: Retrieve message details
+  source_operation: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMessageDetails
+- name: getTransactTimes
+  description: retrieves list of packets' sending times, or complete packets
+  source_operation: openapi/deutsche-boerse-sending-times-packets-messages-api-openapi.yml#getTransactTimes
+- name: getPacketDetails
+  description: retrieves packet details
+  source_operation: openapi/deutsche-boerse-sending-times-packets-messages-api-openapi.yml#getPacketDetails
+- name: getOPTsym
+  description: gets symbols for live options prices
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getOPTsym
+- name: getIVsym
+  description: gets symbols for implied volatility
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getIVsym
+- name: getRVsym
+  description: gets symbols for realized volatility
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getRVsym
+- name: getDIVsym
+  description: gets symbols for implied dividend flow
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getDIVsym
+- name: getSMIsym
+  description: gets symbols for smile
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getSMIsym
+- name: getFWDsym
+  description: gets symbols for forward
+  source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getFWDsym

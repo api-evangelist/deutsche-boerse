@@ -1,0 +1,21 @@
+# generated: 2026-07-22
+# method: generated
+# source: openapi/deutsche-boerse-indicators-api-openapi.yml
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for A7 Analytics Platform - Algo management Algo
+    management API Indicators API
+  version: 1.0.0
+extends: openapi/deutsche-boerse-indicators-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: deutsche-boerse
+      reviewed: '2026-07-22'
+      source: https://a7.deutsche-boerse.com/doc/api/prod/PROD_API.Documentation.zip
+- target: $.servers
+  description: Refined per-tag spec carries the relative server path from the A7 bundle;
+    the production host is a7.deutsche-boerse.com (alternate a7.deutsche-boerse.de).
+  update:
+  - url: https://a7.deutsche-boerse.com/api/v1

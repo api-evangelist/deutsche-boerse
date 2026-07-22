@@ -1,0 +1,98 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/_original/*.yml (A7 production API documentation bundle)
+format: none
+notes: A7 APIs return plain-text or ad-hoc JSON error bodies, not RFC 9457 application/problem+json.
+  401 Authorization failed is returned for missing/invalid Bearer tokens; 403 for
+  resources outside the subscription; 422 for unprocessable queries; 503 when the
+  service is temporarily unavailable.
+problems:
+- status: 400
+  title: bad request
+  media_types:
+  - application/gzip
+  - application/json
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-auction-simulations-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-insights-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-option-analytics-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-precalc-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-rdi-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-sd-v2-openapi.yml
+- status: 401
+  title: Authorization failed
+  media_types:
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-algo-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-auction-simulations-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-eobi-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-insights-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-mdp-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-option-analytics-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-orderbook-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-precalc-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-rdi-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-sd-v2-openapi.yml
+- status: 403
+  title: access denied
+  media_types:
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-auction-simulations-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-mdp-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-option-analytics-openapi.yml
+- status: 403
+  title: Forbidden resource
+  media_types:
+  - application/json
+  sources:
+  - openapi/_original/deutsche-boerse-a7-algo-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-precalc-openapi.yml
+- status: 404
+  title: Could not find any record
+  media_types:
+  - (no body)
+  sources:
+  - openapi/_original/deutsche-boerse-a7-precalc-openapi.yml
+- status: 404
+  title: Not found
+  media_types:
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-algo-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-auction-simulations-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-dataset-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-eobi-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-insights-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-mdp-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-option-analytics-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-orderbook-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-rdi-v2-openapi.yml
+- status: 422
+  title: Unprocessable entity
+  media_types:
+  - application/json
+  sources:
+  - openapi/_original/deutsche-boerse-a7-dataset-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-sd-v2-openapi.yml
+- status: 500
+  title: Internal processing error
+  media_types:
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-dataset-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-insights-openapi.yml
+- status: 503
+  title: Service temporarily unavailable
+  media_types:
+  - text/plain
+  sources:
+  - openapi/_original/deutsche-boerse-a7-dataset-v2-openapi.yml
+  - openapi/_original/deutsche-boerse-a7-insights-openapi.yml

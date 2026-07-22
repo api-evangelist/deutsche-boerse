@@ -1,0 +1,84 @@
+generated: '2026-07-22'
+method: derived
+source: openapi/ path hierarchies + graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+notes: A7 REST resources are navigated hierarchically by path (market -> date -> segment
+  -> security -> message) rather than by embedded id references; the Eurex GraphQL
+  schema models the product/contract level of the same T7 reference data.
+entities:
+- name: Market
+  description: T7 trading venue (e.g. XEUR Eurex, XETR Xetra)
+  source: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarkets
+- name: MarketSegment
+  description: Product/market segment within a venue on a trading day
+  source: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getMarketSegments
+- name: Security
+  description: Tradable instrument within a market segment
+  source: openapi/deutsche-boerse-reference-data-api-api-openapi.yml#getSecurities
+- name: OrderBook
+  description: Constructed order book state for a security
+  source: openapi/deutsche-boerse-order-book-api-api-openapi.yml#getOrderbookT7
+- name: EobiMessage
+  description: Raw EOBI order-by-order message keyed by transactTime/applSeqNum/msgSeqNum
+  source: openapi/deutsche-boerse-market-data-api-eobi-api-openapi.yml#getMessageDetails
+- name: MdpPacket
+  description: CME MDP packet keyed by sendingTime for an exchange/asset/security
+  source: openapi/deutsche-boerse-sending-times-packets-messages-api-openapi.yml#getPacketDetails
+- name: Algo
+  description: Customer-owned algorithm run over historical data
+  source: openapi/deutsche-boerse-algo-management-api-api-openapi.yml#getAlgos
+- name: PrecalcJob
+  description: Precalculated analytics job with dated tasks and result sets
+  source: openapi/deutsche-boerse-precalc-api-api-openapi.yml#getPrecalcJobs
+- name: Dataset
+  description: Customer or provider dataset stored on A7
+  source: openapi/deutsche-boerse-dataset-api-api-openapi.yml#getAvailableDatasets
+- name: Auction
+  description: Simulated Xetra auction result for a security and auction type
+  source: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuction
+- name: Product
+  description: Eurex product (GraphQL ProductInfos)
+  source: graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+- name: Contract
+  description: Eurex contract/expiration (GraphQL Contracts)
+  source: graphql/deutsche-boerse-eurex-t7-reference-data.graphql
+relationships:
+- from: Market
+  to: MarketSegment
+  type: has_many
+  via: path /rdi/{marketId}/{date}/
+- from: MarketSegment
+  to: Security
+  type: has_many
+  via: path /rdi/{marketId}/{date}/{marketSegmentId}/
+- from: Security
+  to: OrderBook
+  type: has_one
+  via: path /ob/{marketId}/{date}/{marketSegmentId}/{securityId}
+- from: Security
+  to: EobiMessage
+  type: has_many
+  via: path /eobi/.../{securityId}/{transactTime}/{applSeqNum}/{msgSeqNum}
+- from: Security
+  to: MdpPacket
+  type: has_many
+  via: path /mdp/{exchange}/{date}/{asset}/{securityId}/{sendingTime}
+- from: Security
+  to: Auction
+  type: has_many
+  via: path /auction/{exchange}/{date}/{marketSegmentID}/{securityID}/{auctionType}
+- from: Algo
+  to: PrecalcJob
+  type: has_many
+  via: precalc runs execute algos over dated tasks
+- from: PrecalcJob
+  to: Dataset
+  type: has_many
+  via: path /precalc/{owner}/{precalc}/{date}/{task}/{result}
+- from: Product
+  to: Contract
+  type: has_many
+  via: 'GraphQL Contracts(product: ...)'
+- from: Product
+  to: MarketSegment
+  type: has_one
+  via: Eurex product == T7 market segment (cross-surface)

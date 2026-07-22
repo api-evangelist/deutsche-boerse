@@ -1,0 +1,59 @@
+# generated: 2026-07-22
+# method: generated
+# source: https://github.com/Deutsche-Boerse/Cloud.Stream.Client (README + proto/src),
+#   faithful description of the documented WebSocket surface - no channels or
+#   messages invented beyond what the official sample client and schemas publish.
+asyncapi: 3.0.0
+info:
+  title: Deutsche Börse Cloud Stream Market Data
+  version: 001.000.011
+  description: |
+    Real-time market data streaming over WebSocket from Deutsche Börse Cloud
+    Stream. Clients connect to md.deutsche-boerse.com with an API key generated
+    in the GUI (passed as a token; the official Python client uses JWT), then
+    subscribe to a subject (for example md-tradegate for Tradegate quotes in CEF
+    format). Messages are serialized as Protocol Buffers (recommended) or JSON,
+    using the published schemas client.proto, md_cef.proto, md_crypto.proto and
+    md_energy.proto.
+  externalDocs:
+    url: https://github.com/Deutsche-Boerse/Cloud.Stream.Client
+defaultContentType: application/x-protobuf
+servers:
+  production:
+    host: md.deutsche-boerse.com
+    protocol: wss
+    description: Cloud Stream production WebSocket endpoint; API-key authenticated.
+channels:
+  subject:
+    address: '{subject}'
+    description: Subject-based subscription channel. The published example subject
+      is md-tradegate (Tradegate quotes, CEF format); available subjects depend on
+      the customer's market data entitlements.
+    parameters:
+      subject:
+        description: Market data subject to subscribe to, e.g. md-tradegate.
+    messages:
+      subscriptionResponse:
+        name: Client.Response
+        contentType: application/json
+        description: Subscription acknowledgement carrying requestId and
+          subscription statusCode (type.googleapis.com/Client.Response), per
+          client.proto.
+      cefMarketData:
+        name: dbag.cef.MarketData
+        description: CEF market data message (bid/offer prices and sizes, trading
+          status, instrument identification) per md_cef.proto v001.000.011.
+      cryptoMarketData:
+        name: md_crypto market data
+        description: Crypto market data message per md_crypto.proto v001.000.006.
+      energyMarketData:
+        name: md_energy market data
+        description: Energy market data message per md_energy.proto v001.000.008.
+operations:
+  subscribeSubject:
+    action: receive
+    channel:
+      $ref: '#/channels/subject'
+    description: Subscribe to a subject and receive streamed market data messages;
+      the sample invocation is client.py --websocket-server md.deutsche-boerse.com
+      --subject md-tradegate --token $API_KEY --msgFormat json.

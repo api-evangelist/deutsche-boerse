@@ -1,0 +1,24 @@
+generated: '2026-07-22'
+method: searched
+source: https://www.deutsche-boerse.com/dbg-en/markets-services/ps-technology/service-status
+  + https://docs.developer.deutsche-boerse.com/blog/ + openapi/
+versioning:
+  scheme: uri-path
+  current: v1 (A7 REST base /api/v1; Dataset and RDI/SD interfaces also publish v2 revisions)
+  evidence: A7 base path https://a7.deutsche-boerse.com/api/v1; the documentation
+    bundle ships Dataset API v1 and v2, Reference data API (RDI) v2 and CME
+    Reference data API (SD) v2 side by side.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy or RFC 8594 Sunset header support found in
+    docs or specs; older interface versions (Dataset v1) remain published alongside v2.
+sla:
+  url: null
+  notes: No public SLA; A7 subscriptions and market data feeds are commercially
+    licensed with entitlement-managed terms.
+status_page: https://www.deutsche-boerse.com/dbg-en/markets-services/ps-technology/service-status
+status_page_notes: Group "Service Status" page linked from the API Platform section
+  of deutsche-boerse.com (verified HTTP 200 on 2026-07-22).
+changelog: https://docs.developer.deutsche-boerse.com/blog/
+deprecated_operations: []

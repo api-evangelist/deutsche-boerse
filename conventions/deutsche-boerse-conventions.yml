@@ -1,0 +1,49 @@
+generated: '2026-07-22'
+method: searched
+source: https://docs.developer.deutsche-boerse.com/docs/consumer/getting-started/consume/
+  + /docs/consumer/rate-limiting + /docs/consumer/mTLS-consumer + openapi/
+authentication:
+  style: Two families. Group API Platform APIs use an API key sent as an X-DBP-APIKEY
+    request header, generated per application in the developer console (up to 10
+    applications per account); some publishers additionally require mutual TLS or
+    publisher-issued keys. The A7 Analytics Platform uses HTTP Bearer tokens issued
+    from the A7 GUI. OAuth2/OIDC onboarding is documented as "Coming soon".
+  cross_link: authentication/deutsche-boerse-authentication.yml
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header or retry-safety contract is documented; the A7
+    surface is overwhelmingly read-only GETs, with PUT-based upserts for algos,
+    precalcs and datasets.
+pagination:
+  style: none
+  notes: No cursor/offset parameters. Collections are scoped by descending the URL
+    hierarchy (market -> date -> market segment -> security -> message); EOBI/MDP
+    drill-downs key by transactTime/applSeqNum/msgSeqNum or sendingTime.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+request_tracing:
+  header: null
+  notes: No documented request-id header convention.
+versioning:
+  scheme: uri-path
+  notes: /api/v1 base path; Dataset v1 and v2 plus RDI v2 / SD v2 interface revisions
+    published side by side.
+  cross_link: lifecycle/deutsche-boerse-lifecycle.yml
+error_envelope:
+  shape: Plain-text or ad-hoc JSON bodies with HTTP status codes (400, 401, 403,
+    404, 422, 500, 503); no RFC 9457 problem+json.
+  cross_link: errors/deutsche-boerse-problem-types.yml
+rate_limits:
+  signaling: HTTP 429 Too Many Requests when a publisher-configured rate limit or
+    burst size is exceeded; the concrete limits (rate limit, burst size, time unit)
+    are published per API on the API Detail Page in the console, and undocumented
+    platform-level maximums may also apply. The free shared Eurex reference-data
+    API key is explicitly rate-limited; a dedicated key raises throughput.
+  docs: https://docs.developer.deutsche-boerse.com/docs/consumer/rate-limiting
+mutual_tls:
+  supported: true
+  docs: https://docs.developer.deutsche-boerse.com/docs/consumer/mTLS-consumer
+  notes: Optional per API; publishers list acceptable X.509 CA issuers under
+    Access & Security on the API Detail Page.
