@@ -1,0 +1,2257 @@
+{
+  "item": [
+    {
+      "id": "8fddb2dd-f4a1-4a09-8124-1e0b77416c0c",
+      "name": "Auctions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b1ae28b2-60c6-4360-a6e6-b94abd6dd706",
+          "name": "retrieves list of auction types",
+          "request": {
+            "name": "retrieves list of auction types",
+            "description": {
+              "content": "The request delivers all available auction types for the selected security that is identified by market, trading day, market segment ID and security ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auction",
+                ":exchange",
+                ":date",
+                ":marketSegmentID",
+                ":securityID",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) exhange identifier code"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) trading day in the format YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentID",
+                  "description": "(Required) unique market segment identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityID",
+                  "description": "(Required) unique security identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d62e6b6-4907-4360-8526-6a6c850af311",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"opening\",\n  \"intraday\",\n  \"closing\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c9f3a0d-e3c9-4550-92d9-9fcc69d4d23c",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f45e5d39-a1b3-406a-b884-50ef35f13297",
+              "name": "authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c8042879-07c6-4df4-84a4-8a36b0bbbe2e",
+              "name": "access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "86d0080f-d659-44be-81b4-cc41109f8643",
+              "name": "not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffead7b6-5e91-40c5-9326-03b1f42707e1",
+          "name": "retrieves list of auction types",
+          "request": {
+            "name": "retrieves list of auction types",
+            "description": {
+              "content": "The request delivers all available auction types for the selected security that is identified by market, trading day and trading symbol.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auction",
+                ":exchange",
+                ":date",
+                ":symbol",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) exhange identifier code"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) trading day in the format YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) unique trading symbol identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07f4e43f-60fe-4064-a35c-f5f154705d3d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"opening\",\n  \"intraday\",\n  \"closing\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "653889a8-d613-4651-87d7-7569bdbfcc04",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2b1afddf-0dca-4049-a492-ce39f0517821",
+              "name": "authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "87b5bc3b-dd64-407c-a5c4-df4ea0e07a7e",
+              "name": "access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2dc0a33-b78c-48e1-96af-060f65a875d0",
+              "name": "not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43d28599-07fc-4071-9a19-5a8246d47221",
+          "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+          "request": {
+            "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+            "description": {
+              "content": "The request delivers historical data for the selected auction that is identified by market, trading day, market segment ID and security ID, and optionally a simulated outcome of an auction, if complete information of an additional order (side {side}, limit price {px}, quantity {qty}) and optionally order priority {prio} and is provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auction",
+                ":exchange",
+                ":date",
+                ":marketSegmentID",
+                ":securityID",
+                ":auctionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "side",
+                  "value": "<string>",
+                  "description": "side of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "side",
+                  "value": "<string>",
+                  "description": "side of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "px",
+                  "value": "<double>",
+                  "description": "limit price of an order, a null value corresponds to a market order"
+                },
+                {
+                  "disabled": false,
+                  "key": "px",
+                  "value": "<double>",
+                  "description": "limit price of an order, a null value corresponds to a market order"
+                },
+                {
+                  "disabled": false,
+                  "key": "prio",
+                  "value": "0",
+                  "description": "order priority (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "prio",
+                  "value": "0",
+                  "description": "order priority (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "qty",
+                  "value": "<long>",
+                  "description": "quantity of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "qty",
+                  "value": "<long>",
+                  "description": "quantity of an order"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) exhange identifier code"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) trading day in the format YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentID",
+                  "description": "(Required) unique market segment identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityID",
+                  "description": "(Required) unique security identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "auctionType",
+                  "description": "(Required) auction type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6e57236-3cb7-465e-b4d8-ba1f18105da7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Exchange\": \"XETR\",\n  \"Date\": 20230111,\n  \"MarketSegmentID\": 52885,\n  \"SecurityID\": 2504978,\n  \"AuctionType\": \"opening\",\n  \"AuctionStartTimestamp\": 1652962104095620600,\n  \"AuctionEndTimestamp\": 1652962104095620600,\n  \"AuctionReferencePrice\": 178.25,\n  \"UncrossingPrice\": 178.25,\n  \"MatchedVolume\": 125,\n  \"SimulatedUncrossingPrice\": 178.25,\n  \"SimulatedMatchedVolume\": 125,\n  \"SimulatedOrders\": [\n    {\n      \"Side\": \"bid\",\n      \"Px\": 178.25,\n      \"Prio\": 1652962104095620600,\n      \"Qty\": 125,\n      \"TradedQty\": 125\n    },\n    {\n      \"Side\": \"bid\",\n      \"Px\": 178.25,\n      \"Prio\": 1652962104095620600,\n      \"Qty\": 125,\n      \"TradedQty\": 125\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58fa2ef2-b5ff-4f72-9fe7-135b3531648e",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "308aaf8a-de9d-4964-b006-1cb11795a161",
+              "name": "authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "867ca4d4-4950-4d9b-b9d0-fcbf97baf836",
+              "name": "access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72c6f6d5-94ae-413f-b56a-33e3805c314a",
+              "name": "not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":marketSegmentID",
+                    ":securityID",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentID",
+                      "description": "(Required) unique market segment identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityID",
+                      "description": "(Required) unique security identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7b9ab73-916f-4b7b-8ba9-075cd3795c85",
+          "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+          "request": {
+            "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+            "description": {
+              "content": "The request delivers historical data for the selected auction that is identified by market, trading day and trading symbol, and optionally a simulated outcome of an auction, if complete information of an additional order (side {side}, limit price {px}, quantity {qty}) and optionally order priority {prio} and is provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "auction",
+                ":exchange",
+                ":date",
+                ":symbol",
+                ":auctionType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "side",
+                  "value": "<string>",
+                  "description": "side of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "side",
+                  "value": "<string>",
+                  "description": "side of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "px",
+                  "value": "<double>",
+                  "description": "limit price of an order, a null value corresponds to a market order"
+                },
+                {
+                  "disabled": false,
+                  "key": "px",
+                  "value": "<double>",
+                  "description": "limit price of an order, a null value corresponds to a market order"
+                },
+                {
+                  "disabled": false,
+                  "key": "prio",
+                  "value": "0",
+                  "description": "order priority (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "prio",
+                  "value": "0",
+                  "description": "order priority (default 0)"
+                },
+                {
+                  "disabled": false,
+                  "key": "qty",
+                  "value": "<long>",
+                  "description": "quantity of an order"
+                },
+                {
+                  "disabled": false,
+                  "key": "qty",
+                  "value": "<long>",
+                  "description": "quantity of an order"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) exhange identifier code"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) trading day in the format YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "symbol",
+                  "description": "(Required) unique trading symbol identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "auctionType",
+                  "description": "(Required) auction type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ee51ed9-f184-4e10-932f-afb3b68b01d5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Exchange\": \"XETR\",\n  \"Date\": 20230111,\n  \"MarketSegmentID\": 52885,\n  \"SecurityID\": 2504978,\n  \"AuctionType\": \"opening\",\n  \"AuctionStartTimestamp\": 1652962104095620600,\n  \"AuctionEndTimestamp\": 1652962104095620600,\n  \"AuctionReferencePrice\": 178.25,\n  \"UncrossingPrice\": 178.25,\n  \"MatchedVolume\": 125,\n  \"SimulatedUncrossingPrice\": 178.25,\n  \"SimulatedMatchedVolume\": 125,\n  \"SimulatedOrders\": [\n    {\n      \"Side\": \"bid\",\n      \"Px\": 178.25,\n      \"Prio\": 1652962104095620600,\n      \"Qty\": 125,\n      \"TradedQty\": 125\n    },\n    {\n      \"Side\": \"bid\",\n      \"Px\": 178.25,\n      \"Prio\": 1652962104095620600,\n      \"Qty\": 125,\n      \"TradedQty\": 125\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a96106c0-e9b0-4941-a945-4db09ac23433",
+              "name": "bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c4a68d73-1f69-450a-bdcc-39867a7cbd89",
+              "name": "authorization failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1c66693-2ac8-4735-ab8f-aaba3aa09552",
+              "name": "access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "specific error message",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b778161a-1587-42cc-973f-7a86d5ea367a",
+              "name": "not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "auction",
+                    ":exchange",
+                    ":date",
+                    ":symbol",
+                    ":auctionType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "side",
+                      "value": "bid"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "px",
+                      "value": "178.25"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "prio",
+                      "value": "1652962104095620600"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    },
+                    {
+                      "key": "qty",
+                      "value": "125"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) exhange identifier code"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) trading day in the format YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "symbol",
+                      "description": "(Required) unique trading symbol identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "auctionType",
+                      "description": "(Required) auction type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3ce1cb48-e3eb-4d76-ad3e-34f17b26f7a6",
+    "name": "A7 Analytics Platform - Algo management Algo management API Auctions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

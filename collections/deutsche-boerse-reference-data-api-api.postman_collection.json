@@ -1,0 +1,2902 @@
+{
+  "item": [
+    {
+      "id": "37ef5559-1212-4e6f-8ebb-f33b4dda2822",
+      "name": "Reference data API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4dbc752b-0cb6-46a9-a5a8-e1cfc4fe05b6",
+          "name": "Retrieve list of markets",
+          "request": {
+            "name": "Retrieve list of markets",
+            "description": {
+              "content": "The request delivers all available markets as a list of marketIds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ecb3eaec-e1f6-41eb-809d-1f6c66396975",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"XEEE\",\n  \"XETR\",\n  \"XEUR\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f2835b1-125e-4df3-ad00-603cc6cc573a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efa0feba-deed-4a7f-b53b-2e62598311bd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d9fa9919-ddb7-434c-bd6a-34ac03d4cc36",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8abfdf55-ddba-433f-a22e-672e4ce4c5aa",
+          "name": "Retrieve list of trading days",
+          "request": {
+            "name": "Retrieve list of trading days",
+            "description": {
+              "content": "The request delivers all available trading days for the selected market as a list of dates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77404e70-4260-417d-85e2-463923ce2440",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  20200102,\n  20200103,\n  20200106\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dd7deb3-e925-418c-9629-8ff32b0215cc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "81a225cd-587b-46f6-a156-5b24f52acaa2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b468628-c049-4e06-9fe3-700ba2274281",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf2e3513-9e40-4c72-b7ad-386de1f43508",
+          "name": "Retrieve list of market segments",
+          "request": {
+            "name": "Retrieve list of market segments",
+            "description": {
+              "content": "The request delivers all available market segments for the selected market and trading day as a list of marketSegmentIds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a95660ac-93da-4bad-a439-e583f6711110",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  3,\n  4,\n  8,\n  9,\n  10\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6790baf5-13c9-4839-a9be-f28690d01144",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4567f600-4637-4869-8a7e-d782357b98ef",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da035923-0327-4b50-8906-1b99cd392854",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90f40546-88db-46ef-982a-5469635232c8",
+          "name": "Retrieve details for all market segments",
+          "request": {
+            "name": "Retrieve details for all market segments",
+            "description": {
+              "content": "The request delivers details for all available market segments for the selected market and trading day as a list of objects. The details contain all available ProductSnapshot (BU) messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "annotation",
+                  "value": "unannotated",
+                  "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1a036b2-ff8e-49e0-b8b0-396da79466ad",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Template\": \"ProductSnapshot\",\n    \"MsgType\": \"BU\",\n    \"MsgSeqNum\": 1913,\n    \"MarketID\": \"XEUR\",\n    \"MarketSegmentID\": 204934,\n    \"EffectiveBusinessDate\": 20210315,\n    \"NextEffectiveBusinessDate\": 20210316,\n    \"MarketSegment\": \"TC1L\",\n    \"MarketSegmentStatus\": \"1\",\n    \"PartitionID\": 6,\n    \"DerivativesDescriptorGroup\": {\n      \"Currency\": \"EUR\",\n      \"MarketSegmentDesc\": \"TRF ON EURGP1LCOLL\",\n      \"MarketSegmentSymbol\": \"DE000A26RR59\",\n      \"ParentMktSegmID\": \"FINX\",\n      \"USApproval\": \"None\",\n      \"OffsetSTPEffectiveTime\": 10\n    },\n    \"UnderlyingDescriptorGroup\": {\n      \"UnderlyingSecurityExchange\": \"XSTX\",\n      \"UnderlyingSymbol\": \"1CLE\",\n      \"UnderlyingSecurityID\": \"CH0478459768\",\n      \"UnderlyingSecurityIDSource\": \"4\",\n      \"UnderlyingPrevClosePx\": 233.66\n    },\n    \"NoInstrumentScopes\": 1,\n    \"InstrumentScopes\": [\n      {\n        \"InstrumentScopeOperator\": \"1\",\n        \"InstrumentScopeSecurityType\": \"TRF\"\n      }\n    ],\n    \"BaseTrdgRules\": {\n      \"NoTickRules\": 1,\n      \"TickRules\": [\n        {\n          \"TickRuleID\": 13,\n          \"StartTickPriceRange\": 0,\n          \"EndTickPriceRange\": 9999999999.9999,\n          \"TickIncrement\": 0.5,\n          \"NoTickRuleScopes\": 1,\n          \"TickRuleScopes\": [\n            {\n              \"TickRuleProductComplex\": \"1\",\n              \"TrdType\": \"0\"\n            }\n          ]\n        }\n      ],\n      \"NoPriceRangeRules\": 1,\n      \"PriceRangeRules\": [\n        {\n          \"PriceRangeRuleID\": 489,\n          \"PriceRangeProductComplex\": \"1\",\n          \"StartPriceRange\": 0,\n          \"EndPriceRange\": 9999999999.9999,\n          \"PriceRangeValue\": 20\n        }\n      ],\n      \"QuoteSideIndicator\": \"1\",\n      \"QuoteSideModelType\": \"0\",\n      \"FastMarketPercentage\": 100\n    },\n    \"BaseTrdgRulesDerivatives\": {\n      \"NoQuoteSizeRules\": 2,\n      \"QuoteSizeRules\": [\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"0\"\n        },\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"1\"\n        }\n      ],\n      \"NoFlexProductEligibilities\": 0,\n      \"FlexRules\": [],\n      \"RoundLot\": 1\n    },\n    \"NoMatchRules\": 1,\n    \"MatchRules\": [\n      {\n        \"MatchRuleProductComplex\": \"1\",\n        \"MatchAlgorithm\": \"PT\"\n      }\n    ],\n    \"NoMDFeedTypes\": 5,\n    \"Feeds\": [\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"3\",\n        \"PrimaryServiceLocationID\": \"224.0.114.42\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.114.74\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"3\",\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.114.43\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.114.75\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MDRecoveryTimeInterval\": 120000,\n        \"PrimaryServiceLocationID\": \"224.0.50.14\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.142\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.50.15\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.50.143\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"L\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 5,\n        \"MarketDepthTimeInterval\": 2000,\n        \"MDRecoveryTimeInterval\": 300000,\n        \"PrimaryServiceLocationID\": \"224.0.50.73\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.201\",\n        \"SecondaryServiceLocationSubID\": 59032\n      }\n    ]\n  },\n  {\n    \"Template\": \"ProductSnapshot\",\n    \"MsgType\": \"BU\",\n    \"MsgSeqNum\": 1913,\n    \"MarketID\": \"XEUR\",\n    \"MarketSegmentID\": 204934,\n    \"EffectiveBusinessDate\": 20210315,\n    \"NextEffectiveBusinessDate\": 20210316,\n    \"MarketSegment\": \"TC1L\",\n    \"MarketSegmentStatus\": \"1\",\n    \"PartitionID\": 6,\n    \"DerivativesDescriptorGroup\": {\n      \"Currency\": \"EUR\",\n      \"MarketSegmentDesc\": \"TRF ON EURGP1LCOLL\",\n      \"MarketSegmentSymbol\": \"DE000A26RR59\",\n      \"ParentMktSegmID\": \"FINX\",\n      \"USApproval\": \"None\",\n      \"OffsetSTPEffectiveTime\": 10\n    },\n    \"UnderlyingDescriptorGroup\": {\n      \"UnderlyingSecurityExchange\": \"XSTX\",\n      \"UnderlyingSymbol\": \"1CLE\",\n      \"UnderlyingSecurityID\": \"CH0478459768\",\n      \"UnderlyingSecurityIDSource\": \"4\",\n      \"UnderlyingPrevClosePx\": 233.66\n    },\n    \"NoInstrumentScopes\": 1,\n    \"InstrumentScopes\": [\n      {\n        \"InstrumentScopeOperator\": \"1\",\n        \"InstrumentScopeSecurityType\": \"TRF\"\n      }\n    ],\n    \"BaseTrdgRules\": {\n      \"NoTickRules\": 1,\n      \"TickRules\": [\n        {\n          \"TickRuleID\": 13,\n          \"StartTickPriceRange\": 0,\n          \"EndTickPriceRange\": 9999999999.9999,\n          \"TickIncrement\": 0.5,\n          \"NoTickRuleScopes\": 1,\n          \"TickRuleScopes\": [\n            {\n              \"TickRuleProductComplex\": \"1\",\n              \"TrdType\": \"0\"\n            }\n          ]\n        }\n      ],\n      \"NoPriceRangeRules\": 1,\n      \"PriceRangeRules\": [\n        {\n          \"PriceRangeRuleID\": 489,\n          \"PriceRangeProductComplex\": \"1\",\n          \"StartPriceRange\": 0,\n          \"EndPriceRange\": 9999999999.9999,\n          \"PriceRangeValue\": 20\n        }\n      ],\n      \"QuoteSideIndicator\": \"1\",\n      \"QuoteSideModelType\": \"0\",\n      \"FastMarketPercentage\": 100\n    },\n    \"BaseTrdgRulesDerivatives\": {\n      \"NoQuoteSizeRules\": 2,\n      \"QuoteSizeRules\": [\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"0\"\n        },\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"1\"\n        }\n      ],\n      \"NoFlexProductEligibilities\": 0,\n      \"FlexRules\": [],\n      \"RoundLot\": 1\n    },\n    \"NoMatchRules\": 1,\n    \"MatchRules\": [\n      {\n        \"MatchRuleProductComplex\": \"1\",\n        \"MatchAlgorithm\": \"PT\"\n      }\n    ],\n    \"NoMDFeedTypes\": 5,\n    \"Feeds\": [\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"3\",\n        \"PrimaryServiceLocationID\": \"224.0.114.42\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.114.74\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"3\",\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.114.43\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.114.75\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MDRecoveryTimeInterval\": 120000,\n        \"PrimaryServiceLocationID\": \"224.0.50.14\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.142\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.50.15\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.50.143\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"L\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 5,\n        \"MarketDepthTimeInterval\": 2000,\n        \"MDRecoveryTimeInterval\": 300000,\n        \"PrimaryServiceLocationID\": \"224.0.50.73\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.201\",\n        \"SecondaryServiceLocationSubID\": 59032\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ede0059b-8cbd-4daa-9b91-3d9717e14078",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e2d737af-0902-4482-89aa-fff87ad5702f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4488217a-3586-40fb-b837-9f6c8009d15e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f8e78e3-5d20-4c1c-bd49-37447d586a69",
+          "name": "Retrieve list of securities",
+          "request": {
+            "name": "Retrieve list of securities",
+            "description": {
+              "content": "The request delivers all available securities for the selected market, trading day and market segment as a list securityIds.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80e306f1-05ce-490a-9801-8b55aba60756",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"4799382\",\n  \"5036064\",\n  \"5141210\",\n  \"5222340\",\n  \"5336489\",\n  \"5428018\",\n  \"5519919\",\n  \"5594891\",\n  \"5694799\",\n  \"3595763\",\n  \"5914234\",\n  \"6014211\",\n  \"6119243\",\n  \"4557556\",\n  \"5824719\",\n  \"72057611217797215\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc7c407f-3b5c-4b32-ad5e-427bdce53b46",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c654697-1d71-4553-8edb-d4c7d5b7b992",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b604d158-2f0a-48e8-aa89-5e5a0763c2c8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11781072-ec03-419d-8cee-5d6a37cb858b",
+          "name": "Retrieve market segment details",
+          "request": {
+            "name": "Retrieve market segment details",
+            "description": {
+              "content": "The request delivers all available details for the selected market segment as a list of objects. The details contain all RDI messages connected to the market segment. The message types ProductSnapshot (BU), InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "annotation",
+                  "value": "unannotated",
+                  "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af58b582-fe9e-4abe-99a3-598626603f26",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Template\": \"ProductSnapshot\",\n    \"MsgType\": \"BU\",\n    \"MsgSeqNum\": 1913,\n    \"MarketID\": \"XEUR\",\n    \"MarketSegmentID\": 204934,\n    \"EffectiveBusinessDate\": 20210315,\n    \"NextEffectiveBusinessDate\": 20210316,\n    \"MarketSegment\": \"TC1L\",\n    \"MarketSegmentStatus\": \"1\",\n    \"PartitionID\": 6,\n    \"DerivativesDescriptorGroup\": {\n      \"Currency\": \"EUR\",\n      \"MarketSegmentDesc\": \"TRF ON EURGP1LCOLL\",\n      \"MarketSegmentSymbol\": \"DE000A26RR59\",\n      \"ParentMktSegmID\": \"FINX\",\n      \"USApproval\": \"None\",\n      \"OffsetSTPEffectiveTime\": 10\n    },\n    \"UnderlyingDescriptorGroup\": {\n      \"UnderlyingSecurityExchange\": \"XSTX\",\n      \"UnderlyingSymbol\": \"1CLE\",\n      \"UnderlyingSecurityID\": \"CH0478459768\",\n      \"UnderlyingSecurityIDSource\": \"4\",\n      \"UnderlyingPrevClosePx\": 233.66\n    },\n    \"NoInstrumentScopes\": 1,\n    \"InstrumentScopes\": [\n      {\n        \"InstrumentScopeOperator\": \"1\",\n        \"InstrumentScopeSecurityType\": \"TRF\"\n      }\n    ],\n    \"BaseTrdgRules\": {\n      \"NoTickRules\": 1,\n      \"TickRules\": [\n        {\n          \"TickRuleID\": 13,\n          \"StartTickPriceRange\": 0,\n          \"EndTickPriceRange\": 9999999999.9999,\n          \"TickIncrement\": 0.5,\n          \"NoTickRuleScopes\": 1,\n          \"TickRuleScopes\": [\n            {\n              \"TickRuleProductComplex\": \"1\",\n              \"TrdType\": \"0\"\n            }\n          ]\n        }\n      ],\n      \"NoPriceRangeRules\": 1,\n      \"PriceRangeRules\": [\n        {\n          \"PriceRangeRuleID\": 489,\n          \"PriceRangeProductComplex\": \"1\",\n          \"StartPriceRange\": 0,\n          \"EndPriceRange\": 9999999999.9999,\n          \"PriceRangeValue\": 20\n        }\n      ],\n      \"QuoteSideIndicator\": \"1\",\n      \"QuoteSideModelType\": \"0\",\n      \"FastMarketPercentage\": 100\n    },\n    \"BaseTrdgRulesDerivatives\": {\n      \"NoQuoteSizeRules\": 2,\n      \"QuoteSizeRules\": [\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"0\"\n        },\n        {\n          \"MinBidSize\": 1,\n          \"MinOfferSize\": 1,\n          \"FastMarketIndicator\": \"1\"\n        }\n      ],\n      \"NoFlexProductEligibilities\": 0,\n      \"FlexRules\": [],\n      \"RoundLot\": 1\n    },\n    \"NoMatchRules\": 1,\n    \"MatchRules\": [\n      {\n        \"MatchRuleProductComplex\": \"1\",\n        \"MatchAlgorithm\": \"PT\"\n      }\n    ],\n    \"NoMDFeedTypes\": 5,\n    \"Feeds\": [\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"3\",\n        \"PrimaryServiceLocationID\": \"224.0.114.42\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.114.74\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"3\",\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.114.43\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.114.75\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"HS\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MDRecoveryTimeInterval\": 120000,\n        \"PrimaryServiceLocationID\": \"224.0.50.14\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.142\",\n        \"SecondaryServiceLocationSubID\": 59032\n      },\n      {\n        \"MDFeedType\": \"HI\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 10,\n        \"MarketDepthTimeInterval\": 0,\n        \"PrimaryServiceLocationID\": \"224.0.50.15\",\n        \"PrimaryServiceLocationSubID\": 59033,\n        \"SecondaryServiceLocationID\": \"224.0.50.143\",\n        \"SecondaryServiceLocationSubID\": 59033\n      },\n      {\n        \"MDFeedType\": \"L\",\n        \"MDBookType\": \"2\",\n        \"MarketDepth\": 5,\n        \"MarketDepthTimeInterval\": 2000,\n        \"MDRecoveryTimeInterval\": 300000,\n        \"PrimaryServiceLocationID\": \"224.0.50.73\",\n        \"PrimaryServiceLocationSubID\": 59032,\n        \"SecondaryServiceLocationID\": \"224.0.50.201\",\n        \"SecondaryServiceLocationSubID\": 59032\n      }\n    ]\n  },\n  {\n    \"Template\": \"InstrumentSnapshot\",\n    \"MsgType\": \"d\",\n    \"MsgSeqNum\": 1914,\n    \"SecurityID\": \"5036012\",\n    \"SecurityIDSource\": \"M\",\n    \"NoSecurityAltID\": 2,\n    \"SecurityAlt\": [\n      {\n        \"SecurityAltID\": \"365625353\",\n        \"SecurityAltIDSource\": \"M\"\n      },\n      {\n        \"SecurityAltID\": \"DE000C47BX29\",\n        \"SecurityAltIDSource\": \"4\"\n      }\n    ],\n    \"SecurityType\": \"TRF\",\n    \"SecurityStatus\": \"1\",\n    \"SecurityDesc\": \"TC1L SI 20210319 CS\",\n    \"ProductComplex\": \"1\",\n    \"DerivativesDescriptorGroup\": {\n      \"CFICode\": \"FFICSX\",\n      \"SimpleInstrumentDescriptorGroup\": {\n        \"ContractDate\": 20210319,\n        \"ContractMonthYear\": 202103,\n        \"ContractMultiplier\": 1,\n        \"ValuationMethod\": \"FUT\",\n        \"SettlMethod\": \"C\",\n        \"PriorSettlPrice\": 234.909\n      }\n    },\n    \"NoInstrAttrib\": 5,\n    \"InstrumentAttributes\": [\n      {\n        \"InstrAttribType\": \"123\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"106\",\n        \"InstrAttribValue\": \"XEUR\"\n      },\n      {\n        \"InstrAttribType\": \"112\",\n        \"InstrAttribValue\": \"Y\"\n      },\n      {\n        \"InstrAttribType\": \"113\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"115\",\n        \"InstrAttribValue\": \"N\"\n      }\n    ],\n    \"NoEvents\": 1,\n    \"Events\": [\n      {\n        \"EventType\": \"7\",\n        \"EventDate\": 20210318\n      }\n    ],\n    \"InstrumentPricePrecision\": 4,\n    \"MinPriceIncrement\": 0.5,\n    \"MinPriceIncrementClearing\": 0.0002,\n    \"MinPriceIncrementAmount\": 0.01,\n    \"MaturityDate\": 20210319,\n    \"MaturityMonthYear\": 202103,\n    \"NoMarketSegments\": 1,\n    \"MarketSegmentGrp\": [\n      {\n        \"MarketSegmentID\": 204934,\n        \"PriceType\": \"22\",\n        \"NoPriceRangeRules\": 1,\n        \"PriceRangeRules\": [\n          {\n            \"PriceRangeRuleID\": 489\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"Template\": \"TotalReturnFuturesStatus\",\n    \"MsgType\": \"f\",\n    \"MsgSeqNum\": 1915,\n    \"MarketSegmentID\": 204934,\n    \"SecurityID\": \"5036012\",\n    \"SecurityIDSource\": \"M\",\n    \"SecurityType\": \"TRF\",\n    \"PriorSettlPrice\": 159,\n    \"NoClearingPriceParameters\": 2,\n    \"ClearingPriceParameters\": [\n      {\n        \"BusinessDayType\": \"5\"\n      },\n      {\n        \"BusinessDayType\": \"1\",\n        \"AnnualCalendarDays\": 360,\n        \"RemainingCalendarDays\": 6\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17d295c0-4e31-41a9-9987-f4b4ead3b057",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "aaaab48d-781d-4231-9fb6-3c99dc313287",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "19966f14-c78f-4eac-b834-3c2fa6037f81",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53d62e88-ec4f-4845-93da-b9835f02b96f",
+          "name": "Retrieve list of messages",
+          "request": {
+            "name": "Retrieve list of messages",
+            "description": {
+              "content": "The request delivers all available messages for the selected market, trading day, market segment and security as a list of msgSeqNums.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29bbd851-e206-4f80-acf7-b75d6d6f214c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  7474,\n  7475\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f0d7846-0217-4359-89ea-2f1f56768bb0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc4d94c0-bfa8-4a4a-9253-bf47244046ad",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "acbeb78c-f99e-4fa1-936d-c2206b0fc069",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5796a61-5de3-4957-b51b-dde778a09b4e",
+          "name": "Retrieve security details",
+          "request": {
+            "name": "Retrieve security details",
+            "description": {
+              "content": "The request delivers all available details for the selected market segment and security as a list of objects. The details contain all RDI messages connected to the market segment and security. The message types  InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "annotation",
+                  "value": "unannotated",
+                  "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce64d6df-910b-4830-9cdb-8d002b565c64",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Template\": \"InstrumentSnapshot\",\n    \"MsgType\": \"d\",\n    \"MsgSeqNum\": 1914,\n    \"SecurityID\": \"5036012\",\n    \"SecurityIDSource\": \"M\",\n    \"NoSecurityAltID\": 2,\n    \"SecurityAlt\": [\n      {\n        \"SecurityAltID\": \"365625353\",\n        \"SecurityAltIDSource\": \"M\"\n      },\n      {\n        \"SecurityAltID\": \"DE000C47BX29\",\n        \"SecurityAltIDSource\": \"4\"\n      }\n    ],\n    \"SecurityType\": \"TRF\",\n    \"SecurityStatus\": \"1\",\n    \"SecurityDesc\": \"TC1L SI 20210319 CS\",\n    \"ProductComplex\": \"1\",\n    \"DerivativesDescriptorGroup\": {\n      \"CFICode\": \"FFICSX\",\n      \"SimpleInstrumentDescriptorGroup\": {\n        \"ContractDate\": 20210319,\n        \"ContractMonthYear\": 202103,\n        \"ContractMultiplier\": 1,\n        \"ValuationMethod\": \"FUT\",\n        \"SettlMethod\": \"C\",\n        \"PriorSettlPrice\": 234.909\n      }\n    },\n    \"NoInstrAttrib\": 5,\n    \"InstrumentAttributes\": [\n      {\n        \"InstrAttribType\": \"123\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"106\",\n        \"InstrAttribValue\": \"XEUR\"\n      },\n      {\n        \"InstrAttribType\": \"112\",\n        \"InstrAttribValue\": \"Y\"\n      },\n      {\n        \"InstrAttribType\": \"113\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"115\",\n        \"InstrAttribValue\": \"N\"\n      }\n    ],\n    \"NoEvents\": 1,\n    \"Events\": [\n      {\n        \"EventType\": \"7\",\n        \"EventDate\": 20210318\n      }\n    ],\n    \"InstrumentPricePrecision\": 4,\n    \"MinPriceIncrement\": 0.5,\n    \"MinPriceIncrementClearing\": 0.0002,\n    \"MinPriceIncrementAmount\": 0.01,\n    \"MaturityDate\": 20210319,\n    \"MaturityMonthYear\": 202103,\n    \"NoMarketSegments\": 1,\n    \"MarketSegmentGrp\": [\n      {\n        \"MarketSegmentID\": 204934,\n        \"PriceType\": \"22\",\n        \"NoPriceRangeRules\": 1,\n        \"PriceRangeRules\": [\n          {\n            \"PriceRangeRuleID\": 489\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"Template\": \"TotalReturnFuturesStatus\",\n    \"MsgType\": \"f\",\n    \"MsgSeqNum\": 1915,\n    \"MarketSegmentID\": 204934,\n    \"SecurityID\": \"5036012\",\n    \"SecurityIDSource\": \"M\",\n    \"SecurityType\": \"TRF\",\n    \"PriorSettlPrice\": 159,\n    \"NoClearingPriceParameters\": 2,\n    \"ClearingPriceParameters\": [\n      {\n        \"BusinessDayType\": \"5\"\n      },\n      {\n        \"BusinessDayType\": \"1\",\n        \"AnnualCalendarDays\": 360,\n        \"RemainingCalendarDays\": 6\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c3d7dbd-5863-4c2a-a31d-89a52c5aeb9b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "673a206c-41f5-4c66-972a-92546cbb211b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6d5ba8f8-6d13-4b0d-94fa-8f48da712b16",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c92c80c8-1162-46ee-bc33-0d0222e100cc",
+          "name": "Retrieve message details",
+          "request": {
+            "name": "Retrieve message details",
+            "description": {
+              "content": "The request delivers the message details for the selected market, trading day, market segment, security and message as an array of  objects. Depending on the type of message, the content of the objects may differ. The message types InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rdi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId",
+                ":msgSeqNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "annotation",
+                  "value": "unannotated",
+                  "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uint32>",
+                  "key": "msgSeqNum",
+                  "description": "(Required) Message sequence number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e28ef24e-a353-4156-8d78-b68f0e0374a1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"Template\": \"InstrumentSnapshot\",\n    \"MsgType\": \"d\",\n    \"MsgSeqNum\": 1914,\n    \"SecurityID\": \"5036012\",\n    \"SecurityIDSource\": \"M\",\n    \"NoSecurityAltID\": 2,\n    \"SecurityAlt\": [\n      {\n        \"SecurityAltID\": \"365625353\",\n        \"SecurityAltIDSource\": \"M\"\n      },\n      {\n        \"SecurityAltID\": \"DE000C47BX29\",\n        \"SecurityAltIDSource\": \"4\"\n      }\n    ],\n    \"SecurityType\": \"TRF\",\n    \"SecurityStatus\": \"1\",\n    \"SecurityDesc\": \"TC1L SI 20210319 CS\",\n    \"ProductComplex\": \"1\",\n    \"DerivativesDescriptorGroup\": {\n      \"CFICode\": \"FFICSX\",\n      \"SimpleInstrumentDescriptorGroup\": {\n        \"ContractDate\": 20210319,\n        \"ContractMonthYear\": 202103,\n        \"ContractMultiplier\": 1,\n        \"ValuationMethod\": \"FUT\",\n        \"SettlMethod\": \"C\",\n        \"PriorSettlPrice\": 234.909\n      }\n    },\n    \"NoInstrAttrib\": 5,\n    \"InstrumentAttributes\": [\n      {\n        \"InstrAttribType\": \"123\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"106\",\n        \"InstrAttribValue\": \"XEUR\"\n      },\n      {\n        \"InstrAttribType\": \"112\",\n        \"InstrAttribValue\": \"Y\"\n      },\n      {\n        \"InstrAttribType\": \"113\",\n        \"InstrAttribValue\": \"N\"\n      },\n      {\n        \"InstrAttribType\": \"115\",\n        \"InstrAttribValue\": \"N\"\n      }\n    ],\n    \"NoEvents\": 1,\n    \"Events\": [\n      {\n        \"EventType\": \"7\",\n        \"EventDate\": 20210318\n      }\n    ],\n    \"InstrumentPricePrecision\": 4,\n    \"MinPriceIncrement\": 0.5,\n    \"MinPriceIncrementClearing\": 0.0002,\n    \"MinPriceIncrementAmount\": 0.01,\n    \"MaturityDate\": 20210319,\n    \"MaturityMonthYear\": 202103,\n    \"NoMarketSegments\": 1,\n    \"MarketSegmentGrp\": [\n      {\n        \"MarketSegmentID\": 204934,\n        \"PriceType\": \"22\",\n        \"NoPriceRangeRules\": 1,\n        \"PriceRangeRules\": [\n          {\n            \"PriceRangeRuleID\": 489\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79b50532-1467-4f3d-9b19-356a0275c50f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f3cdda7-12bf-4b19-a444-4cbd58c43b65",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f929fdec-c455-46e3-8a1f-cacab3613af4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rdi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "annotation",
+                      "value": "unannotated"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uint32>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "64d13b46-97ae-4c84-8aa1-2da3b3652b20",
+    "name": "A7 Analytics Platform - Algo management Algo management API Reference data API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

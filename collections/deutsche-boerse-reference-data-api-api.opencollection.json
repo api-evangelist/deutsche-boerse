@@ -1,0 +1,307 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Reference data API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/"
+          },
+          "docs": "The request delivers all available markets as a list of marketIds."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of trading days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              }
+            ]
+          },
+          "docs": "The request delivers all available trading days for the selected market as a list of dates."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of market segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              }
+            ]
+          },
+          "docs": "The request delivers all available market segments for the selected market and trading day as a list of marketSegmentIds."
+        },
+        {
+          "info": {
+            "name": "Retrieve details for all market segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "annotation",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+              }
+            ]
+          },
+          "docs": "The request delivers details for all available market segments for the selected market and trading day as a list of objects. The details contain all available ProductSnapshot (BU) messages."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/:marketSegmentId/",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "204934",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              }
+            ]
+          },
+          "docs": "The request delivers all available securities for the selected market, trading day and market segment as a list securityIds."
+        },
+        {
+          "info": {
+            "name": "Retrieve market segment details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/:marketSegmentId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "204934",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "annotation",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+              }
+            ]
+          },
+          "docs": "The request delivers all available details for the selected market segment as a list of objects. The details contain all RDI messages connected to the market segment. The message types ProductSnapshot (BU), InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/:marketSegmentId/:securityId/",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "204934",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "5036012",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              }
+            ]
+          },
+          "docs": "The request delivers all available messages for the selected market, trading day, market segment and security as a list of msgSeqNums."
+        },
+        {
+          "info": {
+            "name": "Retrieve security details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/:marketSegmentId/:securityId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "204934",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "5036012",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "annotation",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+              }
+            ]
+          },
+          "docs": "The request delivers all available details for the selected market segment and security as a list of objects. The details contain all RDI messages connected to the market segment and security. The message types  InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected."
+        },
+        {
+          "info": {
+            "name": "Retrieve message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/rdi/:marketId/:date/:marketSegmentId/:securityId/:msgSeqNum",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383. Available markets are XEEE, XETR and XEUR."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "204934",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "5036012",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "msgSeqNum",
+                "value": "4720",
+                "type": "path",
+                "description": "Message sequence number"
+              },
+              {
+                "name": "annotation",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format of enumerations.<br/> annotation options:\n  * `unannotated` (default) - enums are represented by their raw values\n  * `humanreadable` - enums are represented by their human readable strings\n  * `annotated` - enums are represented by both their human readable strings and raw values\n"
+              }
+            ]
+          },
+          "docs": "The request delivers the message details for the selected market, trading day, market segment, security and message as an array of  objects. Depending on the type of message, the content of the objects may differ. The message types InstrumentSnapshot (d), TotalReturnFutureStatus (f), TradeAtReferencePriceStatus (f) and VarianceFuturesStatus (f) can be expected."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2389 @@
+{
+  "item": [
+    {
+      "id": "4be8d38d-7eb7-41c2-bd1f-d46e80fc7312",
+      "name": "Market data API (EOBI)",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da7060d5-1c10-4380-8499-acb66938b17d",
+          "name": "Retrieve list of markets",
+          "request": {
+            "name": "Retrieve list of markets",
+            "description": {
+              "content": "The request delivers all available markets as a list of MarketIDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f32b1e97-8929-44f9-961d-9603efe9d77d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MarketIDs\": [\n    \"XETR\",\n    \"XEUR\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca05edea-6b87-404a-9ec2-549203d0428d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ad9def2b-cdd6-4f54-ab59-9edbae303639",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e698d463-8ae5-4028-9361-7a9908cbd8f3",
+          "name": "Retrieve list of trading days",
+          "request": {
+            "name": "Retrieve list of trading days",
+            "description": {
+              "content": "The request delivers all available trading days for the selected market as a list of dates (YYYYMMDD).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5e93512-eb19-4fd0-916f-4dee798483c7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Dates\": [\n    20200629,\n    20200630\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64954101-2f25-43cf-90d7-be1300c402b9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23998a8f-521a-40bb-8149-0e7c758d032b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d41b2280-edeb-42b6-86bf-ae066503afa6",
+          "name": "Retrieve list of products",
+          "request": {
+            "name": "Retrieve list of products",
+            "description": {
+              "content": "The request delivers a list of all available products for the selected market and trading day as a list of MarketSegmentIDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cddd7d0-4c17-4109-85b4-eea710268f08",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MarketSegmentIDs\": [\n    3,\n    5,\n    21\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db55e17f-4ad2-44f2-a998-ff73607bc27a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1af3ca1-9ddb-4ffd-b942-93fa1be0c3c2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e7cf47b-7a6b-4f2b-9163-f957b0310b50",
+          "name": "Retrieve list of instruments",
+          "request": {
+            "name": "Retrieve list of instruments",
+            "description": {
+              "content": "The request delivers a list of all instruments for the selected market, trading day and MarketSegmentID as a list of SecurityIDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce835a50-9c7d-42e3-a4b0-9851537e1999",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SecurityIDs\": [\n    2346321,\n    3426522,\n    3242343\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76c4b956-9578-4631-b3ac-ede62ec45be1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e87cdc3a-be4e-454c-8085-6360862071b6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "525bf3f8-5660-413c-87cf-cb093b79f30a",
+          "name": "Retrieve list of transaction times",
+          "request": {
+            "name": "Retrieve list of transaction times",
+            "description": {
+              "content": "The request delivers a list of the available transaction times for the selected market, trading day, MarketSegmentID and SecurityID as a list of TransactTimes.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "No restriction",
+                  "description": "Max number of elements in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Starting time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "Ending time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "ApplSeqNum",
+                  "value": "<integer>",
+                  "description": "Filter by application sequence number.<br/> (Multiple values must be separated by comma)\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "049ba717-93b0-4273-9655-f45dced48c7c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "ApplSeqNum",
+                      "value": "6745122"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"TransactTimes\": [\n    \"1589175000156121100\",\n    \"1589180100007332308\",\n    \"1589180400061095876\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3734c9ce-72b3-4a94-b03e-20d93f9c193a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "ApplSeqNum",
+                      "value": "6745122"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c40c4099-4736-4578-883e-6ecae908999e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "ApplSeqNum",
+                      "value": "6745122"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75829383-5a21-427c-a424-14de51a1d211",
+          "name": "Retrieve list of application sequence numbers or list of packets",
+          "request": {
+            "name": "Retrieve list of application sequence numbers or list of packets",
+            "description": {
+              "content": "\"The request delivers a list of the available application sequence numbers for the selected market, trading day, MarketSegmentID, SecurityID and TransactTime as a list of ApplSeqNums.\"<br/> If mode is set to 'detailed', the request returns a list of packets including their respective messages and available details. For a detailed description of the different message types please refer to the T7 EOBI documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId",
+                ":transactTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "MsgSeqNum",
+                  "value": "<integer>",
+                  "description": "Filter by message sequence number.<br/> (Multiple values must be separated by comma)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "TemplateId",
+                  "value": "<integer>",
+                  "description": "Filter by template identifier.<br/> (Multiple values must be separated by comma)\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<UTCTimestamp>",
+                  "key": "transactTime",
+                  "description": "(Required) Transaction time as nanoseconds since 1970"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f6e664a-f634-457c-baf2-6558e732698d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MsgSeqNum",
+                      "value": "4294967295"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ApplSeqNums\": [\n    6745122,\n    5468432\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5986df20-63c3-4d16-976a-29b8bb74774e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MsgSeqNum",
+                      "value": "4294967295"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6eb86aab-9baf-48fc-b215-0f6fd649cb31",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "MsgSeqNum",
+                      "value": "4294967295"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f63e60a-3532-44a0-96e6-87ac2784bcf6",
+          "name": "Retrieve list of message sequence numbers or a list of messages",
+          "request": {
+            "name": "Retrieve list of message sequence numbers or a list of messages",
+            "description": {
+              "content": "The request delivers a list of the available message sequence numbers for the selected market, trading day, MarketSegmentID, SecurityID, TransactTime and ApplSeqNum as a list of MsgSeqNums.<br/> If mode is set to 'detailed', the request returns a list of messages and available details. For a detailed description of the different message types please refer to the T7 EOBI documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId",
+                ":transactTime",
+                ":applSeqNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mode",
+                  "value": "<string>",
+                  "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "TemplateId",
+                  "value": "<integer>",
+                  "description": "Filter by template identifier.<br/> (Multiple values must be separated by comma)\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<UTCTimestamp>",
+                  "key": "transactTime",
+                  "description": "(Required) Transaction time as nanoseconds since 1970"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "applSeqNum",
+                  "description": "(Required) Application sequence number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c47184b4-c8c5-4051-97b1-a4e1b795ea76",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MsgSeqNums\": [\n    4294967295,\n    3224966211\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b1f86bf-ca85-4238-9d7b-485e7a25727b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "11dbba79-5b1a-4013-aa92-bdc0bd4552e2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "TemplateId",
+                      "value": "13101"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff0e5ac6-007d-44e6-a7e3-a976c7d7c7d7",
+          "name": "Retrieve message details",
+          "request": {
+            "name": "Retrieve message details",
+            "description": {
+              "content": "The request delivers the details of the message identified by the selected MarketID, trading day, MarketSegmentID, SecurityID,TransactTime, ApplSeqNum and MsgSeqNum combination. The message details consist of all fields specified in the T7 EOBI documentation for the respective message type. For a detailed description of the different message types please refer to the T7 EOBI documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "eobi",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId",
+                ":transactTime",
+                ":applSeqNum",
+                ":msgSeqNum"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier on T7"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<UTCTimestamp>",
+                  "key": "transactTime",
+                  "description": "(Required) Transaction time as nanoseconds since 1970"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "applSeqNum",
+                  "description": "(Required) Application sequence number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "msgSeqNum",
+                  "description": "(Required) Message sequence number."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3db98e33-9174-48a2-9226-ab43fe6976bc",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MessageHeader\": {\n    \"BodyLen\": 32,\n    \"TemplateID\": 13301,\n    \"MsgSeqNum\": 27\n  },\n  \"ApplSeqNum\": 6745122,\n  \"SecurityID\": 4233128,\n  \"SecurityStatus\": 1,\n  \"SecurityTradingStatus\": 204,\n  \"MarketCondition\": 0,\n  \"FastMarketIndicator\": 0,\n  \"SecurityTradingEvent\": null,\n  \"SoldOutIndicator\": null,\n  \"TransactTime\": \"1589180100007258166\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "409c5e23-51fc-4e81-b16e-f41352e0564f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8634c082-8509-4ba7-8e1d-2e57f85d8514",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "eobi",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId",
+                    ":transactTime",
+                    ":applSeqNum",
+                    ":msgSeqNum"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier on T7"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<UTCTimestamp>",
+                      "key": "transactTime",
+                      "description": "(Required) Transaction time as nanoseconds since 1970"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "applSeqNum",
+                      "description": "(Required) Application sequence number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "msgSeqNum",
+                      "description": "(Required) Message sequence number."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3d7a272b-a36b-44b4-a3dd-a9d9df70db33",
+    "name": "A7 Analytics Platform - Algo management Algo management API Market data API (EOBI) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

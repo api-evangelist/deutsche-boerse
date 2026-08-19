@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Symbols API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Symbols",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gets symbols for live options prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/OPT/"
+          },
+          "docs": "gets unique trading symbol identifiers for live options prices"
+        },
+        {
+          "info": {
+            "name": "gets symbols for implied volatility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/IV/"
+          },
+          "docs": "gets unique trading symbol identifiers for implied volatility"
+        },
+        {
+          "info": {
+            "name": "gets symbols for realized volatility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/RV/"
+          },
+          "docs": "gets unique trading symbol identifiers for realized volatility"
+        },
+        {
+          "info": {
+            "name": "gets symbols for implied dividend flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/DIV/"
+          },
+          "docs": "gets unique trading symbol identifiers for implied dividend flow"
+        },
+        {
+          "info": {
+            "name": "gets symbols for smile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/SMI/"
+          },
+          "docs": "gets unique trading symbol identifiers for smile"
+        },
+        {
+          "info": {
+            "name": "gets symbols for forward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/FWD/"
+          },
+          "docs": "gets unique trading symbol identifiers for forward"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

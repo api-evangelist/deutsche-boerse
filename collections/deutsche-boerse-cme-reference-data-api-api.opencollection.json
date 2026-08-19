@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API CME Reference data API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CME Reference data API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of exchanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/"
+          },
+          "docs": "The request delivers all available exchanges."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of trading days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/:exchange/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              }
+            ]
+          },
+          "docs": "The request delivers all available trading days for the selected exchange."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/:exchange/:date/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all assets for the selected exchange and trading day."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/:exchange/:date/:asset/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "GE",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all securities for the selected exchange, trading day and asset."
+        },
+        {
+          "info": {
+            "name": "Retrieve details for all securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/:exchange/:date/:asset",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "GE",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers all security details for the selected exchange, trading day and asset."
+        },
+        {
+          "info": {
+            "name": "Retrieve security details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/sd/:exchange/:date/:asset/:securityId",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "GE",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier"
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers details for the selected security."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

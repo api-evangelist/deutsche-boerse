@@ -1,0 +1,220 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Auctions API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Auctions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieves list of auction types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:marketSegmentID/:securityID/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentID",
+                "value": "",
+                "type": "path",
+                "description": "unique market segment identifier"
+              },
+              {
+                "name": "securityID",
+                "value": "",
+                "type": "path",
+                "description": "unique security identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers all available auction types for the selected security that is identified by market, trading day, market segment ID and security ID."
+        },
+        {
+          "info": {
+            "name": "retrieves list of auction types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:symbol/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers all available auction types for the selected security that is identified by market, trading day and trading symbol."
+        },
+        {
+          "info": {
+            "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:marketSegmentID/:securityID/:auctionType",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentID",
+                "value": "",
+                "type": "path",
+                "description": "unique market segment identifier"
+              },
+              {
+                "name": "securityID",
+                "value": "",
+                "type": "path",
+                "description": "unique security identifier"
+              },
+              {
+                "name": "auctionType",
+                "value": "",
+                "type": "path",
+                "description": "auction type"
+              },
+              {
+                "name": "side",
+                "value": "",
+                "type": "query",
+                "description": "side of an order"
+              },
+              {
+                "name": "px",
+                "value": "",
+                "type": "query",
+                "description": "limit price of an order, a null value corresponds to a market order"
+              },
+              {
+                "name": "prio",
+                "value": "",
+                "type": "query",
+                "description": "order priority (default 0)"
+              },
+              {
+                "name": "qty",
+                "value": "",
+                "type": "query",
+                "description": "quantity of an order"
+              }
+            ]
+          },
+          "docs": "The request delivers historical data for the selected auction that is identified by market, trading day, market segment ID and security ID, and optionally a simulated outcome of an auction, if complete information of an additional order (side {side}, limit price {px}, quantity {qty}) and optionally order priority {prio} and is provided."
+        },
+        {
+          "info": {
+            "name": "retrieves auction's historical data and optionally simulated outcome of an auction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:symbol/:auctionType",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "auctionType",
+                "value": "",
+                "type": "path",
+                "description": "auction type"
+              },
+              {
+                "name": "side",
+                "value": "",
+                "type": "query",
+                "description": "side of an order"
+              },
+              {
+                "name": "px",
+                "value": "",
+                "type": "query",
+                "description": "limit price of an order, a null value corresponds to a market order"
+              },
+              {
+                "name": "prio",
+                "value": "",
+                "type": "query",
+                "description": "order priority (default 0)"
+              },
+              {
+                "name": "qty",
+                "value": "",
+                "type": "query",
+                "description": "quantity of an order"
+              }
+            ]
+          },
+          "docs": "The request delivers historical data for the selected auction that is identified by market, trading day and trading symbol, and optionally a simulated outcome of an auction, if complete information of an additional order (side {side}, limit price {px}, quantity {qty}) and optionally order priority {prio} and is provided."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

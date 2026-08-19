@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Option Prices and Greeks API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Option Prices and Greeks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gets live options prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/OPT/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "live (delayed) prices for options on European stocks and indices including:<br/>\n  * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward<br/>\n  * greeks : delta, vega<br/>\n\nCanari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a \"Canari price\" which is also ava"
+        },
+        {
+          "info": {
+            "name": "gets live options prices for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/OPT/:symbol/:maturity",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "maturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity"
+              }
+            ]
+          },
+          "docs": "live (delayed) prices for options on European stocks and indices including:<br/>\n  * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward<br/>\n  * greeks : delta, vega<br/>\n\nCanari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a \"Canari price\" which is also ava"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

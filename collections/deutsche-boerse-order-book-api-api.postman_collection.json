@@ -1,0 +1,855 @@
+{
+  "item": [
+    {
+      "id": "b26ddee0-a2d9-4b07-bff9-04ba31018587",
+      "name": "Order book API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "219c05e6-a849-4f58-942f-85a8c42a0c77",
+          "name": "Retrieve order books for T7",
+          "request": {
+            "name": "Retrieve order books for T7",
+            "description": {
+              "content": "The request delivers either the order book valid at a given time or a list of order books for a given time period.</br> If `limit` is equal to `1`, the response will contain a single order book otherwise the response will contain a list of order books.</br> If `from` query parameter is not provided, the first order book of the day will be returned.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ob",
+                ":marketId",
+                ":date",
+                ":marketSegmentId",
+                ":securityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "9999999999999999999",
+                  "description": "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Max number of elements in the response (Minimum = 1 / Maximum = 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "levels",
+                  "value": "10",
+                  "description": "Define depth of the order book."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderbook",
+                  "value": "aggregated",
+                  "description": "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "trades",
+                  "value": "false",
+                  "description": "Display trades."
+                },
+                {
+                  "disabled": false,
+                  "key": "indicatives",
+                  "value": "false",
+                  "description": "Indicative auction uncrossing."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketId",
+                  "description": "(Required) Market identifier code as specified in ISO 10383."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "marketSegmentId",
+                  "description": "(Required) Unique product identifier or product pool identifier on T7."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95f8fe1c-e1cc-46e9-89a3-915f0e88ac69",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    },
+                    {
+                      "key": "indicatives",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MarketId\": \"XEUR\",\n  \"MarketSegmentId\": 3,\n  \"SecurityId\": 1552181,\n  \"Timestamp\": \"string\",\n  \"prev\": \"string\",\n  \"next\": \"string\",\n  \"Buy\": [\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 2,\n      \"Orders\": [\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3964,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        },\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3964,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        }\n      ]\n    },\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 2,\n      \"Orders\": [\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3964,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        },\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3964,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        }\n      ]\n    }\n  ],\n  \"Sell\": [\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3965,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        },\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3965,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        }\n      ]\n    },\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3965,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        },\n        {\n          \"TemplateID\": 13101,\n          \"MsgSeqNum\": 3965,\n          \"TrdRegTSTimeIn\": \"string\",\n          \"TrdRegTSPrevTimePriority\": \"string\",\n          \"PrevPrice\": \"string\",\n          \"PrevDisplayQty\": \"string\",\n          \"TrdRegTSTimePriority\": \"string\",\n          \"DisplayQty\": 100000\n        }\n      ]\n    }\n  ],\n  \"Trades\": [\n    {\n      \"TemplateID\": 13105,\n      \"MsgSeqNum\": 393,\n      \"Side\": \"SELL\",\n      \"AlgorithmicTradeIndicator\": 1,\n      \"TrdMatchID\": 1136,\n      \"Price\": \"string\",\n      \"TrdRegTSTimePriority\": \"string\",\n      \"LastQty\": \"string\",\n      \"LastPx\": \"string\"\n    },\n    {\n      \"TemplateID\": 13105,\n      \"MsgSeqNum\": 393,\n      \"Side\": \"SELL\",\n      \"AlgorithmicTradeIndicator\": 1,\n      \"TrdMatchID\": 1136,\n      \"Price\": \"string\",\n      \"TrdRegTSTimePriority\": \"string\",\n      \"LastQty\": \"string\",\n      \"LastPx\": \"string\"\n    }\n  ],\n  \"Indicatives\": [\n    {\n      \"TemplateID\": 13501,\n      \"MsgSeqNum\": 393,\n      \"LastPx\": \"string\",\n      \"LastQty\": \"string\",\n      \"ImbalanceQty\": \"string\",\n      \"ImbalanceSide\": \"BUY\",\n      \"SecurityTradingStatus\": \"string\",\n      \"PotentialSecurityTradingEvent\": \"string\"\n    },\n    {\n      \"TemplateID\": 13501,\n      \"MsgSeqNum\": 393,\n      \"LastPx\": \"string\",\n      \"LastQty\": \"string\",\n      \"ImbalanceQty\": \"string\",\n      \"ImbalanceSide\": \"BUY\",\n      \"SecurityTradingStatus\": \"string\",\n      \"PotentialSecurityTradingEvent\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0d5016a3-c205-4d81-8fc8-396445069b68",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    },
+                    {
+                      "key": "indicatives",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bbf9ac9d-d3a0-47b9-bbd0-76b8ef26e300",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":marketId",
+                    ":date",
+                    ":marketSegmentId",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    },
+                    {
+                      "key": "indicatives",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketId",
+                      "description": "(Required) Market identifier code as specified in ISO 10383."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "marketSegmentId",
+                      "description": "(Required) Unique product identifier or product pool identifier on T7."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3f8eabf-86cb-4bdb-bd9a-803ca61d556c",
+          "name": "Retrieve order books for CME",
+          "request": {
+            "name": "Retrieve order books for CME",
+            "description": {
+              "content": "The request delivers either the order book valid at a given time or a list of order books for a given time period.</br> If `limit` is equal to `1`, the response will contain a single order book otherwise the response will contain a list of order books.</br> If `from` query parameter is not provided, the first order book of the day will be returned.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ob",
+                ":exchange",
+                ":date",
+                ":asset",
+                ":securityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "0",
+                  "description": "Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "9999999999999999999",
+                  "description": "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1",
+                  "description": "Max number of elements in the response (Minimum = 1 / Maximum = 10000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "levels",
+                  "value": "10",
+                  "description": "Define depth of the order book."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderbook",
+                  "value": "aggregated",
+                  "description": "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "trades",
+                  "value": "false",
+                  "description": "Display trades."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset",
+                  "description": "(Required) Unique product identifier or product pool identifier."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96965f8d-957a-48c5-be85-622b937255e3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Exchange\": \"XCEC\",\n  \"Asset\": \"HG\",\n  \"SecurityId\": 14334,\n  \"Timestamp\": \"string\",\n  \"prev\": \"string\",\n  \"next\": \"string\",\n  \"Buy\": [\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"OrderID\": 766951730572,\n          \"MDOrderPriority\": 13109289399,\n          \"MDEntryPx\": {\n            \"mantissa\": 45505000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 2,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Bid\"\n        },\n        {\n          \"OrderID\": 766951730572,\n          \"MDOrderPriority\": 13109289399,\n          \"MDEntryPx\": {\n            \"mantissa\": 45505000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 2,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Bid\"\n        }\n      ]\n    },\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"OrderID\": 766951730572,\n          \"MDOrderPriority\": 13109289399,\n          \"MDEntryPx\": {\n            \"mantissa\": 45505000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 2,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Bid\"\n        },\n        {\n          \"OrderID\": 766951730572,\n          \"MDOrderPriority\": 13109289399,\n          \"MDEntryPx\": {\n            \"mantissa\": 45505000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 2,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Bid\"\n        }\n      ]\n    }\n  ],\n  \"Sell\": [\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"OrderID\": 766858203326,\n          \"MDOrderPriority\": 13001112903,\n          \"MDEntryPx\": {\n            \"mantissa\": 45200000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 13,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Ask\"\n        },\n        {\n          \"OrderID\": 766858203326,\n          \"MDOrderPriority\": 13001112903,\n          \"MDEntryPx\": {\n            \"mantissa\": 45200000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 13,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Ask\"\n        }\n      ]\n    },\n    {\n      \"Price\": \"string\",\n      \"Quantity\": \"string\",\n      \"OrderCount\": 1,\n      \"Orders\": [\n        {\n          \"OrderID\": 766858203326,\n          \"MDOrderPriority\": 13001112903,\n          \"MDEntryPx\": {\n            \"mantissa\": 45200000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 13,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Ask\"\n        },\n        {\n          \"OrderID\": 766858203326,\n          \"MDOrderPriority\": 13001112903,\n          \"MDEntryPx\": {\n            \"mantissa\": 45200000000000,\n            \"exponent\": -9\n          },\n          \"MDDisplayQty\": 13,\n          \"SecurityID\": 14334,\n          \"MDUpdateAction\": \"New\",\n          \"MDEntryType\": \"Ask\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78eb5405-4dff-41db-ac5b-cd240b81ffac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9152462b-c87a-4bab-b385-0f5057606b6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ob",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "to",
+                      "value": "1589175000156121100"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "levels",
+                      "value": "10"
+                    },
+                    {
+                      "key": "orderbook",
+                      "value": "aggregated"
+                    },
+                    {
+                      "key": "trades",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8cbf8474-8bd8-49d5-8d03-bda692a01b94",
+    "name": "A7 Analytics Platform - Algo management Algo management API Order book API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

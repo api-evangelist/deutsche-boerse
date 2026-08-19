@@ -1,0 +1,227 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Algo management API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of algo owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/algo"
+          },
+          "docs": "The request delivers a list of algo owners the current user has the permission to access."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of available algos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/algo/:owner",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Define the mode for the result output. Mode options:\n  * `compact` - Shows only the names of the algos\n  * `detailed` - Shows all metadata of the algos\n"
+              }
+            ]
+          },
+          "docs": "The request delivers all available algos for the selected customer as a list of strings.<br/> Users are only able to access their own algos but not other users'.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve algo configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/algo/:owner/:algoName",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "algoName",
+                "value": "spread",
+                "type": "path",
+                "description": "Name of the algo."
+              }
+            ]
+          },
+          "docs": "The request delivers the configuration parameters of the selected algo."
+        },
+        {
+          "info": {
+            "name": "Create/update algo",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/algo/:owner/:algoName",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "algoName",
+                "value": "spread",
+                "type": "path",
+                "description": "Name of the algo."
+              }
+            ]
+          },
+          "docs": "The request creates a new algo with the specified parameters. If the algo already exists, an update is performed on the existing algo.<br/> The algo content has to be added to the request body in yaml format.<br/>  A detailed description about how to create algos and the required content can be found in the Algo Creation Manual.\n"
+        },
+        {
+          "info": {
+            "name": "Delete algo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/algo/:owner/:algoName",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "algoName",
+                "value": "spread",
+                "type": "path",
+                "description": "Name of the algo."
+              }
+            ]
+          },
+          "docs": "The request deletes the specified algo."
+        },
+        {
+          "info": {
+            "name": "Retrieve algo source code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/algo/:owner/:algoName/download",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "algoName",
+                "value": "spread",
+                "type": "path",
+                "description": "Name of the algo."
+              }
+            ]
+          },
+          "docs": "The request delivers the source code of the selected algo in yaml format."
+        },
+        {
+          "info": {
+            "name": "Run algo",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/algo/:owner/:algoName/run",
+            "params": [
+              {
+                "name": "owner",
+                "value": "dbag",
+                "type": "path",
+                "description": "Username of the owner of the algo."
+              },
+              {
+                "name": "algoName",
+                "value": "spread",
+                "type": "path",
+                "description": "Name of the algo."
+              },
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "query",
+                "description": "Unique market identifier code as specified in ISO 10383 on T7.<br/> <b>Please note: 'marketId' parameter is MANDATORY for running algos on T7 instruments</b>\n"
+              },
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "query",
+                "description": "Unique exchange identifier on CME.<br/> <b>Please note: 'exchange' parameter is MANDATORY for running algos on CME instruments</b>\n"
+              },
+              {
+                "name": "date",
+                "value": "20190912",
+                "type": "query",
+                "description": "Trading day in the format  YYYYMMDD."
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "675",
+                "type": "query",
+                "description": "Unique product identifier or product pool identifier on T7.<br/> <b>Please note: 'marketSegmentID' parameter is MANDATORY for running algos on T7 instruments</b>\n"
+              },
+              {
+                "name": "asset",
+                "value": "GE",
+                "type": "query",
+                "description": "Unique asset identifier on CME.<br/> <b>Please note: 'asset' parameter is MANDATORY for running algos on CME instruments</b>\n"
+              },
+              {
+                "name": "securityId",
+                "value": "2657579",
+                "type": "query",
+                "description": "Unique security identifier."
+              },
+              {
+                "name": "additional",
+                "value": "",
+                "type": "query",
+                "description": "The query string of this endpoint can also be used to specify additional algo specific parameters. The parameters just have to be added with `&` to the query.<br/> The following rules apply:\n  * `name=value` is used to specify a parameter.<br/>\n    <b>Example:</b> level=1\n  * `&` is used to combine multiple parameters with a logical AND.<br/>\n    <b>Example:</b> aggr=4&level=1\n    \nTo test the feature in this document, please add the parameters in a valid JSON object.</br> <b>Example:</b> {\"aggr\":4,\"level\":1}\n"
+              }
+            ]
+          },
+          "docs": "The request runs the specified algo and returns the result data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

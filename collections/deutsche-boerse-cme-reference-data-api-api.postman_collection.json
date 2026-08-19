@@ -1,0 +1,1615 @@
+{
+  "item": [
+    {
+      "id": "a0af8013-0186-4cb4-a6f1-c5de82d98dfa",
+      "name": "CME Reference data API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4be9b9e-492c-4e12-b27c-690992737180",
+          "name": "Retrieve list of exchanges",
+          "request": {
+            "name": "Retrieve list of exchanges",
+            "description": {
+              "content": "The request delivers all available exchanges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb15b3cb-d719-41d2-b2ab-ed973e9113fa",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"XCME\",\n  \"XFXS\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28ee7d66-204f-480e-b890-802b0a458931",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bd80046a-df9d-4de1-b8f8-4b2f59ab11d3",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7e80e90-a8cc-4b9c-a944-29fac34910fb",
+          "name": "Retrieve list of trading days",
+          "request": {
+            "name": "Retrieve list of trading days",
+            "description": {
+              "content": "The request delivers all available trading days for the selected exchange.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ":exchange",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d57f5ae-83d6-4b4c-8447-d7460af31163",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  20200102,\n  20200103,\n  20200106\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "879746db-db36-4259-a8a4-787f387fd461",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7448bc9b-554f-4578-bf27-a555723dfdec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d8c5c8b-0701-47af-8636-ae5cae492669",
+          "name": "Retrieve list of assets",
+          "request": {
+            "name": "Retrieve list of assets",
+            "description": {
+              "content": "The request delivers a list of all assets for the selected exchange and trading day.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ":exchange",
+                ":date",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "933b27a4-fa9d-469e-8ea0-f74ea47d3004",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"GE\",\n  \"SR1\",\n  \"SR2\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f021786b-4396-44f3-8ffa-7f98a2d142ee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6dcba4a2-1878-4e75-95d0-32c7b59fdf4f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a320a3fd-f1f0-482d-ba20-d4088eada728",
+          "name": "Retrieve list of securities",
+          "request": {
+            "name": "Retrieve list of securities",
+            "description": {
+              "content": "The request delivers a list of all securities for the selected exchange, trading day and asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ":exchange",
+                ":date",
+                ":asset",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset",
+                  "description": "(Required) Unique product identifier or product pool identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b395091-24e6-4085-b11d-553b9466f581",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"10014\",\n  \"10077\",\n  \"10096\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8baa422-cfed-49d6-8192-cdf4b20018c9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e88b00c-98f8-4aa9-ae45-7af938995241",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24d18a5c-9e60-48fd-a92e-6819e45c6ac6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2307d0ee-cbbf-4079-934c-9117d22dc544",
+          "name": "Retrieve details for all securities",
+          "request": {
+            "name": "Retrieve details for all securities",
+            "description": {
+              "content": "The request delivers all security details for the selected exchange, trading day and asset.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ":exchange",
+                ":date",
+                ":asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset",
+                  "description": "(Required) Unique product identifier or product pool identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0afe9a95-fac2-4f21-aa4b-9b44db3d07a4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"NoRelatedInstruments\": \"0\",\n    \"UnderlyingSecurityIDSource\": \"8\",\n    \"UnderlyingSecurityID\": \"254273\",\n    \"NoLotTypeRules\": \"0\",\n    \"NoInstrAttrib\": \"1\",\n    \"InstrAttribValue\": \"00000000000001000010000100000111\",\n    \"EventTime\": \"20210910210000000000\",\n    \"EventType\": \"7\",\n    \"UserDefinedInstrument\": \"N\",\n    \"LowLimitPrice\": \"0.250000000\",\n    \"TradingReferenceDate\": \"20200819\",\n    \"NoUnderlyings\": \"1\",\n    \"MarketDepth\": \"3\",\n    \"SettlPriceType\": \"00000011\",\n    \"LastUpdateTime\": \"20200816160152000004\",\n    \"UnderlyingProduct\": \"14\",\n    \"SecurityGroup\": \"J4\",\n    \"SecurityExchange\": \"XCME\",\n    \"MarketSegmentID\": \"50\",\n    \"SecurityID\": \"6247\",\n    \"TradingReferencePrice\": \"313.500000000\",\n    \"SecurityIDSource\": \"8\",\n    \"MatchAlgorithm\": \"Q\",\n    \"UnderlyingSymbol\": \"SR3U5\",\n    \"SecurityUpdateAction\": \"A\",\n    \"MDFeedType\": \"GBX\",\n    \"NoEvents\": \"2\",\n    \"UnitOfMeasureQty\": \"2500.000000000\",\n    \"ChannelID\\\"\": \"313\",\n    \"MatchEventIndicator\": \"00000000\",\n    \"SecurityDefinition\": \"d\",\n    \"SecurityType\": \"OOF\",\n    \"MinPriceIncrement\": \"0.500000000\",\n    \"MaxTradeVol\": \"99999\",\n    \"MinPriceIncrementAmount\": \"12.500000000\",\n    \"Symbol\": \"S4U1 P0300\",\n    \"PutOrCall\": \"0\",\n    \"MinCabPrice\": \"0.250000000\",\n    \"MaturityMonthYear\": \"202109\",\n    \"Asset\": \"S4\",\n    \"DisplayFactor\": \"1.000000000\",\n    \"StrikeCurrency\": \"USD\",\n    \"NoMDFeedTypes\": \"1\",\n    \"Currency\": \"USD\",\n    \"InstrAttribType\": \"24\",\n    \"StrikePrice\": \"10300.000000000\",\n    \"CFICode\": \"OPAFPS\",\n    \"UnitOfMeasure\": \"IPNT\",\n    \"HighLimitPrice\": \"9999900.000000000\",\n    \"MinTradeVol\": \"1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da1341ba-7be3-4f26-aded-dc222c49cd3d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ed84263-dd33-4c43-bc8f-d2da465ecafd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da0a9b3a-4b7b-4c2a-97fa-a72556a2aac8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d65cb79d-31ae-4aa0-8161-db5822b6af67",
+          "name": "Retrieve security details",
+          "request": {
+            "name": "Retrieve security details",
+            "description": {
+              "content": "The request delivers details for the selected security.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sd",
+                ":exchange",
+                ":date",
+                ":asset",
+                ":securityId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "exchange",
+                  "description": "(Required) Exchange identifier code."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "date",
+                  "description": "(Required) Trading day in the format  YYYYMMDD"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "asset",
+                  "description": "(Required) Unique product identifier or product pool identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "securityId",
+                  "description": "(Required) Unique security identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da7a2bd4-6a81-4450-b55e-2d8228dca430",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"NoRelatedInstruments\": \"0\",\n    \"UnderlyingSecurityIDSource\": \"8\",\n    \"UnderlyingSecurityID\": \"254273\",\n    \"NoLotTypeRules\": \"0\",\n    \"NoInstrAttrib\": \"1\",\n    \"InstrAttribValue\": \"00000000000001000010000100000111\",\n    \"EventTime\": \"20210910210000000000\",\n    \"EventType\": \"7\",\n    \"UserDefinedInstrument\": \"N\",\n    \"LowLimitPrice\": \"0.250000000\",\n    \"TradingReferenceDate\": \"20200819\",\n    \"NoUnderlyings\": \"1\",\n    \"MarketDepth\": \"3\",\n    \"SettlPriceType\": \"00000011\",\n    \"LastUpdateTime\": \"20200816160152000004\",\n    \"UnderlyingProduct\": \"14\",\n    \"SecurityGroup\": \"J4\",\n    \"SecurityExchange\": \"XCME\",\n    \"MarketSegmentID\": \"50\",\n    \"SecurityID\": \"6247\",\n    \"TradingReferencePrice\": \"313.500000000\",\n    \"SecurityIDSource\": \"8\",\n    \"MatchAlgorithm\": \"Q\",\n    \"UnderlyingSymbol\": \"SR3U5\",\n    \"SecurityUpdateAction\": \"A\",\n    \"MDFeedType\": \"GBX\",\n    \"NoEvents\": \"2\",\n    \"UnitOfMeasureQty\": \"2500.000000000\",\n    \"ChannelID\\\"\": \"313\",\n    \"MatchEventIndicator\": \"00000000\",\n    \"SecurityDefinition\": \"d\",\n    \"SecurityType\": \"OOF\",\n    \"MinPriceIncrement\": \"0.500000000\",\n    \"MaxTradeVol\": \"99999\",\n    \"MinPriceIncrementAmount\": \"12.500000000\",\n    \"Symbol\": \"S4U1 P0300\",\n    \"PutOrCall\": \"0\",\n    \"MinCabPrice\": \"0.250000000\",\n    \"MaturityMonthYear\": \"202109\",\n    \"Asset\": \"S4\",\n    \"DisplayFactor\": \"1.000000000\",\n    \"StrikeCurrency\": \"USD\",\n    \"NoMDFeedTypes\": \"1\",\n    \"Currency\": \"USD\",\n    \"InstrAttribType\": \"24\",\n    \"StrikePrice\": \"10300.000000000\",\n    \"CFICode\": \"OPAFPS\",\n    \"UnitOfMeasure\": \"IPNT\",\n    \"HighLimitPrice\": \"9999900.000000000\",\n    \"MinTradeVol\": \"1\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a619557f-857a-41a0-ad2a-13e52c38082e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9cc02901-7e44-4c76-b13c-83f6ce9062c0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10ae72f1-b401-442a-a9a3-af6584cd55e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sd",
+                    ":exchange",
+                    ":date",
+                    ":asset",
+                    ":securityId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "exchange",
+                      "description": "(Required) Exchange identifier code."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "date",
+                      "description": "(Required) Trading day in the format  YYYYMMDD"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "asset",
+                      "description": "(Required) Unique product identifier or product pool identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "securityId",
+                      "description": "(Required) Unique security identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1e3e6070-402e-4b1e-8fb5-5a32a0d50f41",
+    "name": "A7 Analytics Platform - Algo management Algo management API CME Reference data API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

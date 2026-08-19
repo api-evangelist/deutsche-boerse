@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Exchanges, symbols, securities API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchanges, symbols, securities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieves list of exchanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/"
+          },
+          "docs": "The request delivers all available markets as a list of MICs.\""
+        },
+        {
+          "info": {
+            "name": "retrieves list of trading days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              }
+            ]
+          },
+          "docs": "The request delivers all available trading days for the selected market as a list of dates (YYYYMMDD)."
+        },
+        {
+          "info": {
+            "name": "retrieves list of market segments, or alternatively symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Defines the output values for the response.<br/> mode options:\n  * `ids` (default) - returns a list of market segment IDs\n  * `symbols` - returns a list of trading symbols\n"
+              }
+            ]
+          },
+          "docs": "The request delivers all available market segments, or alternatively symbols, for the selected market and trading day as a list of market segment IDs, or symbols."
+        },
+        {
+          "info": {
+            "name": "retrieves list of securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:marketSegmentID/",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentID",
+                "value": "",
+                "type": "path",
+                "description": "unique market segment identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers all available securities for the selected market, trading day and market segment as a list security IDs."
+        },
+        {
+          "info": {
+            "name": "retrieves security's reference data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:marketSegmentID/:securityID",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentID",
+                "value": "",
+                "type": "path",
+                "description": "unique market segment identifier"
+              },
+              {
+                "name": "securityID",
+                "value": "",
+                "type": "path",
+                "description": "unique security identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers reference data for the selected security that is identified by market, trading day, market segment ID and security ID."
+        },
+        {
+          "info": {
+            "name": "retrieves security's reference data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/auction/:exchange/:date/:symbol",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers reference data for the selected security that is identified by market, trading day and trading symbol."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

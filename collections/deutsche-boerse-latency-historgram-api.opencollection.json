@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Latency Historgram API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Latency Historgram",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve result of given latencies query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/insights/latencies/:date/:trigger/:target/:regime/:target_action",
+            "params": [
+              {
+                "name": "date",
+                "value": "20220121",
+                "type": "path",
+                "description": "Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+              },
+              {
+                "name": "trigger",
+                "value": "FDAX",
+                "type": "path",
+                "description": "Trigger product"
+              },
+              {
+                "name": "target",
+                "value": "FDAX",
+                "type": "path",
+                "description": "Target product"
+              },
+              {
+                "name": "regime",
+                "value": "",
+                "type": "path",
+                "description": "Latency regime"
+              },
+              {
+                "name": "target_action",
+                "value": "",
+                "type": "path",
+                "description": "Target action"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Defines the format of the response."
+              }
+            ]
+          },
+          "docs": "The request queries the latencies and returns the matching results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

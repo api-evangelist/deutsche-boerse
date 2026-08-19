@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Sending times, packets, messages API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sending times, packets, messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieves list of packets' sending times, or complete packets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp/:exchange/:date/:asset/:securityId",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "",
+                "type": "path",
+                "description": "unique asset identifier"
+              },
+              {
+                "name": "securityId",
+                "value": "",
+                "type": "path",
+                "description": "unique security identifier"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of packets with messages including their details\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "max number of elements in the response"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "array of packet's sending times as start times for (multiple) time interval selection (multiple values are separated by comma)"
+              },
+              {
+                "name": "to",
+                "value": "null",
+                "type": "query",
+                "description": "packet's sending time as a global end time for (multiple) time interval selection"
+              },
+              {
+                "name": "msgSeqNum",
+                "value": "",
+                "type": "query",
+                "description": "array of packet's sequence numbers used as a filter to select packets (multiple values are separated by comma)"
+              },
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query",
+                "description": "array of templateIDs used as a filter to select packets (multiple values are separated by comma)"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of the available sending times, or alternatively complete packets for the selected exchange, trading day, asses and security."
+        },
+        {
+          "info": {
+            "name": "retrieves packet details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp/:exchange/:date/:asset/:securityId/:sendingTime",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "",
+                "type": "path",
+                "description": "unique asset identifier"
+              },
+              {
+                "name": "securityId",
+                "value": "",
+                "type": "path",
+                "description": "unique security identifier"
+              },
+              {
+                "name": "sendingTime",
+                "value": "",
+                "type": "path",
+                "description": "packet's sending time"
+              }
+            ]
+          },
+          "docs": "The request delivers the details of the packet identified by the selected exchange, trading day, asset, security and packet's sending time.</br>  For a detailed description of the different message types please refer to the CME MDP documentation.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,640 @@
+{
+  "item": [
+    {
+      "id": "e909afa3-8f38-4e1d-b4c2-a831c8ecc536",
+      "name": "Latency Historgram",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6441ce8-55ca-4661-8aa9-9f1250850765",
+          "name": "Retrieve result of given latencies query",
+          "request": {
+            "name": "Retrieve result of given latencies query",
+            "description": {
+              "content": "The request queries the latencies and returns the matching results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "latencies",
+                ":date",
+                ":trigger",
+                ":target",
+                ":regime",
+                ":target_action"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Defines the format of the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "date",
+                  "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trigger",
+                  "description": "(Required) Trigger product"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "target",
+                  "description": "(Required) Target product"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "FPGA",
+                  "key": "regime",
+                  "description": "(Required) Latency regime"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "ALL",
+                  "key": "target_action",
+                  "description": "(Required) Target action"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a98d98d7-8cdd-4d90-9ed3-6206aa032ea6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b44ca08d-a2a8-4e8b-bcff-fa47098b63f0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7c871541-d867-470f-b863-fcc7e28c93fa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8f0e748f-2fc7-4aa9-b2ad-418e6703e4c0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b33c5108-2fc7-4b3b-a9de-505fa64c8079",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7dd10e23-7907-4493-8326-dfba7257fd65",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "latencies",
+                    ":date",
+                    ":trigger",
+                    ":target",
+                    ":regime",
+                    ":target_action"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "date",
+                      "description": "(Required) Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trigger",
+                      "description": "(Required) Trigger product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "target",
+                      "description": "(Required) Target product"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "FPGA",
+                      "key": "regime",
+                      "description": "(Required) Latency regime"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "ALL",
+                      "key": "target_action",
+                      "description": "(Required) Target action"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57c20169-ba69-4e00-a0c9-31647adc3319",
+    "name": "A7 Analytics Platform - Algo management Algo management API Latency Historgram API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

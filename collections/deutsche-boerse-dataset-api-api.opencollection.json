@@ -1,0 +1,370 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Dataset API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dataset API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of dataset owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset",
+            "params": [
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Defines the level of detail for the output.<br/> Mode options:\n  * `compact` (default) - Returns a list of owners\n  * `detailed` - Returns a list of owners and their respective datasets\n"
+              }
+            ]
+          },
+          "docs": "The request delivers the list of owners the user has permission to access.<br/> If the mode parameter is set to `detailed`, the request also returns a list of the datasets assigned to each owner.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of available datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:owner",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              }
+            ]
+          },
+          "docs": "The request delivers all available datasets assigned to the given owner."
+        },
+        {
+          "info": {
+            "name": "Retrieve specification (schema) of given dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:owner/:dataset",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "dataset",
+                "value": "TRADES",
+                "type": "path",
+                "description": "Name of the dataset"
+              }
+            ]
+          },
+          "docs": "The request delivers the specification of the given dataset."
+        },
+        {
+          "info": {
+            "name": "Delete dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/dataset/:owner/:dataset",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "dataset",
+                "value": "TRADES",
+                "type": "path",
+                "description": "Name of the dataset"
+              }
+            ]
+          },
+          "docs": "The request deletes the given dataset."
+        },
+        {
+          "info": {
+            "name": "Query result of given dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:owner/:dataset/data",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "dataset",
+                "value": "TRADES",
+                "type": "path",
+                "description": "Name of the dataset"
+              },
+              {
+                "name": "select",
+                "value": "MarketSegmentID,Currency",
+                "type": "query",
+                "description": "Defines the fields which will be included in the result data.<br/> Multiple fields have to be separated by comma.<br/> `*` can be used to select all fields availale in the dataset.<br/>"
+              },
+              {
+                "name": "where",
+                "value": "",
+                "type": "query",
+                "description": "Defines criteria to filter the result data.<br> The following rules apply:\n  - `Parameter=value` filters for data which contains a specific value for the given parameter<br>\n    <b>Example:</b> MarketSegmentID=1210<br><br>\n  - `Parameter!=value` filters for data which does NOT contain the specified value for the given parameter<br>\n    <b>Example:</b> marketSegmentId!=1210<br><br>\n  - `Parameter<value` filters for data which contains values smaller than the specified value for the given parameter<br>\n    <b>Example:</b> price<1000<br><br>\n  - `Parameter<=value` filters for data which contains values smaller than or equal to the specified value for the given parameter<br>\n    <b>Example:</b> price<=1000<br><br> \n  - `Parameter>value` filters for data which contains values larger than the specified value for the given parameter<br>\n    <b>Example:</b> price>1000<br><br>\n  - `Parameter>=value` filters for data which contains values larger than or equal to the specified value for the given parameter<br>\n    <b>Example:</b> price>=1000<br><br>            \n  - `Parameter in(value1,value2,...)` filters for data which contains at least one of the specified values for the given parameter<br>\n    <b>Example:</b> marketSegmentId in(1210,1211,1213)<br><br>\n  - `&&` combines multiple filter criteria with a logical AND<br>\n    <b>Example:</b> marketSegmentId=1210&&securityId=6565671 <br><br>\n  - `||` combines multiple filter criteria with a logical OR<br>\n    <b>Example:</b> marketSegmentId=1210||securityId=6565671<br><br>\n  - `()` manipulates the order in which parameters combined with AND/OR are evaluated<br>\n    <b>Example:</b> (marketSegmentId=1210&&securityId!=6565671)||(marketsegmentId in(1210,589)&&cuerrency!=EUR)<br>\n    \n<b>Depending on the implementation it may be necessary to use URL encoding for special characters. In this case please use the respective codes (e.g. %27) instead of the characters.</b>\n"
+              },
+              {
+                "name": "orderBy",
+                "value": "MarketSegmentID,SecurityID ASC",
+                "type": "query",
+                "description": "Defines the fields and the order the result will be sorted by. <br/> Multiple fields have to be separated by comma. <br/> ASC/DESC must be added to define the sort order.\n"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Defines the format of the response."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Limit the number of elements in the response (null = 1000). Max value is 10000."
+              }
+            ]
+          },
+          "docs": "The request delivers the results of the given dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of available datasets of a single provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:provider",
+            "params": [
+              {
+                "name": "provider",
+                "value": "eurex",
+                "type": "path",
+                "description": "Dataset provider identification"
+              }
+            ]
+          },
+          "docs": "The request delivers all available datasets assigned to the given provider."
+        },
+        {
+          "info": {
+            "name": "Retrieve specification (schema) of given dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:provider/:dataset",
+            "params": [
+              {
+                "name": "provider",
+                "value": "eurex",
+                "type": "path",
+                "description": "Dataset provider identification"
+              },
+              {
+                "name": "dataset",
+                "value": "trades",
+                "type": "path",
+                "description": "Name of the dataset"
+              }
+            ]
+          },
+          "docs": "The request delivers the specification of the given dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve results of given dataset for the selected date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:provider/:dataset/:date",
+            "params": [
+              {
+                "name": "provider",
+                "value": "eurex",
+                "type": "path",
+                "description": "Dataset provider identification"
+              },
+              {
+                "name": "dataset",
+                "value": "trades",
+                "type": "path",
+                "description": "Name of the dataset"
+              },
+              {
+                "name": "date",
+                "value": "20220121",
+                "type": "path",
+                "description": "Date (fact date) of the data to be retrieved (as YYYYMMDD)"
+              },
+              {
+                "name": "fields",
+                "value": "ISIN,PRICE",
+                "type": "query",
+                "description": "The list of fields to be returned. (by default - wihout fields parameter -  all fields will be returned)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Defines the format of the response."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Limit the number of elements in the response (default is 10000 if omitted). Max value is 1000000."
+              },
+              {
+                "name": "params",
+                "value": "Isin=DE0005810055,Price=162.0",
+                "type": "query",
+                "description": "any additional query parameters. The mandatory fields must be set here"
+              }
+            ]
+          },
+          "docs": "The request delivers the results of the given dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve result of given dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/dataset/:provider/:dataset/data",
+            "params": [
+              {
+                "name": "provider",
+                "value": "eurex",
+                "type": "path",
+                "description": "Dataset provider identification"
+              },
+              {
+                "name": "dataset",
+                "value": "trades",
+                "type": "path",
+                "description": "Name of the dataset"
+              },
+              {
+                "name": "dates",
+                "value": "20211224",
+                "type": "query",
+                "description": "Data filter by date (default value - when omitted - refers to the latest available date); possible values: YYYYMMDD (single date), YYYYMMDD-YYYYMMDD (days between start - end date), YYYYMMDD,YYYYMMDD (comma separated list of dates). There can be some restrictions for individual datasets, thus only single date value will be accepted. Please read the dataset documentation for further details."
+              },
+              {
+                "name": "fields",
+                "value": "ISIN,PRICE",
+                "type": "query",
+                "description": "The list of fields to be returned. (by default - wihout fields parameter -  all fields will be returned)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Defines the format of the response."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Limit the number of elements in the response (default is 10000 if omitted). Max value is 1000000."
+              },
+              {
+                "name": "params",
+                "value": "Isin=DE0005810055,Price=162.0",
+                "type": "query",
+                "description": "any additional query parameters"
+              }
+            ]
+          },
+          "docs": "The request delivers the results of the given dataset."
+        },
+        {
+          "info": {
+            "name": "Retrieve result of given dataset query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/api/v1/dataset/:provider/:dataset/query",
+            "params": [
+              {
+                "name": "provider",
+                "value": "eurex",
+                "type": "path",
+                "description": "Dataset provider identification"
+              },
+              {
+                "name": "dataset",
+                "value": "trades",
+                "type": "path",
+                "description": "Name of the dataset"
+              },
+              {
+                "name": "dates",
+                "value": "20211224",
+                "type": "query",
+                "description": "Data filter by date (default value - when omitted - refers to the latest available date); possible values: YYYYMMDD (single date), YYYYMMDD-YYYYMMDD (days between start - end date), YYYYMMDD,YYYYMMDD (comma separated list of dates). There can be some restrictions for individual datasets, thus only single date value will be accepted. Please read the dataset documentation for further details."
+              },
+              {
+                "name": "fields",
+                "value": "ISIN,PRICE",
+                "type": "query",
+                "description": "The list of fields to be returned. (by default - wihout fields parameter -  all fields will be returned)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Defines the format of the response."
+              },
+              {
+                "name": "limit",
+                "value": "100",
+                "type": "query",
+                "description": "Limit the number of elements in the response (default is 10000 if omitted). Max value is 1000000."
+              }
+            ]
+          },
+          "docs": "The request queries the dataset and returns the matching results."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

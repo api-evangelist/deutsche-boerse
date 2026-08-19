@@ -1,0 +1,833 @@
+{
+  "item": [
+    {
+      "id": "67b4085a-3447-4b30-9dfe-8a0cb4fab965",
+      "name": "Pace of the Roll",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9554c407-c3ca-42e4-a701-351fcfe3f8e9",
+          "name": "Retrieve list of market segments",
+          "request": {
+            "name": "Retrieve list of market segments",
+            "description": {
+              "content": "The request delivers all available market segments as a list of strings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "por"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98196dc5-72eb-41ed-afdf-ad7eb25deb20",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"MarketSegments\": [\n    \"FDAX\",\n    \"FDAX\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5964856d-8edc-42da-9841-d012912249aa",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58b77e0f-79a8-4e11-82b1-d71303cb899f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "201846f9-19db-4206-9383-a0ff29adba10",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcdd8d2e-b0f4-4c49-bd1c-31b97b521826",
+          "name": "Retrieve list of rolls",
+          "request": {
+            "name": "Retrieve list of rolls",
+            "description": {
+              "content": "The request delivers all available rolls for the selected market segment as a list of dates (format =  YYYYMM).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "por",
+                ":MarketSegment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "MarketSegment",
+                  "description": "(Required) Name of the market segment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56142254-7b8e-4d93-80dd-6ed90be65bc3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Rolls\": [\n    202103,\n    202103\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53a44795-66fc-4621-b1eb-02409c878539",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "14d0ad39-de17-44b6-a58b-fc07e21b72e2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4f0f8c7e-4dc5-43a3-b54f-1df58482d136",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07f1cf69-79ed-4c7c-9c42-44177ee28a00",
+          "name": "Retrieve roll details",
+          "request": {
+            "name": "Retrieve roll details",
+            "description": {
+              "content": "The request delivers the detailes for the selected roll as a JSON object.<br><br>  The details contain the current `r_0`, previous `r_1` and the one before the previous roll `r_2` as well as other previous rolls upto `n` (`r_3`, ..., `r_n`). The roll is defined as a ratio of adjusted open interest of a back-month contract to a sum of back- and front-month contract, for example Dec-2012 / (Sep-2012 + Dec-2012) for September 2012 roll. For each roll this ratio is calculated for a given number of days till expiry (`days`). The corresponding number of days till expiry `dte` is also provided in the output. Additionally, six quantiles (`q_0 = min`, `q_1 = 10%`, `q_2 = 25%`, `q_3 = 75%`, `q_4 = 90%`, `q_5 = max`) based on `n` previous rolls. In the selection of past rolls two alternative comparison methods can be used: consecutive (`comp=c`, i.e. Jun-2012, Mar-2012, Dec-2011, Sep-2011 etc. for Sep-2012 roll) or the same month (`comp=s`, i.e. Sep-2011, Sep-2010, Sep-2009, Sep-2008 for Sep-2012 roll).<br><br> Quantile `q` is the value of the largest `m`-th element such that `m / n <= q`, where `n` is the number of elements in an ordered list (in other words, `int index = q(double) * (n(int) - 1)`, where `index` is 0-based index of an element in an sorted list).\n\n  <b>Example:</b> `n = 30`:\n\n  `q_0 = min`: `m = 1` (`index = 0`, always the 1st element)\n  \n  `q_1 = 10%`: `m = 3` (`index = 2`, the 3rd element)\n  \n  `q_2 = 25%`: `m = 8` (`index = 7`, the 8th element)\n  \n  `q_3 = 75%`: `m = 22` (`index = 21`, the 22rd element)\n  \n  `q_4 = 90%`: `m = 27` (`index = 26`, the 27th element)\n  \n  `q_5 = max`: `m = n = 30` (`index = 29`, always the last element)\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "insights",
+                "por",
+                ":MarketSegment",
+                ":Roll"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "days",
+                  "value": "10",
+                  "description": "Number of days till expiry including the expiry day"
+                },
+                {
+                  "disabled": false,
+                  "key": "n",
+                  "value": "30",
+                  "description": "Maximal number of previous rolls for quantile calculation"
+                },
+                {
+                  "disabled": false,
+                  "key": "comp",
+                  "value": "c",
+                  "description": "Comparison parameter to control which past rolls are considered for the calculation. <br>\n  * `s` = Data from the same expiration month from previous years\n  * `c` = Data from `n` consecutive months prior to the selected roll\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "MarketSegment",
+                  "description": "(Required) Name of the market segment"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "Roll",
+                  "description": "(Required) Roll in the format YYYYMM"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "836a7938-e222-46f1-9ce0-a351da458361",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment",
+                    ":Roll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "days",
+                      "value": "15"
+                    },
+                    {
+                      "key": "n",
+                      "value": "20"
+                    },
+                    {
+                      "key": "comp",
+                      "value": "c"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Roll",
+                      "description": "(Required) Roll in the format YYYYMM"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dte\": [\n    1,\n    1\n  ],\n  \"r_0\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_0\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_1\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_2\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_3\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_4\": [\n    0.887223,\n    0.887223\n  ],\n  \"q_5\": [\n    0.887223,\n    0.887223\n  ],\n  \"r_1\": [\n    0.887223,\n    0.887223\n  ],\n  \"r_2\": [\n    0.887223,\n    0.887223\n  ],\n  \"r_n\": [\n    0.887223,\n    0.887223\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7725967-42c9-4244-8849-08853404eb37",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment",
+                    ":Roll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "days",
+                      "value": "15"
+                    },
+                    {
+                      "key": "n",
+                      "value": "20"
+                    },
+                    {
+                      "key": "comp",
+                      "value": "c"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Roll",
+                      "description": "(Required) Roll in the format YYYYMM"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24e24355-e97a-4432-bbd9-c30d1f85cf94",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment",
+                    ":Roll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "days",
+                      "value": "15"
+                    },
+                    {
+                      "key": "n",
+                      "value": "20"
+                    },
+                    {
+                      "key": "comp",
+                      "value": "c"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Roll",
+                      "description": "(Required) Roll in the format YYYYMM"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5cffa4f7-69cd-4899-a9cb-83f35532ea7c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "insights",
+                    "por",
+                    ":MarketSegment",
+                    ":Roll"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "days",
+                      "value": "15"
+                    },
+                    {
+                      "key": "n",
+                      "value": "20"
+                    },
+                    {
+                      "key": "comp",
+                      "value": "c"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "MarketSegment",
+                      "description": "(Required) Name of the market segment"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "Roll",
+                      "description": "(Required) Roll in the format YYYYMM"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9bc9be47-c146-4e97-b9d0-639547568684",
+    "name": "A7 Analytics Platform - Algo management Algo management API Pace of the Roll API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href=\"https://a7.deutsche-boerse.com/\">user interface</a> or via RESTful API.</br></br>\nThe algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>\n<b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword \"Bearer\" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href=\"https://a7.deutsche-boerse.com/\">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>\n\n\nContact Support:\n Name: Deutsche Börse Data & Analytics\n Email: analytics@deutsche-boerse.com",
+      "type": "text/plain"
+    }
+  }
+}

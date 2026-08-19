@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Order book API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Order book API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve order books for T7",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/ob/:marketId/:date/:marketSegmentId/:securityId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7."
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier"
+              },
+              {
+                "name": "from",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+              },
+              {
+                "name": "to",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of elements in the response (Minimum = 1 / Maximum = 10000)."
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "query",
+                "description": "Define depth of the order book."
+              },
+              {
+                "name": "orderbook",
+                "value": "",
+                "type": "query",
+                "description": "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
+              },
+              {
+                "name": "trades",
+                "value": "",
+                "type": "query",
+                "description": "Display trades."
+              },
+              {
+                "name": "indicatives",
+                "value": "",
+                "type": "query",
+                "description": "Indicative auction uncrossing."
+              }
+            ]
+          },
+          "docs": "The request delivers either the order book valid at a given time or a list of order books for a given time period.</br> If `limit` is equal to `1`, the response will contain a single order book otherwise the response will contain a list of order books.</br> If `from` query parameter is not provided, the first order book of the day will be returned.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve order books for CME",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/ob/:exchange/:date/:asset/:securityId",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "XCME",
+                "type": "path",
+                "description": "Exchange identifier code."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "GE",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier."
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier"
+              },
+              {
+                "name": "from",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+              },
+              {
+                "name": "to",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of elements in the response (Minimum = 1 / Maximum = 10000)."
+              },
+              {
+                "name": "levels",
+                "value": "",
+                "type": "query",
+                "description": "Define depth of the order book."
+              },
+              {
+                "name": "orderbook",
+                "value": "",
+                "type": "query",
+                "description": "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
+              },
+              {
+                "name": "trades",
+                "value": "",
+                "type": "query",
+                "description": "Display trades."
+              }
+            ]
+          },
+          "docs": "The request delivers either the order book valid at a given time or a list of order books for a given time period.</br> If `limit` is equal to `1`, the response will contain a single order book otherwise the response will contain a list of order books.</br> If `from` query parameter is not provided, the first order book of the day will be returned.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

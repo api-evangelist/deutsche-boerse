@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Pace of the Roll API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pace of the Roll",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of market segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/insights/por"
+          },
+          "docs": "The request delivers all available market segments as a list of strings."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of rolls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/insights/por/:MarketSegment",
+            "params": [
+              {
+                "name": "MarketSegment",
+                "value": "FDAX",
+                "type": "path",
+                "description": "Name of the market segment"
+              }
+            ]
+          },
+          "docs": "The request delivers all available rolls for the selected market segment as a list of dates (format =  YYYYMM)."
+        },
+        {
+          "info": {
+            "name": "Retrieve roll details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/insights/por/:MarketSegment/:Roll",
+            "params": [
+              {
+                "name": "MarketSegment",
+                "value": "FDAX",
+                "type": "path",
+                "description": "Name of the market segment"
+              },
+              {
+                "name": "Roll",
+                "value": "202103",
+                "type": "path",
+                "description": "Roll in the format YYYYMM"
+              },
+              {
+                "name": "days",
+                "value": "15",
+                "type": "query",
+                "description": "Number of days till expiry including the expiry day"
+              },
+              {
+                "name": "n",
+                "value": "20",
+                "type": "query",
+                "description": "Maximal number of previous rolls for quantile calculation"
+              },
+              {
+                "name": "comp",
+                "value": "",
+                "type": "query",
+                "description": "Comparison parameter to control which past rolls are considered for the calculation. <br>\n  * `s` = Data from the same expiration month from previous years\n  * `c` = Data from `n` consecutive months prior to the selected roll\n"
+              }
+            ]
+          },
+          "docs": "The request delivers the detailes for the selected roll as a JSON object.<br><br>  The details contain the current `r_0`, previous `r_1` and the one before the previous roll `r_2` as well as other previous rolls upto `n` (`r_3`, ..., `r_n`). The roll is defined as a ratio of adjusted open interest of a back-month contract to a sum of back- and front-month contract, for example Dec-2012 / (Sep-2012 + Dec-2012) for September 2012 roll. For each roll this ratio is calculated for a given number of d"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

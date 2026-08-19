@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Exchanges, assets, securities API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Exchanges, assets, securities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "retrieves list of exchanges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp"
+          },
+          "docs": "The request delivers all available exchanges."
+        },
+        {
+          "info": {
+            "name": "retrieves list of trading days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp/:exchange",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              }
+            ]
+          },
+          "docs": "The request delivers all available trading days (YYYYMMDD) for the selected exchange."
+        },
+        {
+          "info": {
+            "name": "retrieves list of assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp/:exchange/:date",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all available assets for the selected exchange and trading day."
+        },
+        {
+          "info": {
+            "name": "retrieves list of securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/mdp/:exchange/:date/:asset",
+            "params": [
+              {
+                "name": "exchange",
+                "value": "",
+                "type": "path",
+                "description": "exhange identifier code"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "trading day in the format YYYYMMDD"
+              },
+              {
+                "name": "asset",
+                "value": "",
+                "type": "path",
+                "description": "unique asset identifier"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all available securities for the selected exchange, trading day and asset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

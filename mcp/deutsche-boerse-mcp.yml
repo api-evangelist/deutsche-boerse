@@ -2,10 +2,9 @@ generated: '2026-07-22'
 method: derived
 status: candidate
 source: openapi/ (A7 Analytics Platform production specs)
-notes: No official Deutsche Börse MCP server was found (docs, GitHub org, npm, MCP
-  registries checked 2026-07-22). This is a candidate tool list derived one tool per
-  operationId from the harvested A7 OpenAPI specs; the Eurex T7 reference data GraphQL
-  API (graphql/) is a further candidate surface.
+notes: No official Deutsche Börse MCP server was found (docs, GitHub org, npm, MCP registries checked
+  2026-07-22). This is a candidate tool list derived one tool per operationId from the harvested A7 OpenAPI
+  specs; the Eurex T7 reference data GraphQL API (graphql/) is a further candidate surface.
 server:
   name: deutsche-boerse-a7
   transport: http
@@ -38,12 +37,10 @@ tools:
   description: retrieves list of auction types
   source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuctionsBySymbol
 - name: getAuction
-  description: retrieves auction's historical data and optionally simulated outcome
-    of an auction
+  description: retrieves auction's historical data and optionally simulated outcome of an auction
   source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuction
 - name: getAuctionBySymbol
-  description: retrieves auction's historical data and optionally simulated outcome
-    of an auction
+  description: retrieves auction's historical data and optionally simulated outcome of an auction
   source_operation: openapi/deutsche-boerse-auctions-api-openapi.yml#getAuctionBySymbol
 - name: getExchanges
   description: Retrieve list of exchanges
@@ -148,8 +145,7 @@ tools:
   description: gets smile (vol spread between ATM strike and 90% strike)
   source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getSMI
 - name: getSMImat
-  description: gets smile (vol spread between ATM strike and 90% strike) for a given
-    maturity
+  description: gets smile (vol spread between ATM strike and 90% strike) for a given maturity
   source_operation: openapi/deutsche-boerse-historical-time-series-api-openapi.yml#getSMImat
 - name: getFWD
   description: gets forward
@@ -301,3 +297,9 @@ tools:
 - name: getFWDsym
   description: gets symbols for forward
   source_operation: openapi/deutsche-boerse-symbols-api-openapi.yml#getFWDsym
+deployment:
+  mode: none
+  verified: derived
+  tools: 96
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Indicators API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Indicators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gets available indicators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aiindicator/"
+          },
+          "docs": "indicators"
+        },
+        {
+          "info": {
+            "name": "gets symbols for a live indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aiindicator/:indicator/",
+            "params": [
+              {
+                "name": "indicator",
+                "value": "",
+                "type": "path",
+                "description": "indicator name"
+              }
+            ]
+          },
+          "docs": "gets unique trading symbol identifiers for a live indicator"
+        },
+        {
+          "info": {
+            "name": "gets a live indicator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aiindicator/:indicator/:symbol",
+            "params": [
+              {
+                "name": "indicator",
+                "value": "",
+                "type": "path",
+                "description": "indicator name"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "live indicator"
+        },
+        {
+          "info": {
+            "name": "gets a live indicator for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aiindicator/:indicator/:symbol/:longmaturity",
+            "params": [
+              {
+                "name": "indicator",
+                "value": "",
+                "type": "path",
+                "description": "indicator name"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "longmaturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity (long pattern)"
+              }
+            ]
+          },
+          "docs": "live indicator for a given maturity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

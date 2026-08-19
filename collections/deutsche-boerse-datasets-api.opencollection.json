@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Datasets API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gets available datasets with description",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset"
+          },
+          "docs": "datasets with description"
+        },
+        {
+          "info": {
+            "name": "gets available datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/"
+          },
+          "docs": "datasets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

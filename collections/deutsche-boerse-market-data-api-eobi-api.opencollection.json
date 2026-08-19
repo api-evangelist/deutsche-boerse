@@ -1,0 +1,354 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Market data API (EOBI) API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Market data API (EOBI)",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi"
+          },
+          "docs": "The request delivers all available markets as a list of MarketIDs."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of trading days",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              }
+            ]
+          },
+          "docs": "The request delivers all available trading days for the selected market as a list of dates (YYYYMMDD)."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all available products for the selected market and trading day as a list of MarketSegmentIDs."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of instruments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date/:marketSegmentId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of all instruments for the selected market, trading day and MarketSegmentID as a list of SecurityIDs."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of transaction times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date/:marketSegmentId/:securityId",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Max number of elements in the response."
+              },
+              {
+                "name": "from",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Starting time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+              },
+              {
+                "name": "to",
+                "value": "1589175000156121100",
+                "type": "query",
+                "description": "Ending time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)\n"
+              },
+              {
+                "name": "ApplSeqNum",
+                "value": "6745122",
+                "type": "query",
+                "description": "Filter by application sequence number.<br/> (Multiple values must be separated by comma)\n"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of the available transaction times for the selected market, trading day, MarketSegmentID and SecurityID as a list of TransactTimes.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of application sequence numbers or list of packets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date/:marketSegmentId/:securityId/:transactTime",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "transactTime",
+                "value": "1589175000156121100",
+                "type": "path",
+                "description": "Transaction time as nanoseconds since 1970"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+              },
+              {
+                "name": "MsgSeqNum",
+                "value": "4294967295",
+                "type": "query",
+                "description": "Filter by message sequence number.<br/> (Multiple values must be separated by comma)\n"
+              },
+              {
+                "name": "TemplateId",
+                "value": "13101",
+                "type": "query",
+                "description": "Filter by template identifier.<br/> (Multiple values must be separated by comma)\n"
+              }
+            ]
+          },
+          "docs": "\"The request delivers a list of the available application sequence numbers for the selected market, trading day, MarketSegmentID, SecurityID and TransactTime as a list of ApplSeqNums.\"<br/> If mode is set to 'detailed', the request returns a list of packets including their respective messages and available details. For a detailed description of the different message types please refer to the T7 EOBI documentation.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of message sequence numbers or a list of messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date/:marketSegmentId/:securityId/:transactTime/:applSeqNum",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "transactTime",
+                "value": "1589175000156121100",
+                "type": "path",
+                "description": "Transaction time as nanoseconds since 1970"
+              },
+              {
+                "name": "applSeqNum",
+                "value": "6745122",
+                "type": "path",
+                "description": "Application sequence number"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+              },
+              {
+                "name": "TemplateId",
+                "value": "13101",
+                "type": "query",
+                "description": "Filter by template identifier.<br/> (Multiple values must be separated by comma)\n"
+              }
+            ]
+          },
+          "docs": "The request delivers a list of the available message sequence numbers for the selected market, trading day, MarketSegmentID, SecurityID, TransactTime and ApplSeqNum as a list of MsgSeqNums.<br/> If mode is set to 'detailed', the request returns a list of messages and available details. For a detailed description of the different message types please refer to the T7 EOBI documentation.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve message details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/eobi/:marketId/:date/:marketSegmentId/:securityId/:transactTime/:applSeqNum/:msgSeqNum",
+            "params": [
+              {
+                "name": "marketId",
+                "value": "XEUR",
+                "type": "path",
+                "description": "Market identifier code as specified in ISO 10383."
+              },
+              {
+                "name": "date",
+                "value": "20200106",
+                "type": "path",
+                "description": "Trading day in the format  YYYYMMDD"
+              },
+              {
+                "name": "marketSegmentId",
+                "value": "1210",
+                "type": "path",
+                "description": "Unique product identifier or product pool identifier on T7"
+              },
+              {
+                "name": "securityId",
+                "value": "27299",
+                "type": "path",
+                "description": "Unique security identifier on T7"
+              },
+              {
+                "name": "transactTime",
+                "value": "1589175000156121100",
+                "type": "path",
+                "description": "Transaction time as nanoseconds since 1970"
+              },
+              {
+                "name": "applSeqNum",
+                "value": "6745122",
+                "type": "path",
+                "description": "Application sequence number"
+              },
+              {
+                "name": "msgSeqNum",
+                "value": "4294967295",
+                "type": "path",
+                "description": "Message sequence number."
+              }
+            ]
+          },
+          "docs": "The request delivers the details of the message identified by the selected MarketID, trading day, MarketSegmentID, SecurityID,TransactTime, ApplSeqNum and MsgSeqNum combination. The message details consist of all fields specified in the T7 EOBI documentation for the respective message type. For a detailed description of the different message types please refer to the T7 EOBI documentation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

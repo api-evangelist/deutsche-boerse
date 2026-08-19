@@ -1,0 +1,325 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Precalc API API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Precalc API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve list of precalc owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc"
+          },
+          "docs": "The request delivers a list of owners the user has permission to access."
+        },
+        {
+          "info": {
+            "name": "Retrieve list of precalc jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              }
+            ]
+          },
+          "docs": "The request delivers all available precalcs jobs for the given owner."
+        },
+        {
+          "info": {
+            "name": "Retrieve precalc job definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner/:precalc",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ]
+          },
+          "docs": "The request delivers the definition for the given precalc job of the given owner."
+        },
+        {
+          "info": {
+            "name": "Create precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "/api/v1/precalc/:owner/:precalc",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The request creates a new precalc job with the specified parameters.<br/> Please be aware that updating existing precalc jobs is not possible. To update a job please delete the existing one first and then create it again.\n"
+        },
+        {
+          "info": {
+            "name": "Delete precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "/api/v1/precalc/:owner/:precalc",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ]
+          },
+          "docs": "The request deletes the specified precalc job.<br/> Please be aware that associated datasets are not delete automatically. The dataset API can be used to delete these datasets as well.\n"
+        },
+        {
+          "info": {
+            "name": "Activate precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/v1/precalc/:owner/:precalc/activate",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ]
+          },
+          "docs": "The request activates the specified precalc job"
+        },
+        {
+          "info": {
+            "name": "Deactivate precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "/api/v1/precalc/:owner/:precalc/deactivate",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ]
+          },
+          "docs": "The request deactivates the specified precalc job"
+        },
+        {
+          "info": {
+            "name": "Retrieve dates for precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner/:precalc/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              }
+            ]
+          },
+          "docs": "The request delivers the available dates where tasks are available for the selected owner and precalc job"
+        },
+        {
+          "info": {
+            "name": "Retrieve tasks for precalc job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner/:precalc/:date",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              },
+              {
+                "name": "date",
+                "value": "20200102",
+                "type": "path",
+                "description": "Date in format YYYYMMDD"
+              }
+            ]
+          },
+          "docs": "The request delivers the available tasks for the selected owner, precalc job and date"
+        },
+        {
+          "info": {
+            "name": "Retrieve result-sets for task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner/:precalc/:date/:task",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              },
+              {
+                "name": "date",
+                "value": "20200102",
+                "type": "path",
+                "description": "Date in format YYYYMMDD"
+              },
+              {
+                "name": "task",
+                "value": "1",
+                "type": "path",
+                "description": "Task number"
+              }
+            ]
+          },
+          "docs": "The request delivers the available result-sets for the selected owner, precalc job, date and task"
+        },
+        {
+          "info": {
+            "name": "Retrieve data for result table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/precalc/:owner/:precalc/:date/:task/:result",
+            "params": [
+              {
+                "name": "owner",
+                "value": "Owner1",
+                "type": "path",
+                "description": "User identifier code"
+              },
+              {
+                "name": "precalc",
+                "value": "EUR_TRADES",
+                "type": "path",
+                "description": "Name of the precalc job"
+              },
+              {
+                "name": "date",
+                "value": "20200102",
+                "type": "path",
+                "description": "Date in format YYYYMMDD"
+              },
+              {
+                "name": "task",
+                "value": "1",
+                "type": "path",
+                "description": "Task number"
+              },
+              {
+                "name": "result",
+                "value": "EurexTrades",
+                "type": "path",
+                "description": "Name of the result table"
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query",
+                "description": "Defines the output format for the result data.<br/> Mode options:\n  * `json` (default) - Returns the result data in json format\n  * `raw` - Returns the data as comma seperated list\n"
+              }
+            ]
+          },
+          "docs": "The request delivers the generated data for the selected owner, precalc job, date, task and result-set"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "A7 Analytics Platform - Algo management Algo management API Historical Time Series API",
+    "version": "1.0.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Historical Time Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "gets implied volatility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/IV/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "implied vol"
+        },
+        {
+          "info": {
+            "name": "gets implied volatility for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/IV/:symbol/:maturity",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "maturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity"
+              }
+            ]
+          },
+          "docs": "implied vol"
+        },
+        {
+          "info": {
+            "name": "gets realized volatility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/RV/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "realized vol (intraday, maturity expressed as EWM, span in business days)"
+        },
+        {
+          "info": {
+            "name": "gets implied dividend flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/DIV/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "implied dividend flow"
+        },
+        {
+          "info": {
+            "name": "gets implied dividend flow for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/DIV/:symbol/:maturity",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "maturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity"
+              }
+            ]
+          },
+          "docs": "implied dividend flow"
+        },
+        {
+          "info": {
+            "name": "gets smile (vol spread between ATM strike and 90% strike)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/SMI/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "smile (vol spread between ATM strike and 90% strike, normalized to 1Y with factor 1/√T)"
+        },
+        {
+          "info": {
+            "name": "gets smile (vol spread between ATM strike and 90% strike) for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/SMI/:symbol/:maturity",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "maturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity"
+              }
+            ]
+          },
+          "docs": "smile (vol spread between ATM strike and 90% strike, normalized to 1Y with factor 1/√T)"
+        },
+        {
+          "info": {
+            "name": "gets forward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/FWD/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              }
+            ]
+          },
+          "docs": "forward"
+        },
+        {
+          "info": {
+            "name": "gets forward for a given maturity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/api/v1/aidataset/FWD/:symbol/:maturity",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path",
+                "description": "unique trading symbol identifier"
+              },
+              {
+                "name": "maturity",
+                "value": "",
+                "type": "path",
+                "description": "option maturity"
+              }
+            ]
+          },
+          "docs": "forward"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
