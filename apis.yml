@@ -10,6 +10,18 @@ description: Deutsche Börse AG is the Frankfurt-based, publicly listed (FWB DB1
   API-key gated REST and GraphQL), the A7 Analytics Platform cloud REST API for nanosecond
   order-by-order Eurex/Xetra/EEX/CME history, a Cloud Stream WebSocket feed, licensed
   low-latency feeds, and the Datashop for commercial data purchases.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
