@@ -1,18 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: A7 Analytics Platform - Algo management Algo management API Option Prices and Greeks API
-  description: 'A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group and for the MDP feed of CME Group. The platform enables clients to perform pre/at/post trade analysis and to interact with market data and analytics.It provides clients access to the most granular un-normalized/genuine historical order book data (EOBI, MDP) as well as constructed order books, off-the-shelf analytics and allows them to build their own custom analytics utilizing algo functionality, which is a flexible high-performance framework based on historical order book data.<br/><br/> The A7 data can be accessed either via the <a href="https://a7.deutsche-boerse.com/">user interface</a> or via RESTful API.</br></br>
-
-    The algo management API provides access to the A7 algos and their results. With the API it is possible to create, update, delete and run algos and to access the results of the algo runs. All available endpoints are described in detail below.<br/><br/>
-
-    <b>Security measures:</b></br> In order to prevent unauthorized access to the API an authentication token must be used. A7 utilises the bearer authentication scheme for this purpose. The authentication token must be added to the header of each request message. Depending on the implementation it might be necessary to add the keyword "Bearer" to the token string as a prefix followed by a space.</br></br> A token can be generated at the <a href="https://a7.deutsche-boerse.com/">A7 user interface</a>. After login the user has to click on the user icon in the upper right corner, click on <b>API token generation</b> and finally click on <b>Request API key</b>. The generated token will be displayed directly in the user interface.<br/><br/>
-
-    '
+  title: A7 Analytics Platform - Option Analytics Option Prices and…
+  description: A7 Analytics Platform for the main T7 trading venues of Deutsche Börse Group.
   contact:
     name: Deutsche Börse Data & Analytics
     url: https://www.mds.deutsche-boerse.com
     email: analytics@deutsche-boerse.com
-  version: 1.0.2
+  version: 1.0.1
 servers:
 - url: /api/v1
   description: A7 production environment
@@ -26,7 +20,18 @@ paths:
       tags:
       - Option Prices and Greeks
       summary: gets live options prices
-      description: "live (delayed) prices for options on European stocks and indices including:<br/>\n  * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward<br/>\n  * greeks : delta, vega<br/>\n\nCanari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a \"Canari price\" which is also available in this live tables.<br/> The delay ranges from 15 to 40 minutes depending on underlyings.\n"
+      description: 'live (delayed) prices for options on European stocks and indices including:
+
+
+        * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward
+
+
+        * greeks : delta, vega
+
+
+        Canari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a "Canari price" which is also available in this live tables.
+
+        The delay ranges from 15 to 40 minutes depending on underlyings.'
       operationId: getOPT
       parameters:
       - $ref: '#/components/parameters/symbol'
@@ -50,7 +55,18 @@ paths:
       tags:
       - Option Prices and Greeks
       summary: gets live options prices for a given maturity
-      description: "live (delayed) prices for options on European stocks and indices including:<br/>\n  * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward<br/>\n  * greeks : delta, vega<br/>\n\nCanari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a \"Canari price\" which is also available in this live tables.<br/> The delay ranges from 15 to 40 minutes depending on underlyings.\n"
+      description: 'live (delayed) prices for options on European stocks and indices including:
+
+
+        * reference spot price, bid/ask screen price, fair value price (based on surface calibration), implicit volatility, forward
+
+
+        * greeks : delta, vega
+
+
+        Canari.dev computes AI-generated forecast signals indicating which option is over/underpriced, based on the holders strategy (buy and hold until maturity, 1 hour to 2 days holding horizon...). From these signals is derived a "Canari price" which is also available in this live tables.
+
+        The delay ranges from 15 to 40 minutes depending on underlyings.'
       operationId: getOPTmat
       parameters:
       - $ref: '#/components/parameters/symbol'
@@ -75,6 +91,30 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
+  responses:
+    '404':
+      description: not found
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
   parameters:
     symbol:
       name: symbol
@@ -91,11 +131,6 @@ components:
       schema:
         $ref: '#/components/schemas/maturity'
   schemas:
-    maturity:
-      description: option maturity
-      type: string
-      pattern: ^[01][0-9]{3}$
-      example: '0625'
     symbol:
       description: trading symbol
       type: string
@@ -155,6 +190,11 @@ components:
       - ANN
       - ZURN
       example: DB1
+    maturity:
+      description: option maturity
+      type: string
+      pattern: ^[01][0-9]{3}$
+      example: '0625'
     prices:
       description: array of prices for options and greeks
       type: array
@@ -209,31 +249,8 @@ components:
         2024-06-21 12:50:00,DB1,20240719,Call,American,186.0,7.6288,7.6738,18.6084,0.7357,0.1762,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
 
         '
-  responses:
-    '404':
-      description: not found
-    '400':
-      description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
+      bearerFormat: JWT
