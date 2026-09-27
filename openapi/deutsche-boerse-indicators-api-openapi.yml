@@ -138,15 +138,11 @@ components:
       - DSPSMI
       - DIV
       example: SMI
-    symbols:
-      description: array of trading symbols
-      type: array
-      items:
-        $ref: '#/components/schemas/symbol'
-      example:
-      - DB1
-      - DPW
-      - DTE
+    longmaturity:
+      description: option maturity (long pattern)
+      type: string
+      pattern: ^[0-9]{4}-[01][0-9]-[0-3][0-9]$
+      example: '2025-06-20'
     indicators:
       description: array of indicator names
       type: array
@@ -250,36 +246,23 @@ components:
         2024-07-01,DB1,Deutsche Boerse,2025-06-20,SMI,-0.37,-0.2
 
         '
-    longmaturity:
-      description: option maturity (long pattern)
-      type: string
-      pattern: ^[0-9]{4}-[01][0-9]-[0-3][0-9]$
-      example: '2025-06-20'
-  responses:
-    '404':
-      description: not found
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '400':
-      description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
+    symbols:
+      description: array of trading symbols
+      type: array
+      items:
+        $ref: '#/components/schemas/symbol'
+      example:
+      - DB1
+      - DPW
+      - DTE
   parameters:
+    indicator:
+      name: indicator
+      in: path
+      description: indicator name
+      required: true
+      schema:
+        $ref: '#/components/schemas/indicator'
     symbol:
       name: symbol
       in: path
@@ -294,13 +277,30 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/longmaturity'
-    indicator:
-      name: indicator
-      in: path
-      description: indicator name
-      required: true
-      schema:
-        $ref: '#/components/schemas/indicator'
+  responses:
+    '404':
+      description: not found
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
   securitySchemes:
     bearerAuth:
       type: http

@@ -175,6 +175,13 @@ components:
   responses:
     '404':
       description: not found
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
     '403':
       description: access denied
       content:
@@ -189,23 +196,7 @@ components:
           schema:
             type: string
           example: specific error message
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
   schemas:
-    symbols:
-      description: array of trading symbols
-      type: array
-      items:
-        $ref: '#/components/schemas/symbol'
-      example:
-      - DB1
-      - DPW
-      - DTE
     symbol:
       description: trading symbol
       type: string
@@ -265,6 +256,15 @@ components:
       - ANN
       - ZURN
       example: DB1
+    symbols:
+      description: array of trading symbols
+      type: array
+      items:
+        $ref: '#/components/schemas/symbol'
+      example:
+      - DB1
+      - DPW
+      - DTE
   securitySchemes:
     bearerAuth:
       type: http

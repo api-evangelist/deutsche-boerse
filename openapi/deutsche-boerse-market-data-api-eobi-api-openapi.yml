@@ -350,134 +350,27 @@ paths:
         '404':
           $ref: '#/components/responses/404'
 components:
-  parameters:
-    templateIdFilter:
-      name: TemplateId
-      in: query
-      description: 'Filter by template identifier.<br/> (Multiple values must be separated by comma)
-
-        '
-      example: 13101
-      required: false
-      schema:
-        type: integer
-    securityId:
-      name: securityId
-      in: path
-      description: Unique security identifier on T7
-      example: 27299
-      required: true
-      schema:
-        type: integer
-    msgSeqNum:
-      name: msgSeqNum
-      in: path
-      description: Message sequence number.
-      example: '4294967295'
-      required: true
-      schema:
-        type: integer
-    from:
-      name: from
-      in: query
-      description: 'Starting time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
-
-        '
-      example: '1589175000156121100'
-      required: false
-      schema:
-        type: string
-    date:
-      name: date
-      in: path
-      description: Trading day in the format  YYYYMMDD
-      example: 20200106
-      required: true
-      schema:
-        type: integer
-    msgSeqNumFilter:
-      name: MsgSeqNum
-      in: query
-      description: 'Filter by message sequence number.<br/> (Multiple values must be separated by comma)
-
-        '
-      example: 4294967295
-      required: false
-      schema:
-        type: integer
-    transactTime:
-      name: transactTime
-      in: path
-      description: Transaction time as nanoseconds since 1970
-      example: '1589175000156121100'
-      required: true
-      schema:
-        type: string
-        format: UTCTimestamp
-    mode:
-      in: query
-      name: mode
-      description: "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - reference
-        - detailed
-    applSeqNumFilter:
-      name: ApplSeqNum
-      in: query
-      description: 'Filter by application sequence number.<br/> (Multiple values must be separated by comma)
-
-        '
-      example: 6745122
-      required: false
-      schema:
-        type: integer
-    limit:
-      name: limit
-      in: query
-      description: Max number of elements in the response.
-      required: false
-      schema:
-        type: integer
-        example: 100
-        default: No restriction
-    marketSegmentId:
-      name: marketSegmentId
-      in: path
-      description: Unique product identifier or product pool identifier on T7
-      example: 1210
-      required: true
-      schema:
-        type: integer
-    marketId:
-      name: marketId
-      in: path
-      description: Market identifier code as specified in ISO 10383.
-      example: XEUR
-      required: true
-      schema:
-        type: string
-    applSeqNum:
-      name: applSeqNum
-      in: path
-      description: Application sequence number
-      example: '6745122'
-      required: true
-      schema:
-        type: integer
-    to:
-      name: to
-      in: query
-      description: 'Ending time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
-
-        '
-      example: '1589175000156121100'
-      required: false
-      schema:
-        type: string
   schemas:
+    Messages:
+      properties:
+        Messages:
+          type: array
+          items:
+            type: object
+          example:
+          - MessageHeader:
+              BodyLen: 32
+              TemplateID: 13301
+              MsgSeqNum: 27
+            ApplSeqNum: 6745122
+            SecurityID: 4233128
+            SecurityStatus: 1
+            SecurityTradingStatus: 204
+            MarketCondition: 0
+            FastMarketIndicator: 0
+            SecurityTradingEvent: null
+            SoldOutIndicator: null
+            TransactTime: '1589180100007258166'
     Dates:
       properties:
         Dates:
@@ -488,6 +381,16 @@ components:
           - 20200102
           - 20200103
           - 20200106
+    MarketSegmentIDs:
+      properties:
+        MarketSegmentIDs:
+          type: array
+          items:
+            type: integer
+          example:
+          - 589
+          - 675
+          - 1210
     Packets:
       properties:
         Packets:
@@ -527,15 +430,6 @@ components:
             SoldOutIndicator: null
             TransactTime: '1589180100007258166'
           description: "Please see the T7 EOBI documentation for a detailed description of the supported message types.<br/> The following message types are supported by the API:\n  *  MarketDataOrder (U21)\n  *  MarketDataTrade (U22)\n  *  MarketDataInstrument (U23)\n  *  TradingSessionStatus (h)\n  *  SecurityMassStatus (CO)\n  *  SecurityStatus (f)\n  *  SecurityDefinitionUpdateReport (BP)  \n"
-    MsgSeqNums:
-      properties:
-        MsgSeqNums:
-          type: array
-          items:
-            type: integer
-          example:
-          - 4294967295
-          - 3224966211
     TransactTimes:
       properties:
         TransactTimes:
@@ -548,25 +442,6 @@ components:
           - '1589180100007332308'
           - '1589180400061095876'
           - '1589211910025122757'
-    MarketSegmentIDs:
-      properties:
-        MarketSegmentIDs:
-          type: array
-          items:
-            type: integer
-          example:
-          - 589
-          - 675
-          - 1210
-    ApplSeqNums:
-      properties:
-        ApplSeqNums:
-          type: array
-          items:
-            type: integer
-          example:
-          - 6745122
-          - 5468432
     SecurityIDs:
       properties:
         SecurityIDs:
@@ -577,26 +452,15 @@ components:
           - '2786758'
           - '3593999'
           - '4005044'
-    Messages:
+    MsgSeqNums:
       properties:
-        Messages:
+        MsgSeqNums:
           type: array
           items:
-            type: object
+            type: integer
           example:
-          - MessageHeader:
-              BodyLen: 32
-              TemplateID: 13301
-              MsgSeqNum: 27
-            ApplSeqNum: 6745122
-            SecurityID: 4233128
-            SecurityStatus: 1
-            SecurityTradingStatus: 204
-            MarketCondition: 0
-            FastMarketIndicator: 0
-            SecurityTradingEvent: null
-            SoldOutIndicator: null
-            TransactTime: '1589180100007258166'
+          - 4294967295
+          - 3224966211
     MarketIDs:
       properties:
         MarketIDs:
@@ -606,6 +470,15 @@ components:
           example:
           - XETR
           - XEUR
+    ApplSeqNums:
+      properties:
+        ApplSeqNums:
+          type: array
+          items:
+            type: integer
+          example:
+          - 6745122
+          - 5468432
     InternalError:
       properties:
         success:
@@ -617,6 +490,133 @@ components:
       required:
       - success
       - message
+  parameters:
+    from:
+      name: from
+      in: query
+      description: 'Starting time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
+
+        '
+      example: '1589175000156121100'
+      required: false
+      schema:
+        type: string
+    to:
+      name: to
+      in: query
+      description: 'Ending time for the time interval filter.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
+
+        '
+      example: '1589175000156121100'
+      required: false
+      schema:
+        type: string
+    mode:
+      in: query
+      name: mode
+      description: "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of messages including their details\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - reference
+        - detailed
+    marketId:
+      name: marketId
+      in: path
+      description: Market identifier code as specified in ISO 10383.
+      example: XEUR
+      required: true
+      schema:
+        type: string
+    limit:
+      name: limit
+      in: query
+      description: Max number of elements in the response.
+      required: false
+      schema:
+        type: integer
+        example: 100
+        default: No restriction
+    securityId:
+      name: securityId
+      in: path
+      description: Unique security identifier on T7
+      example: 27299
+      required: true
+      schema:
+        type: integer
+    msgSeqNumFilter:
+      name: MsgSeqNum
+      in: query
+      description: 'Filter by message sequence number.<br/> (Multiple values must be separated by comma)
+
+        '
+      example: 4294967295
+      required: false
+      schema:
+        type: integer
+    transactTime:
+      name: transactTime
+      in: path
+      description: Transaction time as nanoseconds since 1970
+      example: '1589175000156121100'
+      required: true
+      schema:
+        type: string
+        format: UTCTimestamp
+    applSeqNumFilter:
+      name: ApplSeqNum
+      in: query
+      description: 'Filter by application sequence number.<br/> (Multiple values must be separated by comma)
+
+        '
+      example: 6745122
+      required: false
+      schema:
+        type: integer
+    msgSeqNum:
+      name: msgSeqNum
+      in: path
+      description: Message sequence number.
+      example: '4294967295'
+      required: true
+      schema:
+        type: integer
+    marketSegmentId:
+      name: marketSegmentId
+      in: path
+      description: Unique product identifier or product pool identifier on T7
+      example: 1210
+      required: true
+      schema:
+        type: integer
+    templateIdFilter:
+      name: TemplateId
+      in: query
+      description: 'Filter by template identifier.<br/> (Multiple values must be separated by comma)
+
+        '
+      example: 13101
+      required: false
+      schema:
+        type: integer
+    date:
+      name: date
+      in: path
+      description: Trading day in the format  YYYYMMDD
+      example: 20200106
+      required: true
+      schema:
+        type: integer
+    applSeqNum:
+      name: applSeqNum
+      in: path
+      description: Application sequence number
+      example: '6745122'
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

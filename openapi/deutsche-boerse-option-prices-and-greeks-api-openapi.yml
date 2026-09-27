@@ -94,6 +94,13 @@ components:
   responses:
     '404':
       description: not found
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
     '403':
       description: access denied
       content:
@@ -103,13 +110,6 @@ components:
           example: specific error message
     '400':
       description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '401':
-      description: authorization failed
       content:
         text/plain:
           schema:
@@ -131,6 +131,60 @@ components:
       schema:
         $ref: '#/components/schemas/maturity'
   schemas:
+    prices:
+      description: array of prices for options and greeks
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+          Eurex_code:
+            type: string
+          Maturity:
+            type: string
+          Option type:
+            type: string
+          Exercise:
+            type: string
+          StrikePrice:
+            type: number
+          Calibrated price:
+            type: number
+          Canari Price:
+            type: number
+          Calibrated Implied Vol:
+            type: number
+          Delta:
+            type: number
+          Vega:
+            type: number
+          Forward:
+            type: number
+          MDE:
+            type: number
+          DIV:
+            type: number
+          CSA:
+            type: number
+          SMI:
+            type: number
+          Underlying_full_name:
+            type: string
+      example: 'Snapshot_time_(GMT),Eurex code,Maturity,Option type,Exercise,StrikePrice,Calibrated price,Canari Price,Calibrated Implied Vol,Delta,Vega,Forward,MDE,DIV,CSA,SMI,Underlying_full_name
+
+        2024-06-21 12:50:00,DB1,20240719,Call,American,178.0,14.6155,14.6411,22.4972,0.8894,0.1015,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
+
+        2024-06-21 12:50:00,DB1,20240719,Call,American,180.0,12.7722,12.8019,21.4055,0.8639,0.1175,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
+
+        2024-06-21 12:50:00,DB1,20240719,Call,American,182.0,10.9807,11.0151,20.392,0.8309,0.1358,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
+
+        2024-06-21 12:50:00,DB1,20240719,Call,American,184.0,9.259,9.2987,19.4604,0.7887,0.1558,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
+
+        2024-06-21 12:50:00,DB1,20240719,Call,American,186.0,7.6288,7.6738,18.6084,0.7357,0.1762,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
+
+        '
     symbol:
       description: trading symbol
       type: string
@@ -195,60 +249,6 @@ components:
       type: string
       pattern: ^[01][0-9]{3}$
       example: '0625'
-    prices:
-      description: array of prices for options and greeks
-      type: array
-      items:
-        type: object
-        properties:
-          Snapshot_time_(GMT):
-            type: string
-            format: date-time
-          Eurex_code:
-            type: string
-          Maturity:
-            type: string
-          Option type:
-            type: string
-          Exercise:
-            type: string
-          StrikePrice:
-            type: number
-          Calibrated price:
-            type: number
-          Canari Price:
-            type: number
-          Calibrated Implied Vol:
-            type: number
-          Delta:
-            type: number
-          Vega:
-            type: number
-          Forward:
-            type: number
-          MDE:
-            type: number
-          DIV:
-            type: number
-          CSA:
-            type: number
-          SMI:
-            type: number
-          Underlying_full_name:
-            type: string
-      example: 'Snapshot_time_(GMT),Eurex code,Maturity,Option type,Exercise,StrikePrice,Calibrated price,Canari Price,Calibrated Implied Vol,Delta,Vega,Forward,MDE,DIV,CSA,SMI,Underlying_full_name
-
-        2024-06-21 12:50:00,DB1,20240719,Call,American,178.0,14.6155,14.6411,22.4972,0.8894,0.1015,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
-
-        2024-06-21 12:50:00,DB1,20240719,Call,American,180.0,12.7722,12.8019,21.4055,0.8639,0.1175,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
-
-        2024-06-21 12:50:00,DB1,20240719,Call,American,182.0,10.9807,11.0151,20.392,0.8309,0.1358,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
-
-        2024-06-21 12:50:00,DB1,20240719,Call,American,184.0,9.259,9.2987,19.4604,0.7887,0.1558,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
-
-        2024-06-21 12:50:00,DB1,20240719,Call,American,186.0,7.6288,7.6738,18.6084,0.7357,0.1762,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
-
-        '
   securitySchemes:
     bearerAuth:
       type: http

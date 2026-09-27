@@ -145,13 +145,6 @@ components:
       description: trading day in the format YYYYMMDD
       schema:
         $ref: '#/components/schemas/date'
-    asset:
-      name: asset
-      in: path
-      description: unique asset identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/asset'
     exchange:
       name: exchange
       in: path
@@ -159,20 +152,43 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/exchange'
+    asset:
+      name: asset
+      in: path
+      description: unique asset identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/asset'
   schemas:
-    exchange:
-      description: exchange mic
-      type: string
-      minLength: 4
-      maxLength: 4
-      example: XCME
-    date:
-      description: date representation
+    assets:
+      type: object
+      properties:
+        Assets:
+          description: array of assets
+          type: array
+          items:
+            $ref: '#/components/schemas/asset'
+          example:
+          - ES
+          - GE
+          - ZN
+    securityIDs:
+      type: object
+      properties:
+        SecurityIDs:
+          description: array of security IDs
+          type: array
+          items:
+            $ref: '#/components/schemas/securityID'
+          example:
+          - 206299
+          - 95414
+          - 3445
+    securityID:
+      description: Security ID
       type: integer
       format: int32
-      minLength: 8
-      maxLength: 8
-      example: 20230111
+      example: 206299
     exchanges:
       type: object
       properties:
@@ -187,28 +203,6 @@ components:
           - XCME
           - XFXS
           - XNYM
-    assets:
-      type: object
-      properties:
-        Assets:
-          description: array of assets
-          type: array
-          items:
-            $ref: '#/components/schemas/asset'
-          example:
-          - ES
-          - GE
-          - ZN
-    securityID:
-      description: Security ID
-      type: integer
-      format: int32
-      example: 206299
-    asset:
-      description: asset code also known as product code
-      type: string
-      maxLength: 6
-      example: ES
     InternalError:
       properties:
         success:
@@ -220,6 +214,17 @@ components:
       required:
       - success
       - message
+    asset:
+      description: asset code also known as product code
+      type: string
+      maxLength: 6
+      example: ES
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XCME
     dates:
       type: object
       properties:
@@ -232,18 +237,13 @@ components:
           - 20230111
           - 20230112
           - 20230113
-    securityIDs:
-      type: object
-      properties:
-        SecurityIDs:
-          description: array of security IDs
-          type: array
-          items:
-            $ref: '#/components/schemas/securityID'
-          example:
-          - 206299
-          - 95414
-          - 3445
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      minLength: 8
+      maxLength: 8
+      example: 20230111
   securitySchemes:
     bearerAuth:
       type: http

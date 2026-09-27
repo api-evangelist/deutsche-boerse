@@ -177,8 +177,8 @@ components:
   responses:
     '404':
       description: not found
-    '403':
-      description: access denied
+    '401':
+      description: authorization failed
       content:
         text/plain:
           schema:
@@ -191,8 +191,8 @@ components:
           schema:
             type: string
           example: specific error message
-    '401':
-      description: authorization failed
+    '403':
+      description: access denied
       content:
         text/plain:
           schema:
@@ -206,6 +206,23 @@ components:
       - bid
       - ask
       example: bid
+    securityID:
+      description: security ID
+      type: integer
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 2504978
+    marketSegmentID:
+      description: market segment ID
+      type: integer
+      format: int32
+      example: 52885
+    px:
+      description: limit price of an order
+      type: number
+      format: double
+      example: 178.25
     auction:
       description: auction's historical data and optionally simulated outcome of an auction
       type: object
@@ -271,32 +288,23 @@ components:
       - AuctionReferencePrice
       - UncrossingPrice
       - MatchedVolume
-    marketSegmentID:
-      description: market segment ID
-      type: integer
-      format: int32
-      example: 52885
-    auctionType:
-      description: auction type
-      type: string
-      enum:
-      - opening
-      - intraday
-      - closing
-      example: opening
     exchange:
       description: exchange mic
       type: string
       minLength: 4
       maxLength: 4
       example: XETR
-    securityID:
-      description: security ID
+    null_string:
+      description: a null string that corresponds to a market order
+      type: string
+      enum:
+      - 'null'
+      example: 'null'
+    date:
+      description: date representation
       type: integer
-      format: int64
-      minimum: -9223372036854775808
-      maximum: 9223372036854775807
-      example: 2504978
+      format: int32
+      example: 20230111
     timestamp:
       description: timestamp as number of nanoseconds since Unix epoch
       type: integer
@@ -305,17 +313,18 @@ components:
       maximum: 18446744073709551615
       default: 0
       example: 1652962104095620563
-    px:
-      description: limit price of an order
-      type: number
-      format: double
-      example: 178.25
-    null_string:
-      description: a null string that corresponds to a market order
+    auctionType:
+      description: auction type
       type: string
       enum:
-      - 'null'
-      example: 'null'
+      - opening
+      - intraday
+      - closing
+      example: opening
+    symbol:
+      description: trading symbol
+      type: string
+      example: DB1
     qty:
       description: quantity of an order
       type: integer
@@ -323,91 +332,7 @@ components:
       minimum: -9223372036854775808
       maximum: 9223372036854775807
       example: 125
-    date:
-      description: date representation
-      type: integer
-      format: int32
-      example: 20230111
-    symbol:
-      description: trading symbol
-      type: string
-      example: DB1
   parameters:
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
-    securityID:
-      name: securityID
-      in: path
-      description: unique security identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/securityID'
-    prio:
-      name: prio
-      in: query
-      description: order priority (default 0)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/timestamp'
-      style: form
-      explode: true
-    date:
-      name: date
-      in: path
-      required: true
-      description: trading day in the format YYYYMMDD
-      schema:
-        $ref: '#/components/schemas/date'
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    side:
-      name: side
-      in: query
-      description: side of an order
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/side'
-      style: form
-      explode: true
-    qty:
-      name: qty
-      in: query
-      description: quantity of an order
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/qty'
-      style: form
-      explode: true
-    marketSegmentID:
-      name: marketSegmentID
-      in: path
-      description: unique market segment identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/marketSegmentID'
-    auctionType:
-      name: auctionType
-      in: path
-      description: auction type
-      required: true
-      schema:
-        $ref: '#/components/schemas/auctionType'
     px:
       name: px
       in: query
@@ -421,6 +346,81 @@ components:
           - $ref: '#/components/schemas/null_string'
       style: form
       explode: true
+    auctionType:
+      name: auctionType
+      in: path
+      description: auction type
+      required: true
+      schema:
+        $ref: '#/components/schemas/auctionType'
+    securityID:
+      name: securityID
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    qty:
+      name: qty
+      in: query
+      description: quantity of an order
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/qty'
+      style: form
+      explode: true
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    side:
+      name: side
+      in: query
+      description: side of an order
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/side'
+      style: form
+      explode: true
+    prio:
+      name: prio
+      in: query
+      description: order priority (default 0)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/timestamp'
+      style: form
+      explode: true
+    marketSegmentID:
+      name: marketSegmentID
+      in: path
+      description: unique market segment identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/marketSegmentID'
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
   securitySchemes:
     bearerAuth:
       type: http

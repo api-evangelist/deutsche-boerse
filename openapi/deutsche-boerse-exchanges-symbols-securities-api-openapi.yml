@@ -240,33 +240,15 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    marketSegmentIDorSymbol:
-      description: MarketSegmentID or symbol
-      type: string
-      example: '52915'
-    exchange:
-      description: exchange mic
-      type: string
-      minLength: 4
-      maxLength: 4
-      example: XETR
-    date:
-      description: date representation
-      type: integer
-      format: int32
-      example: 20230111
-    securityID:
-      description: security ID
-      type: integer
-      format: int64
-      minimum: -9223372036854775808
-      maximum: 9223372036854775807
-      example: 2504978
     marketSegmentID:
       description: market segment ID
       type: integer
       format: int32
       example: 52885
+    marketSegmentIDorSymbol:
+      description: MarketSegmentID or symbol
+      type: string
+      example: '52915'
     symbol:
       description: trading symbol
       type: string
@@ -327,6 +309,24 @@ components:
       - Index
       - ISIN
       - Ticks
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XETR
+    securityID:
+      description: security ID
+      type: integer
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 2504978
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      example: 20230111
   parameters:
     mode:
       name: mode
@@ -346,27 +346,6 @@ components:
       description: trading day in the format YYYYMMDD
       schema:
         $ref: '#/components/schemas/date'
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
-    marketSegmentID:
-      name: marketSegmentID
-      in: path
-      description: unique market segment identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/marketSegmentID'
     securityID:
       name: securityID
       in: path
@@ -374,18 +353,39 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/securityID'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    marketSegmentID:
+      name: marketSegmentID
+      in: path
+      description: unique market segment identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/marketSegmentID'
   responses:
     '404':
       description: not found
-    '403':
-      description: access denied
+    '401':
+      description: authorization failed
       content:
         text/plain:
           schema:
             type: string
           example: specific error message
-    '401':
-      description: authorization failed
+    '403':
+      description: access denied
       content:
         text/plain:
           schema:

@@ -55,6 +55,28 @@ paths:
           $ref: '#/components/responses/503'
 components:
   parameters:
+    target_action:
+      name: target_action
+      in: path
+      description: Target action
+      required: true
+      schema:
+        type: string
+        enum:
+        - TRADE
+        - BOOK
+        - ALL
+        default: ALL
+    format:
+      name: format
+      in: query
+      description: Defines the format of the response.
+      schema:
+        type: string
+        enum:
+        - csv
+        - json
+        default: json
     date:
       name: date
       in: path
@@ -72,16 +94,6 @@ components:
       required: true
       schema:
         type: string
-    format:
-      name: format
-      in: query
-      description: Defines the format of the response.
-      schema:
-        type: string
-        enum:
-        - csv
-        - json
-        default: json
     regime:
       name: regime
       in: path
@@ -101,18 +113,6 @@ components:
       required: true
       schema:
         type: string
-    target_action:
-      name: target_action
-      in: path
-      description: Target action
-      required: true
-      schema:
-        type: string
-        enum:
-        - TRADE
-        - BOOK
-        - ALL
-        default: ALL
   schemas:
     LatenciesInsightsResultsJson:
       properties:

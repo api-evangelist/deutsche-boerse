@@ -147,6 +147,10 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
+    MarketSegment:
+      description: market segment represented by a product
+      type: string
+      example: FDAX
     Ratio:
       description: ratio of adjusted open interest of a back-month contract to a sum of back- and front-month contract
       type:
@@ -156,6 +160,12 @@ components:
       minimum: 0
       maximum: 1
       example: 0.887223
+    Roll:
+      description: roll represented by a date (format = YYYYMM)
+      type: integer
+      format: int32
+      pattern: ^\d{6}$
+      example: 202103
     RollDetails:
       type: object
       required:
@@ -225,25 +235,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ratio'
-    Roll:
-      description: roll represented by a date (format = YYYYMM)
-      type: integer
-      format: int32
-      pattern: ^\d{6}$
-      example: 202103
-    MarketSegment:
-      description: market segment represented by a product
-      type: string
-      example: FDAX
   parameters:
-    Roll:
-      name: Roll
-      in: path
-      description: Roll in the format YYYYMM
-      example: 202103
-      required: true
-      schema:
-        $ref: '#/components/schemas/Roll'
     MarketSegment:
       name: MarketSegment
       in: path
@@ -252,6 +244,14 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/MarketSegment'
+    Roll:
+      name: Roll
+      in: path
+      description: Roll in the format YYYYMM
+      example: 202103
+      required: true
+      schema:
+        $ref: '#/components/schemas/Roll'
     days:
       name: days
       in: query

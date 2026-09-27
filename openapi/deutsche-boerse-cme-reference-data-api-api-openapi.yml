@@ -173,29 +173,6 @@ paths:
           $ref: '#/components/responses/422'
 components:
   schemas:
-    Assets:
-      type: array
-      items:
-        type: string
-      example:
-      - GE
-      - SR1
-      - SR2
-    Exchanges:
-      type: array
-      items:
-        type: string
-      example:
-      - XCME
-      - XFXS
-    SecurityIDs:
-      type: array
-      items:
-        type: string
-      example:
-      - '10014'
-      - '10077'
-      - '10096'
     Dates:
       type: array
       items:
@@ -205,6 +182,14 @@ components:
       - 20200102
       - 20200103
       - 20200106
+    SecurityIDs:
+      type: array
+      items:
+        type: string
+      example:
+      - '10014'
+      - '10077'
+      - '10096'
     SecurityDetails:
       type: array
       items:
@@ -260,6 +245,21 @@ components:
         UnitOfMeasure: IPNT
         HighLimitPrice: '9999900.000000000'
         MinTradeVol: '1'
+    Exchanges:
+      type: array
+      items:
+        type: string
+      example:
+      - XCME
+      - XFXS
+    Assets:
+      type: array
+      items:
+        type: string
+      example:
+      - GE
+      - SR1
+      - SR2
   parameters:
     date:
       name: date
@@ -270,6 +270,14 @@ components:
       schema:
         type: integer
         pattern: ^\d{8}$
+    exchange:
+      name: exchange
+      in: path
+      description: Exchange identifier code.
+      example: XCME
+      required: true
+      schema:
+        type: string
     asset:
       name: asset
       in: path
@@ -287,14 +295,6 @@ components:
       schema:
         type: integer
         format: int64
-    exchange:
-      name: exchange
-      in: path
-      description: Exchange identifier code.
-      example: XCME
-      required: true
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
