@@ -182,14 +182,6 @@ components:
       - 20200102
       - 20200103
       - 20200106
-    SecurityIDs:
-      type: array
-      items:
-        type: string
-      example:
-      - '10014'
-      - '10077'
-      - '10096'
     SecurityDetails:
       type: array
       items:
@@ -252,6 +244,14 @@ components:
       example:
       - XCME
       - XFXS
+    SecurityIDs:
+      type: array
+      items:
+        type: string
+      example:
+      - '10014'
+      - '10077'
+      - '10096'
     Assets:
       type: array
       items:
@@ -261,28 +261,19 @@ components:
       - SR1
       - SR2
   parameters:
-    date:
-      name: date
-      in: path
-      description: Trading day in the format  YYYYMMDD
-      example: 20200106
-      required: true
-      schema:
-        type: integer
-        pattern: ^\d{8}$
-    exchange:
-      name: exchange
-      in: path
-      description: Exchange identifier code.
-      example: XCME
-      required: true
-      schema:
-        type: string
     asset:
       name: asset
       in: path
       description: Unique product identifier or product pool identifier
       example: GE
+      required: true
+      schema:
+        type: string
+    exchange:
+      name: exchange
+      in: path
+      description: Exchange identifier code.
+      example: XCME
       required: true
       schema:
         type: string
@@ -295,6 +286,15 @@ components:
       schema:
         type: integer
         format: int64
+    date:
+      name: date
+      in: path
+      description: Trading day in the format  YYYYMMDD
+      example: 20200106
+      required: true
+      schema:
+        type: integer
+        pattern: ^\d{8}$
   securitySchemes:
     bearerAuth:
       type: http

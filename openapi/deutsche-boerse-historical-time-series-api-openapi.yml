@@ -261,30 +261,6 @@ components:
         2024-06-21 13:45:00,0.118927,0.0450836,-0.0465704,-0.163638,-0.338031,2.48831,2.47865
 
         '
-    smis:
-      description: array of smiles
-      type: array
-      items:
-        type: object
-        properties:
-          Snapshot_time_(GMT):
-            type: string
-            format: date-time
-        additionalProperties:
-          type: number
-      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
-
-        2024-06-21 14:05:00,1.12502,1.31043,1.57654,1.50071,1.4671,1.50114,1.56583
-
-        2024-06-21 14:00:00,1.13521,1.31724,1.56878,1.52616,1.49694,1.5026,1.55258
-
-        2024-06-21 13:55:00,1.04704,1.31004,1.56261,1.55248,1.48505,1.50779,1.524
-
-        2024-06-21 13:50:00,1.05783,1.32273,1.58294,1.54378,1.56925,1.53229,1.51953
-
-        2024-06-21 13:45:00,0.988669,1.26946,1.56359,1.50677,1.51089,1.44933,1.5086
-
-        '
     ivs:
       description: array of implied volatilities
       type: array
@@ -361,6 +337,30 @@ components:
         2024-06-03,20.4559,21.8048,21.9094
 
         '
+    smis:
+      description: array of smiles
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
+            type: string
+            format: date-time
+        additionalProperties:
+          type: number
+      example: ',20240719,20240816,20240920,20241220,20250321,20250620,20251219
+
+        2024-06-21 14:05:00,1.12502,1.31043,1.57654,1.50071,1.4671,1.50114,1.56583
+
+        2024-06-21 14:00:00,1.13521,1.31724,1.56878,1.52616,1.49694,1.5026,1.55258
+
+        2024-06-21 13:55:00,1.04704,1.31004,1.56261,1.55248,1.48505,1.50779,1.524
+
+        2024-06-21 13:50:00,1.05783,1.32273,1.58294,1.54378,1.56925,1.53229,1.51953
+
+        2024-06-21 13:45:00,0.988669,1.26946,1.56359,1.50677,1.51089,1.44933,1.5086
+
+        '
     symbol:
       description: trading symbol
       type: string
@@ -425,30 +425,6 @@ components:
       type: string
       pattern: ^[01][0-9]{3}$
       example: '0625'
-  responses:
-    '404':
-      description: not found
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '400':
-      description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
   parameters:
     symbol:
       name: symbol
@@ -464,6 +440,30 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/maturity'
+  responses:
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '404':
+      description: not found
   securitySchemes:
     bearerAuth:
       type: http

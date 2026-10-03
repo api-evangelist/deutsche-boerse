@@ -55,18 +55,6 @@ paths:
           $ref: '#/components/responses/503'
 components:
   parameters:
-    target_action:
-      name: target_action
-      in: path
-      description: Target action
-      required: true
-      schema:
-        type: string
-        enum:
-        - TRADE
-        - BOOK
-        - ALL
-        default: ALL
     format:
       name: format
       in: query
@@ -77,15 +65,6 @@ components:
         - csv
         - json
         default: json
-    date:
-      name: date
-      in: path
-      description: Date (fact date) of the data to be retrieved (as YYYYMMDD)
-      example: 20220121
-      required: true
-      schema:
-        type: string
-        pattern: ^20\d{2}[01]\d[0-3]\d$
     trigger:
       name: trigger
       in: path
@@ -105,6 +84,27 @@ components:
         - FPGA
         - SOFTWARE
         default: FPGA
+    target_action:
+      name: target_action
+      in: path
+      description: Target action
+      required: true
+      schema:
+        type: string
+        enum:
+        - TRADE
+        - BOOK
+        - ALL
+        default: ALL
+    date:
+      name: date
+      in: path
+      description: Date (fact date) of the data to be retrieved (as YYYYMMDD)
+      example: 20220121
+      required: true
+      schema:
+        type: string
+        pattern: ^20\d{2}[01]\d[0-3]\d$
     target:
       name: target
       in: path

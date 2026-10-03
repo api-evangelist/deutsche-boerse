@@ -172,31 +172,16 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  responses:
-    '404':
-      description: not found
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '400':
-      description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
   schemas:
+    symbols:
+      description: array of trading symbols
+      type: array
+      items:
+        $ref: '#/components/schemas/symbol'
+      example:
+      - DB1
+      - DPW
+      - DTE
     symbol:
       description: trading symbol
       type: string
@@ -256,15 +241,30 @@ components:
       - ANN
       - ZURN
       example: DB1
-    symbols:
-      description: array of trading symbols
-      type: array
-      items:
-        $ref: '#/components/schemas/symbol'
-      example:
-      - DB1
-      - DPW
-      - DTE
+  responses:
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '404':
+      description: not found
   securitySchemes:
     bearerAuth:
       type: http

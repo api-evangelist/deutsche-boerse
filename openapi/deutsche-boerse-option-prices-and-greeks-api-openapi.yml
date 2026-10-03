@@ -91,45 +91,6 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  responses:
-    '404':
-      description: not found
-    '401':
-      description: authorization failed
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-    '400':
-      description: bad request
-      content:
-        text/plain:
-          schema:
-            type: string
-          example: specific error message
-  parameters:
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    maturity:
-      name: maturity
-      in: path
-      description: option maturity
-      required: true
-      schema:
-        $ref: '#/components/schemas/maturity'
   schemas:
     prices:
       description: array of prices for options and greeks
@@ -249,6 +210,45 @@ components:
       type: string
       pattern: ^[01][0-9]{3}$
       example: '0625'
+  parameters:
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    maturity:
+      name: maturity
+      in: path
+      description: option maturity
+      required: true
+      schema:
+        $ref: '#/components/schemas/maturity'
+  responses:
+    '403':
+      description: access denied
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '401':
+      description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '400':
+      description: bad request
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '404':
+      description: not found
   securitySchemes:
     bearerAuth:
       type: http

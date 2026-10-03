@@ -373,8 +373,17 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    DataRaw:
-      type: string
+    Owners:
+      properties:
+        Owners:
+          type: array
+          items:
+            type: string
+      example:
+        Owners:
+        - DBAG
+        - Owner1
+        - Owner2
     SuccessMessage:
       properties:
         success:
@@ -399,87 +408,140 @@ components:
         - 20200104
         - 20200103
         - 20200102
-    Owners:
+    NewPrecalc:
       properties:
-        Owners:
+        name:
+          type: string
+        user:
+          type: string
+        dateFrom:
+          type: integer
+        dateTo:
+          type: integer
+        grouping:
+          type: string
+        data:
           type: array
           items:
             type: string
-      example:
-        Owners:
-        - DBAG
-        - Owner1
-        - Owner2
-    DataJson:
-      properties:
-        Meta:
-          type: object
-          properties:
-            table_name:
-              type: string
-            partitioning_columns:
-              type: array
-              items:
-                type: string
-            columns:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  type:
-                    type: string
-                  nullable:
-                    type: boolean
-        Data:
+        algos:
           type: array
           items:
             type: object
+            properties:
+              algo:
+                type: string
+              assignments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    resultset:
+                      type: string
+                    tables:
+                      type: array
+                      items:
+                        type: string
+              owner:
+                type: string
+              parameters:
+                type: array
+                items:
+                  type: object
+              schemas:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    columns:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          nullable:
+                            type: boolean
+                          type:
+                            type: string
+                    partitioning:
+                      type: array
+                      items:
+                        type: string
+                    table_name:
+                      type: string
       example:
-        meta:
-          table_name: price
-          partitioning_columns:
-          - day
-          - market
-          - marketsegmentid
-          columns:
-          - name: day
-            type: INT
-          - name: market
-            type: STRING
-          - name: marketsegmentid
-            type: INT
-          - name: open
-            type: DOUBLE
-          - name: high
-            type: DOUBLE
-          - name: low
-            type: DOUBLE
-          - name: close
-            type: DOUBLE
+        name: XEUR_TOP-LEVEL
+        user: user01
+        dateFrom: 20210127
+        dateTo: 20210127
+        grouping: None
         data:
-        - - 20201203
-          - XEUR
-          - 821
-          - 20.75
-          - 21.15
-          - 20.325
-          - 20.85
-        - - 20201203
-          - XEUR
-          - 821
-          - 20.75
-          - 21.725
-          - 20.325
-          - 21.6
-        - - 20201203
-          - XEUR
-          - 821
-          - 20.75
-          - 22.35
-          - 20.325
-          - 22.275
+        - market: XEUR
+          marketSegment: '589'
+        algos:
+        - algo: top_level
+          assignments:
+          - resultset: bid
+            tables:
+            - bid
+          - resultset: ask
+            tables:
+            - ask
+          - resultset: count
+            tables:
+            - count
+          owner: dbag
+          parameters: []
+          schemas:
+          - columns:
+            - name: day
+              type: INT
+            - name: market
+              type: STRING
+            - name: marketsegmentid
+              type: INT
+            - name: ts
+              type: Timestamp
+            - name: price
+              type: Int64
+            partitioning_columns:
+            - day
+            - market
+            - marketsegmentid
+            table_name: bid
+          - columns:
+            - name: day
+              type: INT
+            - name: market
+              type: STRING
+            - name: marketsegmentid
+              type: INT
+            - name: ts
+              type: Timestamp
+            - name: price
+              type: Int64
+            partitioning_columns:
+            - day
+            - market
+            - marketsegmentid
+            table_name: ask
+          - columns:
+            - name: day
+              type: INT
+            - name: market
+              type: STRING
+            - name: marketsegmentid
+              type: INT
+            - name: bid
+              type: Int64
+            - name: ask
+              type: Int64
+            partitioning_columns:
+            - day
+            - market
+            - marketsegmentid
+            table_name: count
     Jobs:
       properties:
         Jobs:
@@ -492,6 +554,18 @@ components:
         - EUR_TRADES_GBX
         - ETR_BIDS
         - ETR_ASKS
+    Tasks:
+      properties:
+        Tasks:
+          type: array
+          items:
+            type: integer
+      example:
+        Tasks:
+        - 1
+        - 2
+        - 3
+        - 4
     JobDefinition:
       properties:
         success:
@@ -670,6 +744,76 @@ components:
               tables:
               - total
         state: {}
+    DataJson:
+      properties:
+        Meta:
+          type: object
+          properties:
+            table_name:
+              type: string
+            partitioning_columns:
+              type: array
+              items:
+                type: string
+            columns:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  nullable:
+                    type: boolean
+        Data:
+          type: array
+          items:
+            type: object
+      example:
+        meta:
+          table_name: price
+          partitioning_columns:
+          - day
+          - market
+          - marketsegmentid
+          columns:
+          - name: day
+            type: INT
+          - name: market
+            type: STRING
+          - name: marketsegmentid
+            type: INT
+          - name: open
+            type: DOUBLE
+          - name: high
+            type: DOUBLE
+          - name: low
+            type: DOUBLE
+          - name: close
+            type: DOUBLE
+        data:
+        - - 20201203
+          - XEUR
+          - 821
+          - 20.75
+          - 21.15
+          - 20.325
+          - 20.85
+        - - 20201203
+          - XEUR
+          - 821
+          - 20.75
+          - 21.725
+          - 20.325
+          - 21.6
+        - - 20201203
+          - XEUR
+          - 821
+          - 20.75
+          - 22.35
+          - 20.325
+          - 22.275
     Results:
       properties:
         Results:
@@ -693,153 +837,25 @@ components:
       example:
         success: false
         message: Specific error message
-    NewPrecalc:
-      properties:
-        name:
-          type: string
-        user:
-          type: string
-        dateFrom:
-          type: integer
-        dateTo:
-          type: integer
-        grouping:
-          type: string
-        data:
-          type: array
-          items:
-            type: string
-        algos:
-          type: array
-          items:
-            type: object
-            properties:
-              algo:
-                type: string
-              assignments:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    resultset:
-                      type: string
-                    tables:
-                      type: array
-                      items:
-                        type: string
-              owner:
-                type: string
-              parameters:
-                type: array
-                items:
-                  type: object
-              schemas:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    columns:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          name:
-                            type: string
-                          nullable:
-                            type: boolean
-                          type:
-                            type: string
-                    partitioning:
-                      type: array
-                      items:
-                        type: string
-                    table_name:
-                      type: string
-      example:
-        name: XEUR_TOP-LEVEL
-        user: user01
-        dateFrom: 20210127
-        dateTo: 20210127
-        grouping: None
-        data:
-        - market: XEUR
-          marketSegment: '589'
-        algos:
-        - algo: top_level
-          assignments:
-          - resultset: bid
-            tables:
-            - bid
-          - resultset: ask
-            tables:
-            - ask
-          - resultset: count
-            tables:
-            - count
-          owner: dbag
-          parameters: []
-          schemas:
-          - columns:
-            - name: day
-              type: INT
-            - name: market
-              type: STRING
-            - name: marketsegmentid
-              type: INT
-            - name: ts
-              type: Timestamp
-            - name: price
-              type: Int64
-            partitioning_columns:
-            - day
-            - market
-            - marketsegmentid
-            table_name: bid
-          - columns:
-            - name: day
-              type: INT
-            - name: market
-              type: STRING
-            - name: marketsegmentid
-              type: INT
-            - name: ts
-              type: Timestamp
-            - name: price
-              type: Int64
-            partitioning_columns:
-            - day
-            - market
-            - marketsegmentid
-            table_name: ask
-          - columns:
-            - name: day
-              type: INT
-            - name: market
-              type: STRING
-            - name: marketsegmentid
-              type: INT
-            - name: bid
-              type: Int64
-            - name: ask
-              type: Int64
-            partitioning_columns:
-            - day
-            - market
-            - marketsegmentid
-            table_name: count
-    Tasks:
-      properties:
-        Tasks:
-          type: array
-          items:
-            type: integer
-      example:
-        Tasks:
-        - 1
-        - 2
-        - 3
-        - 4
+    DataRaw:
+      type: string
+  requestBodies:
+    putJobBody:
+      description: Precalc job definition
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/NewPrecalc'
   parameters:
+    owner:
+      name: owner
+      in: path
+      description: User identifier code
+      example: Owner1
+      required: true
+      schema:
+        type: string
     mode:
       name: mode
       in: query
@@ -849,6 +865,14 @@ components:
         enum:
         - json
         - raw
+    task:
+      name: task
+      in: path
+      description: Task number
+      example: 1
+      required: true
+      schema:
+        type: integer
     date:
       name: date
       in: path
@@ -865,22 +889,6 @@ components:
       required: true
       schema:
         type: string
-    owner:
-      name: owner
-      in: path
-      description: User identifier code
-      example: Owner1
-      required: true
-      schema:
-        type: string
-    task:
-      name: task
-      in: path
-      description: Task number
-      example: 1
-      required: true
-      schema:
-        type: integer
     precalc:
       name: precalc
       in: path
@@ -889,14 +897,6 @@ components:
       required: true
       schema:
         type: string
-  requestBodies:
-    putJobBody:
-      description: Precalc job definition
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/NewPrecalc'
   securitySchemes:
     bearerAuth:
       type: http

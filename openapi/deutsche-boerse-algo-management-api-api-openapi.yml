@@ -307,24 +307,6 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    AlgoConfiguration:
-      type: string
-      format: json
-      description: Configuration parameters in json format.
-    AlgosCompact:
-      properties:
-        Algos:
-          type: array
-          items:
-            type: string
-          example:
-          - Depth
-          - Insights
-          - Stats
-    AlgoResults:
-      type: string
-      format: json
-      description: Algo result data in json format.
     Owners:
       properties:
         Owners:
@@ -335,22 +317,6 @@ components:
           - Owner1
           - Owner2
           - Owner3
-    InternalError:
-      properties:
-        success:
-          type: string
-          example: 'false'
-        message:
-          type: string
-          example: Specific error message
-      required:
-      - success
-      - message
-    AlgoSourceCode:
-      type: string
-      format: yaml
-      description: Algo source code in yaml format.
-      example: Algo source code in yaml format.
     AlgosDetailed:
       properties:
         algos:
@@ -426,12 +392,83 @@ components:
               - Name: Field3
                 Type: TIME
                 Nullable: 'False'
+    AlgoResults:
+      type: string
+      format: json
+      description: Algo result data in json format.
+    AlgosCompact:
+      properties:
+        Algos:
+          type: array
+          items:
+            type: string
+          example:
+          - Depth
+          - Insights
+          - Stats
+    AlgoConfiguration:
+      type: string
+      format: json
+      description: Configuration parameters in json format.
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: 'false'
+        message:
+          type: string
+          example: Specific error message
+      required:
+      - success
+      - message
+    AlgoSourceCode:
+      type: string
+      format: yaml
+      description: Algo source code in yaml format.
+      example: Algo source code in yaml format.
+  requestBodies:
+    putAlgoBody:
+      description: Algo source code
+      required: true
+      content:
+        application/yaml:
+          schema:
+            $ref: '#/components/schemas/AlgoSourceCode'
   parameters:
-    date:
-      name: date
+    marketSegmentId:
+      name: marketSegmentId
       in: query
-      description: Trading day in the format  YYYYMMDD.
-      example: '20190912'
+      description: 'Unique product identifier or product pool identifier on T7.<br/> <b>Please note: ''marketSegmentID'' parameter is MANDATORY for running algos on T7 instruments</b>
+
+        '
+      example: '675'
+      required: false
+      schema:
+        type: integer
+        format: int32
+    asset:
+      name: asset
+      in: query
+      description: 'Unique asset identifier on CME.<br/> <b>Please note: ''asset'' parameter is MANDATORY for running algos on CME instruments</b>
+
+        '
+      example: GE
+      required: false
+      schema:
+        type: string
+    additional:
+      name: additional
+      in: query
+      style: form
+      description: "The query string of this endpoint can also be used to specify additional algo specific parameters. The parameters just have to be added with `&` to the query.<br/> The following rules apply:\n  * `name=value` is used to specify a parameter.<br/>\n    <b>Example:</b> level=1\n  * `&` is used to combine multiple parameters with a logical AND.<br/>\n    <b>Example:</b> aggr=4&level=1\n    \nTo test the feature in this document, please add the parameters in a valid JSON object.</br> <b>Example:</b> {\"aggr\":4,\"level\":1}\n"
+      required: false
+      schema:
+        type: object
+    owner:
+      name: owner
+      in: path
+      description: Username of the owner of the algo.
+      example: dbag
       required: true
       schema:
         type: string
@@ -445,6 +482,15 @@ components:
       required: false
       schema:
         type: string
+    securityId:
+      name: securityId
+      in: query
+      description: Unique security identifier.
+      example: '2657579'
+      required: true
+      schema:
+        type: integer
+        format: int64
     marketId:
       name: marketId
       in: query
@@ -455,22 +501,12 @@ components:
       required: false
       schema:
         type: string
-    owner:
-      name: owner
-      in: path
-      description: Username of the owner of the algo.
-      example: dbag
-      required: true
-      schema:
-        type: string
-    asset:
-      name: asset
+    date:
+      name: date
       in: query
-      description: 'Unique asset identifier on CME.<br/> <b>Please note: ''asset'' parameter is MANDATORY for running algos on CME instruments</b>
-
-        '
-      example: GE
-      required: false
+      description: Trading day in the format  YYYYMMDD.
+      example: '20190912'
+      required: true
       schema:
         type: string
     algoName:
@@ -481,42 +517,6 @@ components:
       required: true
       schema:
         type: string
-    additional:
-      name: additional
-      in: query
-      style: form
-      description: "The query string of this endpoint can also be used to specify additional algo specific parameters. The parameters just have to be added with `&` to the query.<br/> The following rules apply:\n  * `name=value` is used to specify a parameter.<br/>\n    <b>Example:</b> level=1\n  * `&` is used to combine multiple parameters with a logical AND.<br/>\n    <b>Example:</b> aggr=4&level=1\n    \nTo test the feature in this document, please add the parameters in a valid JSON object.</br> <b>Example:</b> {\"aggr\":4,\"level\":1}\n"
-      required: false
-      schema:
-        type: object
-    marketSegmentId:
-      name: marketSegmentId
-      in: query
-      description: 'Unique product identifier or product pool identifier on T7.<br/> <b>Please note: ''marketSegmentID'' parameter is MANDATORY for running algos on T7 instruments</b>
-
-        '
-      example: '675'
-      required: false
-      schema:
-        type: integer
-        format: int32
-    securityId:
-      name: securityId
-      in: query
-      description: Unique security identifier.
-      example: '2657579'
-      required: true
-      schema:
-        type: integer
-        format: int64
-  requestBodies:
-    putAlgoBody:
-      description: Algo source code
-      required: true
-      content:
-        application/yaml:
-          schema:
-            $ref: '#/components/schemas/AlgoSourceCode'
   securitySchemes:
     bearerAuth:
       type: http

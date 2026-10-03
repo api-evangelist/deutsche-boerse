@@ -78,16 +78,6 @@ components:
       - OPT
       - IV
       - RV
-    datasetdescs:
-      description: dictionary of datasets
-      type: object
-      additionalProperties:
-        description: dataset description
-        type: string
-      example:
-        OPT: Live options prices,
-        IV: Implied volatility,
-        RV: Realized volatility (intraday, maturity expressed as EWM, span in business days)
     dataset:
       description: dataset name
       type: string
@@ -99,9 +89,17 @@ components:
       - SMI
       - FWD
       example: OPT
+    datasetdescs:
+      description: dictionary of datasets
+      type: object
+      additionalProperties:
+        description: dataset description
+        type: string
+      example:
+        OPT: Live options prices,
+        IV: Implied volatility,
+        RV: Realized volatility (intraday, maturity expressed as EWM, span in business days)
   responses:
-    '404':
-      description: not found
     '401':
       description: authorization failed
       content:
@@ -123,6 +121,8 @@ components:
           schema:
             type: string
           example: specific error message
+    '404':
+      description: not found
   securitySchemes:
     bearerAuth:
       type: http
