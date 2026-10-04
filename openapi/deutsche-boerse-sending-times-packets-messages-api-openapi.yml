@@ -93,146 +93,18 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  parameters:
-    asset:
-      name: asset
-      in: path
-      description: unique asset identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/asset'
-    from:
-      name: from
-      in: query
-      description: array of packet's sending times as start times for (multiple) time interval selection (multiple values are separated by comma)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/timestamp'
-      style: form
-      explode: false
-    msgSeqNum:
-      name: msgSeqNum
-      in: query
-      description: array of packet's sequence numbers used as a filter to select packets (multiple values are separated by comma)
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int64
-          minimum: 1
-          example: 22902064
-      style: form
-      explode: false
-    date:
-      name: date
-      in: path
-      required: true
-      description: trading day in the format YYYYMMDD
-      schema:
-        $ref: '#/components/schemas/date'
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
-    securityID:
-      name: securityId
-      in: path
-      description: unique security identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/securityID'
-    mode:
-      name: mode
-      in: query
-      description: "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of packets with messages including their details\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - reference
-        - detailed
-        default: reference
-    templateID:
-      name: templateId
-      in: query
-      description: array of templateIDs used as a filter to select packets (multiple values are separated by comma)
-      required: false
-      schema:
-        type: array
-        items:
-          type: integer
-          format: int32
-          minimum: 0
-          example: 46
-      style: form
-      explode: false
-    limit:
-      name: limit
-      in: query
-      description: max number of elements in the response
-      required: false
-      schema:
-        type: integer
-        format: int32
-        minimum: 1
-        maximum: 10000
-        default: 1000
-        example: 10
-    sendingTime:
-      name: sendingTime
-      in: path
-      description: packet's sending time
-      required: true
-      schema:
-        $ref: '#/components/schemas/timestamp'
-    to:
-      name: to
-      in: query
-      description: packet's sending time as a global end time for (multiple) time interval selection
-      required: false
-      schema:
-        $ref: '#/components/schemas/timestamp'
-      example: null
   schemas:
-    sendingTimes:
+    packetDetail:
+      description: packet's details
       type: object
       properties:
-        SendingTimes:
-          description: array of packets' sending times
-          type: array
-          items:
-            $ref: '#/components/schemas/timestamp'
-          example:
-          - '1673390700086106154'
-          - '1673390700088531122'
-          - '1673390700088549040'
+        Messages:
+          description: packet header, size header, messages
+          type: object
     timestamp:
       description: timestamp as number of nanoseconds since Unix epoch
       type: string
       example: '1673390700086106154'
-    exchange:
-      description: exchange mic
-      type: string
-      minLength: 4
-      maxLength: 4
-      example: XCME
-    InternalError:
-      properties:
-        success:
-          type: string
-          example: false
-        message:
-          type: string
-          example: Error message
-      required:
-      - success
-      - message
     date:
       description: date representation
       type: integer
@@ -240,6 +112,12 @@ components:
       minLength: 8
       maxLength: 8
       example: 20230111
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XCME
     securityID:
       description: Security ID
       type: integer
@@ -262,13 +140,135 @@ components:
       type: string
       maxLength: 6
       example: ES
-    packetDetail:
-      description: packet's details
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: false
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
+    sendingTimes:
       type: object
       properties:
-        Messages:
-          description: packet header, size header, messages
-          type: object
+        SendingTimes:
+          description: array of packets' sending times
+          type: array
+          items:
+            $ref: '#/components/schemas/timestamp'
+          example:
+          - '1673390700086106154'
+          - '1673390700088531122'
+          - '1673390700088549040'
+  parameters:
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
+    mode:
+      name: mode
+      in: query
+      description: "Define the output format for the response.<br/> Mode options:\n  * `reference` (default) - Shows a list of the referencing IDs\n  * `detailed` - Shows a list of packets with messages including their details\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - reference
+        - detailed
+        default: reference
+    to:
+      name: to
+      in: query
+      description: packet's sending time as a global end time for (multiple) time interval selection
+      required: false
+      schema:
+        $ref: '#/components/schemas/timestamp'
+      example: null
+    securityID:
+      name: securityId
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    asset:
+      name: asset
+      in: path
+      description: unique asset identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/asset'
+    templateID:
+      name: templateId
+      in: query
+      description: array of templateIDs used as a filter to select packets (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int32
+          minimum: 0
+          example: 46
+      style: form
+      explode: false
+    from:
+      name: from
+      in: query
+      description: array of packet's sending times as start times for (multiple) time interval selection (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/timestamp'
+      style: form
+      explode: false
+    limit:
+      name: limit
+      in: query
+      description: max number of elements in the response
+      required: false
+      schema:
+        type: integer
+        format: int32
+        minimum: 1
+        maximum: 10000
+        default: 1000
+        example: 10
+    msgSeqNum:
+      name: msgSeqNum
+      in: query
+      description: array of packet's sequence numbers used as a filter to select packets (multiple values are separated by comma)
+      required: false
+      schema:
+        type: array
+        items:
+          type: integer
+          format: int64
+          minimum: 1
+          example: 22902064
+      style: form
+      explode: false
+    sendingTime:
+      name: sendingTime
+      in: path
+      description: packet's sending time
+      required: true
+      schema:
+        $ref: '#/components/schemas/timestamp'
   securitySchemes:
     bearerAuth:
       type: http

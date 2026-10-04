@@ -104,10 +104,6 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    CMEOrderbooks:
-      type: array
-      items:
-        $ref: '#/components/schemas/CMEOrderbook'
     CMEOrderbook:
       type: object
       properties:
@@ -233,10 +229,25 @@ components:
       - Asset
       - SecurityId
       - Timestamp
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: 'false'
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
     T7Orderbooks:
       type: array
       items:
         $ref: '#/components/schemas/T7Orderbook'
+    CMEOrderbooks:
+      type: array
+      items:
+        $ref: '#/components/schemas/CMEOrderbook'
     T7Orderbook:
       type: object
       properties:
@@ -424,17 +435,6 @@ components:
       - MarketSegmentId
       - SecurityId
       - Timestamp
-    InternalError:
-      properties:
-        success:
-          type: string
-          example: 'false'
-        message:
-          type: string
-          example: Error message
-      required:
-      - success
-      - message
   parameters:
     marketSegmentId:
       name: marketSegmentId
@@ -462,22 +462,6 @@ components:
       schema:
         type: string
         default: '9999999999999999999'
-    asset:
-      name: asset
-      in: path
-      description: Unique product identifier or product pool identifier.
-      example: GE
-      required: true
-      schema:
-        type: string
-    exchange:
-      name: exchange
-      in: path
-      description: Exchange identifier code.
-      example: XCME
-      required: true
-      schema:
-        type: string
     from:
       name: from
       in: query
@@ -489,55 +473,6 @@ components:
       schema:
         type: string
         default: '0'
-    indicatives:
-      name: indicatives
-      in: query
-      description: Indicative auction uncrossing.
-      required: false
-      schema:
-        type: boolean
-        default: false
-    securityId:
-      name: securityId
-      in: path
-      description: Unique security identifier
-      example: 27299
-      required: true
-      schema:
-        type: integer
-    marketId:
-      name: marketId
-      in: path
-      description: Market identifier code as specified in ISO 10383.
-      example: XEUR
-      required: true
-      schema:
-        type: string
-    trades:
-      name: trades
-      in: query
-      description: Display trades.
-      required: false
-      schema:
-        type: boolean
-        default: false
-    date:
-      name: date
-      in: path
-      description: Trading day in the format  YYYYMMDD
-      example: '20200106'
-      required: true
-      schema:
-        type: string
-        pattern: ^\d{8}$
-    orderbook:
-      name: orderbook
-      in: query
-      description: "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
-      required: false
-      schema:
-        type: string
-        default: aggregated
     limit:
       name: limit
       in: query
@@ -548,6 +483,71 @@ components:
         default: 1
         minimum: 1
         maximum: 10000
+    date:
+      name: date
+      in: path
+      description: Trading day in the format  YYYYMMDD
+      example: '20200106'
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{8}$
+    exchange:
+      name: exchange
+      in: path
+      description: Exchange identifier code.
+      example: XCME
+      required: true
+      schema:
+        type: string
+    asset:
+      name: asset
+      in: path
+      description: Unique product identifier or product pool identifier.
+      example: GE
+      required: true
+      schema:
+        type: string
+    orderbook:
+      name: orderbook
+      in: query
+      description: "Define if orders should be shown or aggregated.</br> Mode options:\n  * aggregated = Aggregate orders\n  * complete = Display orders\n"
+      required: false
+      schema:
+        type: string
+        default: aggregated
+    securityId:
+      name: securityId
+      in: path
+      description: Unique security identifier
+      example: 27299
+      required: true
+      schema:
+        type: integer
+    trades:
+      name: trades
+      in: query
+      description: Display trades.
+      required: false
+      schema:
+        type: boolean
+        default: false
+    marketId:
+      name: marketId
+      in: path
+      description: Market identifier code as specified in ISO 10383.
+      example: XEUR
+      required: true
+      schema:
+        type: string
+    indicatives:
+      name: indicatives
+      in: query
+      description: Indicative auction uncrossing.
+      required: false
+      schema:
+        type: boolean
+        default: false
   securitySchemes:
     bearerAuth:
       type: http

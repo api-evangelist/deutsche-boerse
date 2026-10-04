@@ -91,6 +91,21 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
+  parameters:
+    maturity:
+      name: maturity
+      in: path
+      description: option maturity
+      required: true
+      schema:
+        $ref: '#/components/schemas/maturity'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
   schemas:
     prices:
       description: array of prices for options and greeks
@@ -146,6 +161,11 @@ components:
         2024-06-21 12:50:00,DB1,20240719,Call,American,186.0,7.6288,7.6738,18.6084,0.7357,0.1762,192.011,0.0,0.0,2.578,-0.0218,Deutsche Boerse
 
         '
+    maturity:
+      description: option maturity
+      type: string
+      pattern: ^[01][0-9]{3}$
+      example: '0625'
     symbol:
       description: trading symbol
       type: string
@@ -205,27 +225,9 @@ components:
       - ANN
       - ZURN
       example: DB1
-    maturity:
-      description: option maturity
-      type: string
-      pattern: ^[01][0-9]{3}$
-      example: '0625'
-  parameters:
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    maturity:
-      name: maturity
-      in: path
-      description: option maturity
-      required: true
-      schema:
-        $ref: '#/components/schemas/maturity'
   responses:
+    '404':
+      description: not found
     '403':
       description: access denied
       content:
@@ -247,8 +249,6 @@ components:
           schema:
             type: string
           example: specific error message
-    '404':
-      description: not found
   securitySchemes:
     bearerAuth:
       type: http

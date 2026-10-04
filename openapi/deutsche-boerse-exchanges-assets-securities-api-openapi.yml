@@ -138,23 +138,17 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    assets:
-      type: object
+    InternalError:
       properties:
-        Assets:
-          description: array of assets
-          type: array
-          items:
-            $ref: '#/components/schemas/asset'
-          example:
-          - ES
-          - GE
-          - ZN
-    securityID:
-      description: Security ID
-      type: integer
-      format: int32
-      example: 206299
+        success:
+          type: string
+          example: false
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
     securityIDs:
       type: object
       properties:
@@ -167,6 +161,18 @@ components:
           - 206299
           - 95414
           - 3445
+    assets:
+      type: object
+      properties:
+        Assets:
+          description: array of assets
+          type: array
+          items:
+            $ref: '#/components/schemas/asset'
+          example:
+          - ES
+          - GE
+          - ZN
     date:
       description: date representation
       type: integer
@@ -188,22 +194,6 @@ components:
           - XCME
           - XFXS
           - XNYM
-    InternalError:
-      properties:
-        success:
-          type: string
-          example: false
-        message:
-          type: string
-          example: Error message
-      required:
-      - success
-      - message
-    asset:
-      description: asset code also known as product code
-      type: string
-      maxLength: 6
-      example: ES
     dates:
       type: object
       properties:
@@ -222,21 +212,17 @@ components:
       minLength: 4
       maxLength: 4
       example: XCME
-  parameters:
+    securityID:
+      description: Security ID
+      type: integer
+      format: int32
+      example: 206299
     asset:
-      name: asset
-      in: path
-      description: unique asset identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/asset'
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
+      description: asset code also known as product code
+      type: string
+      maxLength: 6
+      example: ES
+  parameters:
     date:
       name: date
       in: path
@@ -244,6 +230,20 @@ components:
       description: trading day in the format YYYYMMDD
       schema:
         $ref: '#/components/schemas/date'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
+    asset:
+      name: asset
+      in: path
+      description: unique asset identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/asset'
   securitySchemes:
     bearerAuth:
       type: http
