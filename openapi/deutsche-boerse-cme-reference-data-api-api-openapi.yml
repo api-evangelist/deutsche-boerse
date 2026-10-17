@@ -172,74 +172,7 @@ paths:
         '422':
           $ref: '#/components/responses/422'
 components:
-  parameters:
-    date:
-      name: date
-      in: path
-      description: Trading day in the format  YYYYMMDD
-      example: 20200106
-      required: true
-      schema:
-        type: integer
-        pattern: ^\d{8}$
-    exchange:
-      name: exchange
-      in: path
-      description: Exchange identifier code.
-      example: XCME
-      required: true
-      schema:
-        type: string
-    asset:
-      name: asset
-      in: path
-      description: Unique product identifier or product pool identifier
-      example: GE
-      required: true
-      schema:
-        type: string
-    securityId:
-      name: securityId
-      in: path
-      description: Unique security identifier
-      example: '27299'
-      required: true
-      schema:
-        type: integer
-        format: int64
   schemas:
-    SecurityIDs:
-      type: array
-      items:
-        type: string
-      example:
-      - '10014'
-      - '10077'
-      - '10096'
-    Assets:
-      type: array
-      items:
-        type: string
-      example:
-      - GE
-      - SR1
-      - SR2
-    Dates:
-      type: array
-      items:
-        type: integer
-        format: int32
-      example:
-      - 20200102
-      - 20200103
-      - 20200106
-    Exchanges:
-      type: array
-      items:
-        type: string
-      example:
-      - XCME
-      - XFXS
     SecurityDetails:
       type: array
       items:
@@ -295,6 +228,73 @@ components:
         UnitOfMeasure: IPNT
         HighLimitPrice: '9999900.000000000'
         MinTradeVol: '1'
+    Dates:
+      type: array
+      items:
+        type: integer
+        format: int32
+      example:
+      - 20200102
+      - 20200103
+      - 20200106
+    SecurityIDs:
+      type: array
+      items:
+        type: string
+      example:
+      - '10014'
+      - '10077'
+      - '10096'
+    Exchanges:
+      type: array
+      items:
+        type: string
+      example:
+      - XCME
+      - XFXS
+    Assets:
+      type: array
+      items:
+        type: string
+      example:
+      - GE
+      - SR1
+      - SR2
+  parameters:
+    date:
+      name: date
+      in: path
+      description: Trading day in the format  YYYYMMDD
+      example: 20200106
+      required: true
+      schema:
+        type: integer
+        pattern: ^\d{8}$
+    exchange:
+      name: exchange
+      in: path
+      description: Exchange identifier code.
+      example: XCME
+      required: true
+      schema:
+        type: string
+    asset:
+      name: asset
+      in: path
+      description: Unique product identifier or product pool identifier
+      example: GE
+      required: true
+      schema:
+        type: string
+    securityId:
+      name: securityId
+      in: path
+      description: Unique security identifier
+      example: '27299'
+      required: true
+      schema:
+        type: integer
+        format: int64
   securitySchemes:
     bearerAuth:
       type: http

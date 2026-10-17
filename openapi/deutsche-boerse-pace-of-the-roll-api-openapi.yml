@@ -147,6 +147,25 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
+    Roll:
+      description: roll represented by a date (format = YYYYMM)
+      type: integer
+      format: int32
+      pattern: ^\d{6}$
+      example: 202103
+    MarketSegment:
+      description: market segment represented by a product
+      type: string
+      example: FDAX
+    Ratio:
+      description: ratio of adjusted open interest of a back-month contract to a sum of back- and front-month contract
+      type:
+      - number
+      - 'null'
+      format: float
+      minimum: 0
+      maximum: 1
+      example: 0.887223
     RollDetails:
       type: object
       required:
@@ -216,25 +235,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Ratio'
-    MarketSegment:
-      description: market segment represented by a product
-      type: string
-      example: FDAX
-    Roll:
-      description: roll represented by a date (format = YYYYMM)
-      type: integer
-      format: int32
-      pattern: ^\d{6}$
-      example: 202103
-    Ratio:
-      description: ratio of adjusted open interest of a back-month contract to a sum of back- and front-month contract
-      type:
-      - number
-      - 'null'
-      format: float
-      minimum: 0
-      maximum: 1
-      example: 0.887223
   parameters:
     MarketSegment:
       name: MarketSegment
@@ -244,17 +244,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/MarketSegment'
-    comp:
-      name: comp
-      in: query
-      description: "Comparison parameter to control which past rolls are considered for the calculation. <br>\n  * `s` = Data from the same expiration month from previous years\n  * `c` = Data from `n` consecutive months prior to the selected roll\n"
-      required: false
-      schema:
-        type: string
-        default: c
-        enum:
-        - c
-        - s
     Roll:
       name: Roll
       in: path
@@ -263,17 +252,6 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/Roll'
-    n:
-      name: n
-      in: query
-      description: Maximal number of previous rolls for quantile calculation
-      example: 20
-      required: false
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 99
-        default: 30
     days:
       name: days
       in: query
@@ -285,6 +263,28 @@ components:
         minimum: 1
         maximum: 31
         default: 10
+    comp:
+      name: comp
+      in: query
+      description: "Comparison parameter to control which past rolls are considered for the calculation. <br>\n  * `s` = Data from the same expiration month from previous years\n  * `c` = Data from `n` consecutive months prior to the selected roll\n"
+      required: false
+      schema:
+        type: string
+        default: c
+        enum:
+        - c
+        - s
+    n:
+      name: n
+      in: query
+      description: Maximal number of previous rolls for quantile calculation
+      example: 20
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 99
+        default: 30
   securitySchemes:
     bearerAuth:
       type: http

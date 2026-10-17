@@ -68,11 +68,40 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
+  schemas:
+    dataset:
+      description: dataset name
+      type: string
+      enum:
+      - OPT
+      - IV
+      - RV
+      - DIV
+      - SMI
+      - FWD
+      example: OPT
+    datasets:
+      description: array of dataset names
+      type: array
+      items:
+        $ref: '#/components/schemas/dataset'
+      example:
+      - OPT
+      - IV
+      - RV
+    datasetdescs:
+      description: dictionary of datasets
+      type: object
+      additionalProperties:
+        description: dataset description
+        type: string
+      example:
+        OPT: Live options prices,
+        IV: Implied volatility,
+        RV: Realized volatility (intraday, maturity expressed as EWM, span in business days)
   responses:
-    '404':
-      description: not found
-    '403':
-      description: access denied
+    '400':
+      description: bad request
       content:
         text/plain:
           schema:
@@ -85,44 +114,15 @@ components:
           schema:
             type: string
           example: specific error message
-    '400':
-      description: bad request
+    '404':
+      description: not found
+    '403':
+      description: access denied
       content:
         text/plain:
           schema:
             type: string
           example: specific error message
-  schemas:
-    datasetdescs:
-      description: dictionary of datasets
-      type: object
-      additionalProperties:
-        description: dataset description
-        type: string
-      example:
-        OPT: Live options prices,
-        IV: Implied volatility,
-        RV: Realized volatility (intraday, maturity expressed as EWM, span in business days)
-    datasets:
-      description: array of dataset names
-      type: array
-      items:
-        $ref: '#/components/schemas/dataset'
-      example:
-      - OPT
-      - IV
-      - RV
-    dataset:
-      description: dataset name
-      type: string
-      enum:
-      - OPT
-      - IV
-      - RV
-      - DIV
-      - SMI
-      - FWD
-      example: OPT
   securitySchemes:
     bearerAuth:
       type: http

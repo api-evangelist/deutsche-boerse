@@ -239,67 +239,33 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  parameters:
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    date:
-      name: date
-      in: path
-      required: true
-      description: trading day in the format YYYYMMDD
-      schema:
-        $ref: '#/components/schemas/date'
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
-    marketSegmentID:
-      name: marketSegmentID
-      in: path
-      description: unique market segment identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/marketSegmentID'
-    mode:
-      name: mode
-      in: query
-      description: "Defines the output values for the response.<br/> mode options:\n  * `ids` (default) - returns a list of market segment IDs\n  * `symbols` - returns a list of trading symbols\n"
-      required: false
-      schema:
-        type: string
-        enum:
-        - ids
-        - symbols
-        default: ids
-    securityID:
-      name: securityID
-      in: path
-      description: unique security identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/securityID'
   schemas:
-    marketSegmentIDorSymbol:
-      description: MarketSegmentID or symbol
-      type: string
-      example: '52915'
+    marketSegmentID:
+      description: market segment ID
+      type: integer
+      format: int32
+      example: 52885
     symbol:
       description: trading symbol
       type: string
       example: DB1
-    date:
-      description: date representation
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XETR
+    securityID:
+      description: security ID
       type: integer
-      format: int32
-      example: 20230111
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 2504978
+    marketSegmentIDorSymbol:
+      description: MarketSegmentID or symbol
+      type: string
+      example: '52915'
     security:
       description: security's reference data
       type: object
@@ -356,29 +322,61 @@ components:
       - Index
       - ISIN
       - Ticks
-    exchange:
-      description: exchange mic
-      type: string
-      minLength: 4
-      maxLength: 4
-      example: XETR
-    securityID:
-      description: security ID
-      type: integer
-      format: int64
-      minimum: -9223372036854775808
-      maximum: 9223372036854775807
-      example: 2504978
-    marketSegmentID:
-      description: market segment ID
+    date:
+      description: date representation
       type: integer
       format: int32
-      example: 52885
+      example: 20230111
+  parameters:
+    marketSegmentID:
+      name: marketSegmentID
+      in: path
+      description: unique market segment identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/marketSegmentID'
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    mode:
+      name: mode
+      in: query
+      description: "Defines the output values for the response.<br/> mode options:\n  * `ids` (default) - returns a list of market segment IDs\n  * `symbols` - returns a list of trading symbols\n"
+      required: false
+      schema:
+        type: string
+        enum:
+        - ids
+        - symbols
+        default: ids
+    securityID:
+      name: securityID
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
   responses:
-    '404':
-      description: not found
-    '403':
-      description: access denied
+    '400':
+      description: bad request
       content:
         text/plain:
           schema:
@@ -391,8 +389,10 @@ components:
           schema:
             type: string
           example: specific error message
-    '400':
-      description: bad request
+    '404':
+      description: not found
+    '403':
+      description: access denied
       content:
         text/plain:
           schema:

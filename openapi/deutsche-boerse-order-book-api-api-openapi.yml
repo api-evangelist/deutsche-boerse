@@ -104,6 +104,25 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
+    CMEOrderbooks:
+      type: array
+      items:
+        $ref: '#/components/schemas/CMEOrderbook'
+    T7Orderbooks:
+      type: array
+      items:
+        $ref: '#/components/schemas/T7Orderbook'
+    InternalError:
+      properties:
+        success:
+          type: string
+          example: 'false'
+        message:
+          type: string
+          example: Error message
+      required:
+      - success
+      - message
     CMEOrderbook:
       type: object
       properties:
@@ -229,25 +248,6 @@ components:
       - Asset
       - SecurityId
       - Timestamp
-    InternalError:
-      properties:
-        success:
-          type: string
-          example: 'false'
-        message:
-          type: string
-          example: Error message
-      required:
-      - success
-      - message
-    T7Orderbooks:
-      type: array
-      items:
-        $ref: '#/components/schemas/T7Orderbook'
-    CMEOrderbooks:
-      type: array
-      items:
-        $ref: '#/components/schemas/CMEOrderbook'
     T7Orderbook:
       type: object
       properties:
@@ -436,14 +436,23 @@ components:
       - SecurityId
       - Timestamp
   parameters:
-    marketSegmentId:
-      name: marketSegmentId
+    indicatives:
+      name: indicatives
+      in: query
+      description: Indicative auction uncrossing.
+      required: false
+      schema:
+        type: boolean
+        default: false
+    date:
+      name: date
       in: path
-      description: Unique product identifier or product pool identifier on T7.
-      example: '1210'
+      description: Trading day in the format  YYYYMMDD
+      example: '20200106'
       required: true
       schema:
-        type: integer
+        type: string
+        pattern: ^\d{8}$
     levels:
       name: levels
       in: query
@@ -453,26 +462,6 @@ components:
         type: integer
         default: 10
         minimum: 1
-    to:
-      name: to
-      in: query
-      description: "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
-      example: '1589175000156121100'
-      required: false
-      schema:
-        type: string
-        default: '9999999999999999999'
-    from:
-      name: from
-      in: query
-      description: 'Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
-
-        '
-      example: '1589175000156121100'
-      required: false
-      schema:
-        type: string
-        default: '0'
     limit:
       name: limit
       in: query
@@ -483,31 +472,23 @@ components:
         default: 1
         minimum: 1
         maximum: 10000
-    date:
-      name: date
+    marketSegmentId:
+      name: marketSegmentId
       in: path
-      description: Trading day in the format  YYYYMMDD
-      example: '20200106'
+      description: Unique product identifier or product pool identifier on T7.
+      example: '1210'
       required: true
       schema:
-        type: string
-        pattern: ^\d{8}$
-    exchange:
-      name: exchange
-      in: path
-      description: Exchange identifier code.
-      example: XCME
-      required: true
+        type: integer
+    to:
+      name: to
+      in: query
+      description: "Ending time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime) \n"
+      example: '1589175000156121100'
+      required: false
       schema:
         type: string
-    asset:
-      name: asset
-      in: path
-      description: Unique product identifier or product pool identifier.
-      example: GE
-      required: true
-      schema:
-        type: string
+        default: '9999999999999999999'
     orderbook:
       name: orderbook
       in: query
@@ -524,6 +505,33 @@ components:
       required: true
       schema:
         type: integer
+    exchange:
+      name: exchange
+      in: path
+      description: Exchange identifier code.
+      example: XCME
+      required: true
+      schema:
+        type: string
+    from:
+      name: from
+      in: query
+      description: 'Timestamp of when the order book was valid or starting time of the time interval.<br/> Format: Nanoseconds since 1970 (EOBI TransactTime)
+
+        '
+      example: '1589175000156121100'
+      required: false
+      schema:
+        type: string
+        default: '0'
+    asset:
+      name: asset
+      in: path
+      description: Unique product identifier or product pool identifier.
+      example: GE
+      required: true
+      schema:
+        type: string
     trades:
       name: trades
       in: query
@@ -540,14 +548,6 @@ components:
       required: true
       schema:
         type: string
-    indicatives:
-      name: indicatives
-      in: query
-      description: Indicative auction uncrossing.
-      required: false
-      schema:
-        type: boolean
-        default: false
   securitySchemes:
     bearerAuth:
       type: http

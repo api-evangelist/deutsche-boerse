@@ -174,96 +174,63 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  parameters:
-    date:
-      name: date
-      in: path
-      required: true
-      description: trading day in the format YYYYMMDD
-      schema:
-        $ref: '#/components/schemas/date'
-    auctionType:
-      name: auctionType
-      in: path
-      description: auction type
-      required: true
-      schema:
-        $ref: '#/components/schemas/auctionType'
-    qty:
-      name: qty
-      in: query
-      description: quantity of an order
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/qty'
-      style: form
-      explode: true
-    marketSegmentID:
-      name: marketSegmentID
-      in: path
-      description: unique market segment identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/marketSegmentID'
-    securityID:
-      name: securityID
-      in: path
-      description: unique security identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/securityID'
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    exchange:
-      name: exchange
-      in: path
-      description: exhange identifier code
-      required: true
-      schema:
-        $ref: '#/components/schemas/exchange'
-    px:
-      name: px
-      in: query
-      description: limit price of an order, a null value corresponds to a market order
-      required: false
-      schema:
-        type: array
-        items:
-          oneOf:
-          - $ref: '#/components/schemas/px'
-          - $ref: '#/components/schemas/null_string'
-      style: form
-      explode: true
-    side:
-      name: side
-      in: query
-      description: side of an order
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/side'
-      style: form
-      explode: true
-    prio:
-      name: prio
-      in: query
-      description: order priority (default 0)
-      required: false
-      schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/timestamp'
-      style: form
-      explode: true
   schemas:
+    marketSegmentID:
+      description: market segment ID
+      type: integer
+      format: int32
+      example: 52885
+    qty:
+      description: quantity of an order
+      type: integer
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 125
+    exchange:
+      description: exchange mic
+      type: string
+      minLength: 4
+      maxLength: 4
+      example: XETR
+    securityID:
+      description: security ID
+      type: integer
+      format: int64
+      minimum: -9223372036854775808
+      maximum: 9223372036854775807
+      example: 2504978
+    side:
+      description: side of an order
+      type: string
+      enum:
+      - bid
+      - ask
+      example: bid
+    null_string:
+      description: a null string that corresponds to a market order
+      type: string
+      enum:
+      - 'null'
+      example: 'null'
+    timestamp:
+      description: timestamp as number of nanoseconds since Unix epoch
+      type: integer
+      format: int64
+      minimum: 0
+      maximum: 18446744073709551615
+      default: 0
+      example: 1652962104095620563
+    px:
+      description: limit price of an order
+      type: number
+      format: double
+      example: 178.25
+    date:
+      description: date representation
+      type: integer
+      format: int32
+      example: 20230111
     auctionType:
       description: auction type
       type: string
@@ -272,6 +239,10 @@ components:
       - intraday
       - closing
       example: opening
+    symbol:
+      description: trading symbol
+      type: string
+      example: DB1
     auction:
       description: auction's historical data and optionally simulated outcome of an auction
       type: object
@@ -337,69 +308,96 @@ components:
       - AuctionReferencePrice
       - UncrossingPrice
       - MatchedVolume
-    null_string:
-      description: a null string that corresponds to a market order
-      type: string
-      enum:
-      - 'null'
-      example: 'null'
-    timestamp:
-      description: timestamp as number of nanoseconds since Unix epoch
-      type: integer
-      format: int64
-      minimum: 0
-      maximum: 18446744073709551615
-      default: 0
-      example: 1652962104095620563
-    qty:
-      description: quantity of an order
-      type: integer
-      format: int64
-      minimum: -9223372036854775808
-      maximum: 9223372036854775807
-      example: 125
-    date:
-      description: date representation
-      type: integer
-      format: int32
-      example: 20230111
-    exchange:
-      description: exchange mic
-      type: string
-      minLength: 4
-      maxLength: 4
-      example: XETR
-    securityID:
-      description: security ID
-      type: integer
-      format: int64
-      minimum: -9223372036854775808
-      maximum: 9223372036854775807
-      example: 2504978
+  parameters:
+    auctionType:
+      name: auctionType
+      in: path
+      description: auction type
+      required: true
+      schema:
+        $ref: '#/components/schemas/auctionType'
     symbol:
-      description: trading symbol
-      type: string
-      example: DB1
-    side:
-      description: side of an order
-      type: string
-      enum:
-      - bid
-      - ask
-      example: bid
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    securityID:
+      name: securityID
+      in: path
+      description: unique security identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/securityID'
+    qty:
+      name: qty
+      in: query
+      description: quantity of an order
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/qty'
+      style: form
+      explode: true
+    prio:
+      name: prio
+      in: query
+      description: order priority (default 0)
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/timestamp'
+      style: form
+      explode: true
+    date:
+      name: date
+      in: path
+      required: true
+      description: trading day in the format YYYYMMDD
+      schema:
+        $ref: '#/components/schemas/date'
     px:
-      description: limit price of an order
-      type: number
-      format: double
-      example: 178.25
+      name: px
+      in: query
+      description: limit price of an order, a null value corresponds to a market order
+      required: false
+      schema:
+        type: array
+        items:
+          oneOf:
+          - $ref: '#/components/schemas/px'
+          - $ref: '#/components/schemas/null_string'
+      style: form
+      explode: true
     marketSegmentID:
-      description: market segment ID
-      type: integer
-      format: int32
-      example: 52885
+      name: marketSegmentID
+      in: path
+      description: unique market segment identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/marketSegmentID'
+    side:
+      name: side
+      in: query
+      description: side of an order
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/side'
+      style: form
+      explode: true
+    exchange:
+      name: exchange
+      in: path
+      description: exhange identifier code
+      required: true
+      schema:
+        $ref: '#/components/schemas/exchange'
   responses:
-    '404':
-      description: not found
     '403':
       description: access denied
       content:
@@ -421,6 +419,8 @@ components:
           schema:
             type: string
           example: specific error message
+    '404':
+      description: not found
   securitySchemes:
     bearerAuth:
       type: http

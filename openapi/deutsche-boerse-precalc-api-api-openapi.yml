@@ -373,30 +373,6 @@ paths:
           $ref: '#/components/responses/404'
 components:
   schemas:
-    Jobs:
-      properties:
-        Jobs:
-          type: array
-          items:
-            type: string
-      example:
-        Jobs:
-        - EUR_TRADES
-        - EUR_TRADES_GBX
-        - ETR_BIDS
-        - ETR_ASKS
-    InternalError:
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-      required:
-      - success
-      - message
-      example:
-        success: false
-        message: Specific error message
     JobDefinition:
       properties:
         success:
@@ -575,6 +551,18 @@ components:
               tables:
               - total
         state: {}
+    Jobs:
+      properties:
+        Jobs:
+          type: array
+          items:
+            type: string
+      example:
+        Jobs:
+        - EUR_TRADES
+        - EUR_TRADES_GBX
+        - ETR_BIDS
+        - ETR_ASKS
     Owners:
       properties:
         Owners:
@@ -586,6 +574,65 @@ components:
         - DBAG
         - Owner1
         - Owner2
+    Tasks:
+      properties:
+        Tasks:
+          type: array
+          items:
+            type: integer
+      example:
+        Tasks:
+        - 1
+        - 2
+        - 3
+        - 4
+    Dates:
+      properties:
+        Dates:
+          type: array
+          items:
+            type: integer
+      example:
+        Dates:
+        - 20200104
+        - 20200103
+        - 20200102
+    Results:
+      properties:
+        Results:
+          type: array
+          items:
+            type: string
+      example:
+        Jobs:
+        - EurexTrades
+        - EurexBids
+        - EurexAsks
+    SuccessMessage:
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+      - success
+      - name
+      - message
+      example:
+        success: true
+        message: Success message
+    InternalError:
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+      required:
+      - success
+      - message
+      example:
+        success: false
+        message: Specific error message
     NewPrecalc:
       properties:
         name:
@@ -720,55 +767,6 @@ components:
             - market
             - marketsegmentid
             table_name: count
-    DataRaw:
-      type: string
-    SuccessMessage:
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-      required:
-      - success
-      - name
-      - message
-      example:
-        success: true
-        message: Success message
-    Dates:
-      properties:
-        Dates:
-          type: array
-          items:
-            type: integer
-      example:
-        Dates:
-        - 20200104
-        - 20200103
-        - 20200102
-    Tasks:
-      properties:
-        Tasks:
-          type: array
-          items:
-            type: integer
-      example:
-        Tasks:
-        - 1
-        - 2
-        - 3
-        - 4
-    Results:
-      properties:
-        Results:
-          type: array
-          items:
-            type: string
-      example:
-        Jobs:
-        - EurexTrades
-        - EurexBids
-        - EurexAsks
     DataJson:
       properties:
         Meta:
@@ -839,23 +837,9 @@ components:
           - 22.35
           - 20.325
           - 22.275
+    DataRaw:
+      type: string
   parameters:
-    task:
-      name: task
-      in: path
-      description: Task number
-      example: 1
-      required: true
-      schema:
-        type: integer
-    date:
-      name: date
-      in: path
-      description: Date in format YYYYMMDD
-      example: 20200102
-      required: true
-      schema:
-        type: integer
     result:
       name: result
       in: path
@@ -864,14 +848,14 @@ components:
       required: true
       schema:
         type: string
-    precalc:
-      name: precalc
+    date:
+      name: date
       in: path
-      description: Name of the precalc job
-      example: EUR_TRADES
+      description: Date in format YYYYMMDD
+      example: 20200102
       required: true
       schema:
-        type: string
+        type: integer
     mode:
       name: mode
       in: query
@@ -881,6 +865,22 @@ components:
         enum:
         - json
         - raw
+    task:
+      name: task
+      in: path
+      description: Task number
+      example: 1
+      required: true
+      schema:
+        type: integer
+    precalc:
+      name: precalc
+      in: path
+      description: Name of the precalc job
+      example: EUR_TRADES
+      required: true
+      schema:
+        type: string
     owner:
       name: owner
       in: path

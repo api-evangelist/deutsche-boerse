@@ -121,69 +121,12 @@ paths:
         404:
           $ref: '#/components/responses/404'
 components:
-  parameters:
-    symbol:
-      name: symbol
-      in: path
-      description: unique trading symbol identifier
-      required: true
-      schema:
-        $ref: '#/components/schemas/symbol'
-    longmaturity:
-      name: longmaturity
-      in: path
-      description: option maturity (long pattern)
-      required: true
-      schema:
-        $ref: '#/components/schemas/longmaturity'
-    indicator:
-      name: indicator
-      in: path
-      description: indicator name
-      required: true
-      schema:
-        $ref: '#/components/schemas/indicator'
   schemas:
     longmaturity:
       description: option maturity (long pattern)
       type: string
       pattern: ^[0-9]{4}-[01][0-9]-[0-3][0-9]$
       example: '2025-06-20'
-    liveindicators:
-      description: array of live indicators
-      type: array
-      items:
-        type: object
-        properties:
-          Snapshot_time_(GMT):
-            type: string
-            format: date
-          Eurex code:
-            type: string
-          Underlying_full_name:
-            type: string
-          Maturity:
-            type: string
-            format: date
-          Indicator type:
-            type: string
-          Indicator (Standard deviation):
-            type: number
-          Indicator (Vol Points):
-            type: number
-      example: 'Snapshot_time_(GMT),Eurex code,Underlying_full_name,Maturity,Indicator type,Indicator (Standard deviation),Indicator (Vol Points)
-
-        2024-07-01,DB1,Deutsche Boerse,2024-08-16,SMI,-0.25,-0.13
-
-        2024-07-01,DB1,Deutsche Boerse,2024-09-20,SMI,-0.34,-0.19
-
-        2024-07-01,DB1,Deutsche Boerse,2024-12-20,SMI,-0.21,-0.11
-
-        2024-07-01,DB1,Deutsche Boerse,2025-03-21,SMI,-0.19,-0.1
-
-        2024-07-01,DB1,Deutsche Boerse,2025-06-20,SMI,-0.37,-0.2
-
-        '
     symbols:
       description: array of trading symbols
       type: array
@@ -193,31 +136,6 @@ components:
       - DB1
       - DPW
       - DTE
-    indicator:
-      description: indicator name
-      type: string
-      enum:
-      - MDE
-      - MDE_index
-      - MDI
-      - TDI
-      - CSA
-      - CSA_sector
-      - SMI
-      - SMI_sector
-      - DSP
-      - DSPSMI
-      - DIV
-      example: SMI
-    indicators:
-      description: array of indicator names
-      type: array
-      items:
-        $ref: '#/components/schemas/indicator'
-      example:
-      - MDI
-      - TDI
-      - CSA
     symbol:
       description: trading symbol
       type: string
@@ -277,16 +195,89 @@ components:
       - ANN
       - ZURN
       example: DB1
-  responses:
-    '403':
-      description: access denied
-      content:
-        text/plain:
-          schema:
+    indicators:
+      description: array of indicator names
+      type: array
+      items:
+        $ref: '#/components/schemas/indicator'
+      example:
+      - MDI
+      - TDI
+      - CSA
+    liveindicators:
+      description: array of live indicators
+      type: array
+      items:
+        type: object
+        properties:
+          Snapshot_time_(GMT):
             type: string
-          example: specific error message
-    '404':
-      description: not found
+            format: date
+          Eurex code:
+            type: string
+          Underlying_full_name:
+            type: string
+          Maturity:
+            type: string
+            format: date
+          Indicator type:
+            type: string
+          Indicator (Standard deviation):
+            type: number
+          Indicator (Vol Points):
+            type: number
+      example: 'Snapshot_time_(GMT),Eurex code,Underlying_full_name,Maturity,Indicator type,Indicator (Standard deviation),Indicator (Vol Points)
+
+        2024-07-01,DB1,Deutsche Boerse,2024-08-16,SMI,-0.25,-0.13
+
+        2024-07-01,DB1,Deutsche Boerse,2024-09-20,SMI,-0.34,-0.19
+
+        2024-07-01,DB1,Deutsche Boerse,2024-12-20,SMI,-0.21,-0.11
+
+        2024-07-01,DB1,Deutsche Boerse,2025-03-21,SMI,-0.19,-0.1
+
+        2024-07-01,DB1,Deutsche Boerse,2025-06-20,SMI,-0.37,-0.2
+
+        '
+    indicator:
+      description: indicator name
+      type: string
+      enum:
+      - MDE
+      - MDE_index
+      - MDI
+      - TDI
+      - CSA
+      - CSA_sector
+      - SMI
+      - SMI_sector
+      - DSP
+      - DSPSMI
+      - DIV
+      example: SMI
+  parameters:
+    indicator:
+      name: indicator
+      in: path
+      description: indicator name
+      required: true
+      schema:
+        $ref: '#/components/schemas/indicator'
+    symbol:
+      name: symbol
+      in: path
+      description: unique trading symbol identifier
+      required: true
+      schema:
+        $ref: '#/components/schemas/symbol'
+    longmaturity:
+      name: longmaturity
+      in: path
+      description: option maturity (long pattern)
+      required: true
+      schema:
+        $ref: '#/components/schemas/longmaturity'
+  responses:
     '400':
       description: bad request
       content:
@@ -296,6 +287,15 @@ components:
           example: specific error message
     '401':
       description: authorization failed
+      content:
+        text/plain:
+          schema:
+            type: string
+          example: specific error message
+    '404':
+      description: not found
+    '403':
+      description: access denied
       content:
         text/plain:
           schema:
